@@ -30,7 +30,28 @@ export const headerData = {
           href: getPermalink('/egaki-sho') + '#invitation',
         },
       ]
-    },    
+    },
+    {
+      text: 'ZINE',
+      links: [
+        {
+          text: '絵書作ろうよ！',
+          href: getPermalink('/zine/egaki-sho-create') + '#top',
+        },
+        {
+          text: '絵書作ろうよ！- キャラクターメイキング編 -',
+          href: getPermalink('/zine/egaki-sho-create') + '#chapter-list',
+        },        
+        {
+          text: 'another-series',
+          href: getPermalink('/zine/another-series') + '#top',
+        },
+        {
+          text: 'another-series - chapter1',
+          href: getPermalink('/zine/another-series') + '#chapter-list',
+        },        
+      ]
+    }, 
     {
       text: 'Homes',
       links: [
