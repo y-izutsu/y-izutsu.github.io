@@ -19,7 +19,7 @@ export const headerData = {
         },
         {
           text: '3. 軌跡：記録と伴走',
-          href: '/egaki-sho#record',
+          href: '/egaki-sho@@@record',
         },
         {
           text: '4. 旅路：本編',
