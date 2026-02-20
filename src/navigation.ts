@@ -7,27 +7,27 @@ export const headerData = {
       links: [
         {
           text: '0. 序：絵書の鼓動',
-          href: getPermalink('/egaki-sho/#top'),
+          href: '/egaki-sho#top',
         },
         {
           text: '1. 絵書とは',
-          href: getPermalink('/egaki-sho/#concept'),
+          href: '/egaki-sho#concept',
         },
         {
           text: '2. 深淵：世界と構造',
-          href: getPermalink('/egaki-sho/#abyss')
+          href: '/egaki-sho#abyss'
         },
         {
           text: '3. 軌跡：記録と伴走',
-          href: getPermalink('/egaki-sho/#record'),
+          href: '/egaki-sho#record',
         },
         {
           text: '4. 旅路：本編',
-          href: getPermalink('/egaki-sho/#chapters'),
+          href: '/egaki-sho#chapters',
         },
         {
           text: '5. 結：招待とCTA',
-          href: getPermalink('/egaki-sho/#invitation'),
+          href: '/egaki-sho#invitation',
         },
       ]
     },
@@ -36,19 +36,19 @@ export const headerData = {
       links: [
         {
           text: '絵書作ろうよ！',
-          href: getPermalink('/zine/egaki-sho-create/#top'),
+          href: '/zine/egaki-sho-create/#top',
         },
         {
           text: '絵書作ろうよ！- キャラクターメイキング編 -',
-          href: getPermalink('/zine/egaki-sho-create/#chapter-list'),
+          href: '/zine/egaki-sho-create/#chapter-list',
         },        
         {
           text: 'another-series',
-          href: getPermalink('/zine/another-series/#top'),
+          href: '/zine/another-series/#top',
         },
         {
           text: 'another-series - chapter1',
-          href: getPermalink('/zine/another-series/#chapter-list'),
+          href: '/zine/another-series/#chapter-list',
         },        
       ]
     }, 
