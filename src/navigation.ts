@@ -7,7 +7,7 @@ export const headerData = {
       links: [
         {
           text: '0. 序：絵書の鼓動',
-          href: getPermalink('/egaki-sho'),
+          href: `${getPermalink('/egaki-sho')}#top`,
         },
         {
           text: '1. 絵書とは',
