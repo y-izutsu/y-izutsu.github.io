@@ -1,7 +1,9 @@
 site:
-  name: AstroWind
-  site: 'https://y-izutsu.github.io/astrowind-sandbox'
-  base: '/astrowind-sandbox/'
+  name: PochomLab
+  site: 'https://y-izutsu.github.io/'
+  # site: 'https://pochomlab.com/'
+  #site: 'http://localhost:4321'
+  base: '/'
   trailingSlash: false
 
   googleSiteVerificationId: orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M
@@ -66,7 +68,7 @@ apps:
 analytics:
   vendors:
     googleAnalytics:
-      id: null # or "G-XXXXXXXXXX"
+      id: G-WD89FTQ757
 
 ui:
   theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
