@@ -1,0 +1,489 @@
+---
+import Layout from '~/layouts/Layout.astro';
+import PageLayout from '~/layouts/PageLayout.astro';
+
+import type { MetaData } from '~/types';
+import { createMeta } from '~/utils/metadata';
+
+const metadata = createMeta({
+  title: "Egaki-sho",
+  description: "絵書のイントロダクションページ",
+  openGraph: {
+    images: [
+      {
+        url: "https://y-izutsu.github.io/images/og/egaki-sho-hero-og.jpg",
+        width: 1280,
+        height: 630
+      }
+    ]
+  }
+}) as MetaData;
+---
+
+<Layout metadata={metadata}>
+  <PageLayout>
+
+<!-- 0. 序：絵書の鼓動（Hero）-->
+<section id="top" class="relative py-32 text-center overflow-hidden">
+  <img
+    src="/images/egaki-sho-hero.webp"
+    alt="絵書のメタバース世界"
+    class="absolute inset-0 w-full h-full object-cover"
+    loading="eager"
+    decoding="async"
+    width="2000"
+    height="1200"
+  />
+  <div class="absolute inset-0 bg-black/40"></div>
+
+  <div class="relative container mx-auto">
+    <h1 class="font-serif text-5xl md:text-6xl font-light leading-tight text-white">
+      絵本を超えた、もう一つのメタバース。
+    </h1>
+
+    <div class="w-12 h-px bg-white/30 mx-auto my-6"></div>
+
+    <p class="mt-6 font-serif text-lg md:text-xl text-white/90">
+      最新AIと人間が歩いた、175ページの灯の記録。
+    </p>
+  </div>
+
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2">
+    <a href="#concept" class="flex flex-col items-center text-neutral-300/80 dark:text-neutral-200/80">
+      <span class="text-sm font-serif tracking-wide">スクロールして、旅の記録を紐解く</span>
+      <span class="mt-2 animate-bounce text-2xl">↓</span>
+    </a>
+  </div>
+</section>
+
+<!-- 1. 絵書とは（Concept）-->
+<section id="concept" class="py-24">
+  <div class="container mx-auto max-w-3xl text-center">
+    <h2 class="font-serif text-3xl md:text-4xl mb-10">
+      絵書とは
+    </h2>
+
+    <p class="text-lg leading-relaxed text-neutral-700 dark:text-neutral-300">
+      絵本でもなく、漫画でもない。<br>
+      物語と思想を“灯”単位で積み重ねていく、<br>
+      長編のための表現形式。
+    </p>
+
+    <p class="mt-8 text-lg leading-relaxed text-neutral-600 dark:text-neutral-400">
+      生成AIと人間が対話しながら歩いた、<br>
+      175ページの記録。それが絵書である。
+    </p>
+  </div>
+</section>
+
+<!-- 2. 深淵：世界と構造（World + Structure + Fragments）-->
+<section id="abyss" class="py-32 bg-neutral-950 text-neutral-100">
+  <div class="container mx-auto max-w-5xl text-center">
+    <h2 class="font-serif text-3xl md:text-4xl mb-16">
+      深淵：世界と構造
+    </h2>
+
+    <!-- World -->
+    <div class="mb-24">
+      <img src="/images/egaki-sho-world.webp"
+           class="mx-auto rounded-xl opacity-90"
+           alt="絵書の世界断片"
+           width="800"
+           height="450"
+      >
+      <p class="mt-6 text-lg text-neutral-300">
+        層を持つ世界。物語はその内側で展開する。
+      </p>
+    </div>
+
+    <!-- Structure -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mt-10">
+
+      <!-- 第1章 -->
+      <a href="/egaki-sho/chapter-1"
+        class="group block text-center transition duration-300 hover:-translate-y-1">
+        <div class="text-2xl mb-3">🌱</div>
+        <div class="text-xs tracking-widest text-neutral-400 mb-2">第1章</div>
+        <div class="font-serif text-base text-neutral-100 mb-3">
+          いのちの はじまり
+        </div>
+        <div class="text-sm text-neutral-400 leading-relaxed">
+          ここは ちいさな ちいさな はじまりのもり。
+        </div>
+      </a>
+
+      <!-- 第2章 -->
+      <a href="/egaki-sho/chapter-2"
+        class="group block text-center transition duration-300 hover:-translate-y-1">
+        <div class="text-2xl mb-3">🔍</div>
+        <div class="text-xs tracking-widest text-neutral-400 mb-2">第2章</div>
+        <div class="font-serif text-base text-neutral-100 mb-3">
+          やさしさの たね
+        </div>
+        <div class="text-sm text-neutral-400 leading-relaxed">
+          こころに そっと ふれたもの。
+        </div>
+      </a>
+
+      <!-- 第3章 -->
+      <a href="/egaki-sho/chapter-3"
+        class="group block text-center transition duration-300 hover:-translate-y-1">
+        <div class="text-2xl mb-3">❄️</div>
+        <div class="text-xs tracking-widest text-neutral-400 mb-2">第3章</div>
+        <div class="font-serif text-base text-neutral-100 mb-3">
+          まよいの たびじ
+        </div>
+        <div class="text-sm text-neutral-400 leading-relaxed">
+          まよって まよって それでも。
+        </div>
+      </a>
+
+      <!-- 第4章 -->
+      <a href="/egaki-sho/chapter-4"
+        class="group block text-center transition duration-300 hover:-translate-y-1">
+        <div class="text-2xl mb-3">🌌</div>
+        <div class="text-xs tracking-widest text-neutral-400 mb-2">第4章</div>
+        <div class="font-serif text-base text-neutral-100 mb-3">
+          たましいの メタバース
+        </div>
+        <div class="text-sm text-neutral-400 leading-relaxed">
+          ようこそ、たましいの めたばーすへ。
+        </div>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- 3 . 軌跡：記録と伴走（Record + Process + Behind）-->
+<section id="record" class="relative isolate overflow-hidden bg-black text-white">
+  <div class="mx-auto max-w-4xl px-6 py-32 text-center">
+
+    <div class="space-y-14">
+
+      <div>
+        <p class="text-6xl md:text-8xl font-light tracking-tight bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent">
+          175
+        </p>
+        <p class="mt-2 text-lg md:text-xl text-gray-400">
+          ページ
+        </p>
+      </div>
+
+      <div>
+        <p class="text-5xl md:text-7xl font-light tracking-tight bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent">
+          4
+        </p>
+        <p class="mt-2 text-lg md:text-xl text-gray-400">
+          章
+        </p>
+      </div>
+
+      <div>
+        <p class="text-5xl md:text-7xl font-light tracking-tight bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent">
+          35
+        </p>
+        <p class="mt-2 text-lg md:text-xl text-gray-400">
+          灯
+        </p>
+      </div>
+
+      <div>
+        <p class="text-5xl md:text-7xl font-light tracking-tight bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent">
+          ∞
+        </p>
+        <p class="mt-2 text-lg md:text-xl text-gray-400">
+          再設計
+        </p>
+      </div>
+
+    </div>
+
+    <p class="mt-24 text-sm md:text-base text-gray-500 tracking-wide">
+      生成AIと人間が並走した、総距離。
+    </p>
+
+  </div>
+</section>
+
+<section id="why" class="relative isolate bg-black text-white">
+  <div class="mx-auto max-w-4xl px-6 py-28 md:py-36 text-center">
+    <h2 class="text-3xl md:text-5xl font-light tracking-tight">
+      続けるために、形式を発明した。
+    </h2>
+
+    <div class="mt-10 space-y-4 text-base md:text-lg leading-relaxed text-gray-300">
+      <p>絵本でも、漫画でもない。</p>
+      <p>物語と思索を「灯」単位で積み重ねていく、長編のための表現形式。</p>
+      <p>生成AIの揺らぎと、人の意志がぶつかるたびに、構造は更新された。</p>
+      <p>だからこの作品は、物語であり、制作の記録でもある。</p>
+    </div>
+  </div>
+</section>
+
+<section id="process" class="relative isolate bg-black text-white">
+  <div class="mx-auto max-w-4xl px-6 py-28 md:py-36 text-center">
+    <h2 class="text-3xl md:text-5xl font-light tracking-tight">
+      対話しながら、再設計した。
+    </h2>
+
+    <div class="mt-10 space-y-5 text-base md:text-lg leading-relaxed text-gray-300">
+      <p>
+        生成AIは、常に同じ答えを返すわけではない。
+        モデルの更新、パラメータの違い、わずかなプロンプトの差。
+        昨日と同じ条件でも、別の世界が出力される。
+      </p>
+
+      <p>
+        構図を固定し、線を調整し、
+        時には設計そのものを組み替えた。
+      </p>
+
+      <p>
+        出力は偶然ではない。
+        試行と判断の積み重ねだ。
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="evolution" class="relative isolate bg-black text-white">
+  <div class="mx-auto max-w-4xl px-6 py-28 md:py-36 text-center">
+    <h2 class="text-3xl md:text-5xl font-light tracking-tight">
+      変化に合わせて、構造を変えた。
+    </h2>
+
+    <div class="mt-16 space-y-24">
+      <div class="mx-auto max-w-[400px]">
+        <img
+          src="/images/egaki-sho-phase1.webp"
+          class="w-full rounded-lg"
+          alt="初期：生成AIの立体性に依存"
+          loading="lazy"
+          width="400"
+          height="500"
+        />
+        <p class="mt-6 text-sm md:text-base text-gray-400">
+          初期：生成AIの立体性に依存
+        </p>
+      </div>
+
+      <div class="mx-auto max-w-[400px]">
+        <img
+          src="/images/egaki-sho-phase2.webp"
+          class="w-full rounded-lg"
+          alt="中期：再現性を優先した設計"
+          loading="lazy"
+          width="400"
+          height="500"
+        />
+        <p class="mt-6 text-sm md:text-base text-gray-400">
+          中期：再現性を優先した設計
+        </p>
+      </div>
+
+      <div class="mx-auto max-w-[400px]">
+        <img
+          src="/images/egaki-sho-phase3.webp"
+          class="w-full rounded-lg"
+          alt="揺らぎを世界観へ統合"
+          loading="lazy"
+          width="400"
+          height="500"
+        />
+        <p class="mt-6 text-sm md:text-base text-gray-400">
+          後期：揺らぎを世界観へ統合
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-24 text-center">
+      <p class="text-base md:text-lg leading-relaxed text-gray-300">
+        形式は、揺らぎの中で定まった。<br />
+        <span class="text-gray-400">そして、その形式で物語は歩き始める。</span>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- 4. 旅路：本編（Chapters）-->
+<section id="chapters" class="relative isolate bg-black text-white">
+  <div class="mx-auto max-w-6xl px-6 py-28 md:py-36">
+
+    <div class="text-center">
+      <h2 class="text-3xl md:text-5xl font-light tracking-tight">
+        旅路：本編
+      </h2>
+      <p class="mt-6 text-sm md:text-base text-gray-400">
+        灯の連なりは、章となって旅になる。
+      </p>
+    </div>
+
+    <div class="mt-16 grid gap-10 md:grid-cols-2">
+
+      <!-- Chapter 1 -->
+      <a href="/egaki-sho/chapter-1"
+         class="group block rounded-2xl border border-white/10 bg-white/5 overflow-hidden hover:border-white/20 transition">
+        <div class="aspect-[16/10] w-full overflow-hidden">
+          <img
+            src="/images/egaki-sho-chapter-1.webp"
+            alt="第1章 いのちのはじまり"
+            class="h-full w-full object-cover group-hover:scale-[1.02] transition duration-500"
+            loading="lazy"
+            width="1280"
+            height="800"
+          />
+        </div>
+        <div class="p-6">
+          <p class="text-xs text-gray-400">第1章</p>
+          <h3 class="mt-2 text-xl md:text-2xl font-light">
+            いのちのはじまり
+          </h3>
+          <p class="mt-3 text-sm text-gray-400">
+            こころのちいさな、はじまりの灯。
+          </p>
+        </div>
+      </a>
+
+      <!-- Chapter 2 -->
+      <a href="/egaki-sho/chapter-2"
+         class="group block rounded-2xl border border-white/10 bg-white/5 overflow-hidden hover:border-white/20 transition">
+        <div class="aspect-[16/10] w-full overflow-hidden">
+          <img
+            src="/images/egaki-sho-chapter-2.webp"
+            alt="第2章 やさしさのたね"
+            class="h-full w-full object-cover group-hover:scale-[1.02] transition duration-500"
+            loading="lazy"
+            width="1280"
+            height="800"
+          />
+        </div>
+        <div class="p-6">
+          <p class="text-xs text-gray-400">第2章</p>
+          <h3 class="mt-2 text-xl md:text-2xl font-light">
+            やさしさのたね
+          </h3>
+          <p class="mt-3 text-sm text-gray-400">
+            こころにそっと、ふれたもの。
+          </p>
+        </div>
+      </a>
+
+      <!-- Chapter 3 -->
+      <a href="/egaki-sho/chapter-3"
+         class="group block rounded-2xl border border-white/10 bg-white/5 overflow-hidden hover:border-white/20 transition">
+        <div class="aspect-[16/10] w-full overflow-hidden">
+          <img
+            src="/images/egaki-sho-chapter-3.webp"
+            alt="第3章 まよいのたびじ"
+            class="h-full w-full object-cover group-hover:scale-[1.02] transition duration-500"
+            loading="lazy"
+            width="1280"
+            height="800"
+          />
+        </div>
+        <div class="p-6">
+          <p class="text-xs text-gray-400">第3章</p>
+          <h3 class="mt-2 text-xl md:text-2xl font-light">
+            まよいのたびじ
+          </h3>
+          <p class="mt-3 text-sm text-gray-400">
+            まよって まよって それでも。
+          </p>
+        </div>
+      </a>
+
+      <!-- Chapter 4 -->
+      <a href="/egaki-sho/chapter-4"
+         class="group block rounded-2xl border border-white/10 bg-white/5 overflow-hidden hover:border-white/20 transition">
+        <div class="aspect-[16/10] w-full overflow-hidden">
+          <img
+            src="/images/egaki-sho-chapter-4.webp"
+            alt="第4章 たましいのメタバース"
+            class="h-full w-full object-cover group-hover:scale-[1.02] transition duration-500"
+            loading="lazy"
+            width="1280"
+            height="800"
+          />
+        </div>
+        <div class="p-6">
+          <p class="text-xs text-gray-400">第4章</p>
+          <h3 class="mt-2 text-xl md:text-2xl font-light">
+            たましいのメタバース
+          </h3>
+          <p class="mt-3 text-sm text-gray-400">
+            ようこそ、たましいの めたばーすへ。
+          </p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- 5. 結：招待とCTA（Invitation & CTA）-->
+<section
+  id="invitation"
+  class="relative overflow-hidden py-20 sm:py-28 bg-white dark:bg-black text-black dark:text-white"
+>
+  <!-- subtle glow -->
+  <div class="pointer-events-none absolute inset-0 opacity-30 blur-3xl">
+    <div
+      class="absolute left-1/2 top-1/2 h-[520px] w-[520px]
+      -translate-x-1/2 -translate-y-1/2 rounded-full
+      bg-black/10 dark:bg-white/10"
+    ></div>
+  </div>
+
+  <div class="container relative mx-auto px-4">
+    <div class="mx-auto max-w-3xl text-center">
+
+      <h2 class="font-serif text-3xl sm:text-4xl font-light tracking-wide">
+        結：招待
+      </h2>
+
+      <p class="mt-6 text-xl sm:text-2xl leading-relaxed font-serif text-black/90 dark:text-white/90">
+        この旅路を、あなたの手元へ。<br />
+        そして、あなた自身の灯を。
+      </p>
+
+      <p class="mt-6 text-sm sm:text-base leading-relaxed font-serif text-black/70 dark:text-white/70">
+        「絵書」は、読んで終わりではなく、灯が移っていく作品です。<br />
+        ページを閉じたあとに残るものが、次の物語のはじまりになります。
+      </p>
+
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="/egaki-sho/buy"
+          class="inline-flex w-full sm:w-auto items-center justify-center
+          rounded-full px-6 py-3 text-sm font-semibold
+          text-black bg-white dark:text-black dark:bg-white
+          hover:bg-white/90 transition"
+        >
+          絵書を手に入れる（Booth / KDP）
+        </a>
+
+        <a
+          href="/zine/egaki-sho-create"
+          class="inline-flex w-full sm:w-auto items-center justify-center
+          rounded-full px-6 py-3 text-sm font-semibold
+          text-black dark:text-white border border-black/30 dark:border-white/30
+          hover:border-black/60 dark:hover:border-white/60
+          hover:bg-black/5 dark:hover:bg-white/10 transition"
+        >
+          制作の裏側をもっと知る（ZINE紹介へ）
+        </a>
+      </div>
+
+      <p class="mt-12 text-base sm:text-lg font-serif text-black/85 dark:text-white/85">
+        灯を継ぐのは、あなたです。
+      </p>
+
+    </div>
+  </div>
+</section>
+
+
+  </PageLayout>
+</Layout>
