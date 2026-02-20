@@ -24,7 +24,7 @@ const metadata = createMeta({
   <PageLayout>
 
 <!-- 0. 序：絵書の鼓動（Hero）-->
-<section id="top" class="relative py-32 text-center overflow-hidden">
+<section id="top" class="scroll-mt-28 relative py-32 text-center overflow-hidden">
   <img
     src="/images/egaki-sho-hero.webp"
     alt="絵書のメタバース世界"
@@ -489,3 +489,25 @@ const metadata = createMeta({
 
   </PageLayout>
 </Layout>
+
+<script is:inline>
+  const doScroll = () => {
+    const id = location.hash?.slice(1);
+    if (!id) return;
+
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    // 固定ヘッダーがあるなら scroll-mt-xx と併用がベスト
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  // 初回表示
+  window.addEventListener('load', () => setTimeout(doScroll, 0));
+
+  // hash 変更（同一ページ内）
+  window.addEventListener('hashchange', () => setTimeout(doScroll, 0));
+
+  // Astroのクライアント遷移が入ってる場合
+  document.addEventListener('astro:page-load', () => setTimeout(doScroll, 0));
+</script>
