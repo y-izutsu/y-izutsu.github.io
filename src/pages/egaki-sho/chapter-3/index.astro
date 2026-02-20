@@ -1,0 +1,24 @@
+---
+import Layout from '~/layouts/LandingLayout-EgakiSho.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+const metadata = {
+  title: 'Lead Generation Landing Page Demo',
+};
+---
+
+<Layout metadata={metadata}>
+
+
+  <CallToAction
+    title="Coming soon"
+    subtitle="We are working on the content of these demo pages. You will see them very soon. Stay tuned Stay tuned!"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Download Template',
+        href: 'https://github.com/arthelokyo/astrowind',
+        icon: 'tabler:download',
+      },
+    ]}
+  />
+</Layout>
