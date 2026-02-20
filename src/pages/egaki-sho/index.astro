@@ -490,25 +490,3 @@ const metadata = createMeta({
 
   </PageLayout>
 </Layout>
-
-<script is:inline>
-  const doScroll = () => {
-    const id = location.hash?.slice(1);
-    if (!id) return;
-
-    const el = document.getElementById(id);
-    if (!el) return;
-
-    // 固定ヘッダーがあるなら scroll-mt-xx と併用がベスト
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-
-  // 初回表示
-  window.addEventListener('load', () => setTimeout(doScroll, 0));
-
-  // hash 変更（同一ページ内）
-  window.addEventListener('hashchange', () => setTimeout(doScroll, 0));
-
-  // Astroのクライアント遷移が入ってる場合
-  document.addEventListener('astro:page-load', () => setTimeout(doScroll, 0));
-</script>
