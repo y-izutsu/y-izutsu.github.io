@@ -1,0 +1,57 @@
+---
+// Call to Action（CTA）コンポーネント
+const {
+  title = await Astro.slots.render('Call to Action title'),
+  chapter = await Astro.slots.render('0'),
+  chapterNumber = await Astro.slots.render('0'),
+  button = await Astro.slots.render('Call to Action Button'),
+  annotation = await Astro.slots.render('Call to Action annotation'),
+} = Astro.props;
+---
+
+<!-- 4. 読む / 買う（CTA） -->
+<section id="buy" class="py-24 bg-neutral-50 dark:bg-neutral-950">
+  <div class="container mx-auto max-w-3xl text-center">
+    {
+        title &&
+        (
+            <h2 class="text-2xl font-serif mb-6">
+                {title}
+            </h2>
+        )
+    }
+    {
+        chapter && chapterNumber &&
+        (
+            <p class="text-lg opacity-90">
+              第{chapter}章（全{chapterNumber}灯）を、1冊として読む。<br />
+              余白とページの呼吸まで含めて完成する絵書です。
+            </p>
+        )
+    }
+    {
+      button && typeof button === 'object' &&
+      (
+        <div class="mt-10 flex justify-center">
+          <a
+            href={button.href}
+            class="inline-flex w-full sm:w-auto items-center justify-center rounded-full px-6 py-3 text-sm font-semibold
+            bg-cyan-600 text-white hover:bg-cyan-500
+            dark:bg-cyan-500 dark:hover:bg-cyan-400
+            focus:outline-none focus:ring-2 focus:ring-cyan-400/50"
+          >
+            {button.text}
+          </a>
+        </div>
+      )
+    }
+    {
+        annotation &&
+        (
+            <p class="mt-4 text-sm opacity-70">
+                {annotation}
+            </p>
+        )
+    }
+  </div>
+</section>
