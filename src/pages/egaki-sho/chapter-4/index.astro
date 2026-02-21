@@ -1,6 +1,10 @@
 ---
 import Layout from '~/layouts/LandingLayout-EgakiSho.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Steps from '~/components/widgets/Steps.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content.astro';
+
 const metadata = {
   title: 'Lead Generation Landing Page Demo',
 };
@@ -8,17 +12,39 @@ const metadata = {
 
 <Layout metadata={metadata}>
 
+  <Hero
+    tagline="第1章"
+    title="[章タイトル名]"
+    subtitle="[ここに世界観を表す一文を挿入。物語の扉が開く瞬間の言葉。]"
+    image={{ src: "https://y-izutsu.github.io/images/pochomlab-hero-dark-jp.jpg", alt: '第1章ビジュアル' }}
+  />
 
-  <CallToAction
-    title="Coming soon"
-    subtitle="We are working on the content of these demo pages. You will see them very soon. Stay tuned Stay tuned!"
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Download Template',
-        href: 'https://github.com/arthelokyo/astrowind',
-        icon: 'tabler:download',
-      },
+<Steps
+    title="灯の目次"
+    items={[
+      { title: '灯：01', description: 'はじまりの朝', icon: 'tabler:flame' },
+      { title: '灯：02', description: '見知らぬ足跡', icon: 'tabler:flame' },
+      // ... 続く
     ]}
   />
+
+
+<CallToAction
+    actions={[
+      { variant: 'primary', text: 'Amazon KDPで読む', href: '#', icon: 'tabler:download' },
+      { text: 'BoothでZINEを購入', href: '#', icon: 'tabler:shopping-cart' },
+    ]}
+  >
+    <Fragment slot="title">
+      物語を、あなたの手元に
+    </Fragment>
+  </CallToAction>
+
+<Content
+    isReversed
+    title="次の物語へ"
+    callToAction={{ text: '第2章：[タイトル]を見る', href: '/egaki-sho/chapter-2' }}
+    image={{ src: "https://y-izutsu.github.io/images/pochomlab-hero-dark-jp.jpg", alt: '第2章へ' }}
+  />
+
 </Layout>

@@ -1,24 +1,148 @@
 ---
 import Layout from '~/layouts/LandingLayout-EgakiSho.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
 const metadata = {
   title: 'Lead Generation Landing Page Demo',
 };
+import Hero from '~/components/widgets/HeroText.astro';
 ---
 
 <Layout metadata={metadata}>
 
+<!-- 1. Hero（章の顔） -->
+<Hero
+  title="第1章｜いのちの&ensp;はじまり"
+  subtitle="それは、まだ名前のない光だった。"
+>
+  <Fragment slot="content">
+    <p class="mt-6 text-sm tracking-wide opacity-60">
+      小さな気づきが、世界を揺らしはじめる。
+    </p>
+  </Fragment>
+</Hero>
 
-  <CallToAction
-    title="Coming soon"
-    subtitle="We are working on the content of these demo pages. You will see them very soon. Stay tuned Stay tuned!"
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Download Template',
-        href: 'https://github.com/arthelokyo/astrowind',
-        icon: 'tabler:download',
-      },
-    ]}
-  />
-</Layout>
+<!-- 2.この章で出会うもの：登場キャラ/舞台/テーマ（カード3つ） -->
+<section class="py-24 bg-white dark:bg-neutral-950">
+  <div class="container mx-auto max-w-5xl">
+    <h2 class="text-2xl font-serif mb-12 text-center">
+      この章で出会うもの
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="p-6 border border-neutral-200 dark:border-neutral-800 rounded-xl">
+        <h3 class="text-xl mb-2">🌱ピーチョム</h3>
+        <p class="text-sm opacity-80">
+          まだ何者でもない、小さな灯。
+        </p>
+      </div>
+
+      <div class="p-6 border border-neutral-200 dark:border-neutral-800 rounded-xl">
+        <h3 class="text-xl mb-2">🌳はじまりの森</h3>
+        <p class="text-sm opacity-80">
+          層を持つ世界の入口。静かな呼吸。
+        </p>
+      </div>
+
+      <div class="p-6 border border-neutral-200 dark:border-neutral-800 rounded-xl">
+        <h3 class="text-xl mb-2">✨気づき</h3>
+        <p class="text-sm opacity-80">
+          最初のDing。魂が震える瞬間。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. 灯の目次（第1章） -->
+<section id="lights" class="py-16 bg-white dark:bg-neutral-950">
+  <div class="container mx-auto max-w-5xl">
+    <h2 class="text-2xl font-serif mb-10 text-center">灯の目次</h2>
+
+    <!-- ここがポイント：リストの箱を中央に置く -->
+    <div class="mx-auto w-fit">
+      <ol class="space-y-3 text-lg">
+        <li class="text-left"><span class="inline-block w-12 font-mono text-neutral-400 dark:text-neutral-500">01灯</span>｜うまれたひかり</li>
+        <li class="text-left"><span class="inline-block w-12 font-mono text-neutral-400 dark:text-neutral-500">02灯</span>｜そのひかりなあに</li>
+        <li class="text-left"><span class="inline-block w-12 font-mono text-neutral-400 dark:text-neutral-500">03灯</span>｜はじめてのみち</li>
+        <li class="text-left"><span class="inline-block w-12 font-mono text-neutral-400 dark:text-neutral-500">04灯</span>｜ちいさなこえ</li>
+        <li class="text-left"><span class="inline-block w-12 font-mono text-neutral-400 dark:text-neutral-500">05灯</span>｜さがしてみたい</li>
+        <li class="text-left"><span class="inline-block w-12 font-mono text-neutral-400 dark:text-neutral-500">06灯</span>｜ひかりのかけら</li>
+        <li class="text-left"><span class="inline-block w-12 font-mono text-neutral-400 dark:text-neutral-500">07灯</span>｜こわくてすすめない</li>
+        <li class="text-left"><span class="inline-block w-12 font-mono text-neutral-400 dark:text-neutral-500">08灯</span>｜ひかりのなえどこ</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="preview" class="py-16 bg-white dark:bg-neutral-950">
+  <div class="container mx-auto max-w-5xl text-center">
+    <h2 class="text-2xl font-serif mb-10">試し読み</h2>
+
+    <div class="mx-auto flex flex-col md:flex-row justify-center items-start gap-8">
+      <img
+        src="/images/egaki-sho-ch1-preview1.webp"
+        class="w-full md:w-[calc((100%-2rem)/2)] max-w-[520px] h-auto rounded-xl"
+        alt="第1章 試し読み（左ページ）"
+        width="1748" height="2480"
+      />
+      <img
+        src="/images/egaki-sho-ch1-preview2.webp"
+        class="w-full md:w-[calc((100%-2rem)/2)] max-w-[520px] h-auto rounded-xl"
+        alt="第1章 試し読み（右ページ）"
+        width="1748" height="2480"
+      />
+    </div>
+  </div>
+</section>
+
+<!-- 4. 読む / 買う（CTA） -->
+<section id="buy" class="py-24 bg-neutral-50 dark:bg-neutral-950">
+  <div class="container mx-auto max-w-3xl text-center">
+    <h2 class="text-2xl font-serif mb-6">読む／買う</h2>
+
+    <p class="text-lg opacity-90">
+      第1章（全8灯）を、1冊として読む。<br />
+      余白とページの呼吸まで含めて完成する絵書です。
+    </p>
+
+    <div class="mt-10 flex justify-center">
+      <a
+        href="https://www.amazon.co.jp/dp/B0G3Q6C68P/"
+        class="inline-flex w-full sm:w-auto items-center justify-center rounded-full px-6 py-3 text-sm font-semibold
+        bg-cyan-600 text-white hover:bg-cyan-500
+        dark:bg-cyan-500 dark:hover:bg-cyan-400
+        focus:outline-none focus:ring-2 focus:ring-cyan-400/50"
+      >
+        Kindleで読む（KDP）
+      </a>
+    </div>
+
+    <p class="mt-4 text-sm opacity-70">
+      ※ リンク先はAmazon（Kindle）です。
+    </p>
+  </div>
+</section>
+
+<!-- 5. 次の章へ：次章カード -->
+<section id="next-chapter" class="py-24 bg-white dark:bg-transparent">
+  <div class="container mx-auto max-w-4xl text-center">
+    <h2 class="text-xl font-serif mb-12 opacity-80">
+      次の章へ
+    </h2>
+
+    <div class="bg-white/90 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-2xl p-8">
+      <p class="text-sm opacity-60 mb-2">第2章</p>
+      <h3 class="text-2xl font-serif mb-4">やさしさの&ensp;たね</h3>
+      <p class="text-base opacity-80 mb-6">
+        （第2章の一文コピー）
+      </p>
+
+      <a
+        href="/egaki-sho/chapter-2"
+        class="inline-block px-6 py-3 rounded-lg border border-neutral-400
+               hover:bg-neutral-200 dark:hover:bg-neutral-700 transition"
+      >
+        第2章を見る
+      </a>
+    </div>
+  </div>
+</section>
