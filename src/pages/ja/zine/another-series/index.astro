@@ -1,27 +1,8 @@
 ---
-import Layout from '~/layouts/Layout.astro';
-import PageLayout from '~/layouts/PageLayout.astro';
-
-import type { MetaData } from '~/types';
-import { createMeta } from '~/utils/metadata';
-
-const metadata = createMeta({
-  title: "another series",
-  description: "another seriesのイントロダクションページ",
-  openGraph: {
-    images: [
-      {
-        url: "https://y-izutsu.github.io/images/og/egaki-sho-hero-og.jpg",
-        width: 1280,
-        height: 630
-      }
-    ]
-  }
-}) as MetaData;
+import PageLayout from '~/layouts/PageLayout-PochomLab-Ja.astro';
 ---
 
-<Layout metadata={metadata}>
-  <PageLayout>
+<PageLayout>
   <section id="top" class="py-24">
     <div class="container">
       <h1 class="text-4xl font-bold mb-6">another series</h1>
@@ -42,7 +23,4 @@ const metadata = createMeta({
       <p class="opacity-80">説明文など</p>
     </div>
   </section>
-  </PageLayout>
-
-
-</Layout>
+</PageLayout>

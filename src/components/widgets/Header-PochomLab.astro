@@ -50,7 +50,6 @@ const normalizePath = (href?: string) => (href ? href.split('#')[0].replace(/\/$
 
 // === Locale detection ===
 const pathname = Astro.url.pathname; // ex: /ja/features or /en/about
-const origin = Astro.url.origin;
 const isJa = pathname === '/ja' || pathname.startsWith('/ja/');
 const isEn = pathname === '/en' || pathname.startsWith('/en/');
 
@@ -99,20 +98,6 @@ const resolveHref = (href?: string) => {
   if (!href) return href;
   return href.includes('@@@') ? href.replace('@@@', egakiBase) : href;
 };
-
-// ja/en の対応URL（hreflang）
-// 例: /ja/features -> /en/features
-//     /en         -> /ja
-const jaPath = (isJa || isEn) ? pathname.replace(/^\/(ja|en)(?=\/|$)/, '/ja') : '/ja';
-const enPath = (isJa || isEn) ? pathname.replace(/^\/(ja|en)(?=\/|$)/, '/en') : '/en';
-const jaUrl = `${origin}${jaPath}`;
-const enUrl = `${origin}${enPath}`;
-
-// 正規URL（canonical）: 今見てるURLをそのまま
-const canonicalUrl = `${origin}${pathname}`;
-// 任意: 言語未指定ユーザー向け（x-default）
-// ルートは /ja に飛ばす運用なので /ja を指す
-const xDefaultUrl = `${origin}/ja`;
 ---
 
 <header
@@ -123,11 +108,6 @@ const xDefaultUrl = `${origin}/ja`;
   {...isSticky ? { 'data-aw-sticky-header': true } : {}}
   {...id ? { id } : {}}
 >
-  <link rel="canonical" href={canonicalUrl} />
-  <link rel="alternate" hreflang="ja" href={jaUrl} />
-  <link rel="alternate" hreflang="en" href={enUrl} />
-  <link rel="alternate" hreflang="x-default" href={xDefaultUrl} />
-
   <div class="absolute inset-0"></div>
   <div
     class:list={[

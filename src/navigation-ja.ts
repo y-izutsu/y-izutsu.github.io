@@ -1,10 +1,10 @@
-//import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
-import { getPermalink, getAsset } from '../utils/permalinks';
+import { getPermalink, getAsset } from './utils/permalinks';
 
-export const headerLinksEn = [
-  {
-    text: 'Egaki-sho',
-    links: [
+export const headerDataJa = {
+  links: [
+    {
+      text: '絵書',
+      links: [
         {
           text: '0. 序：絵書の鼓動',
           href: '/egaki-sho@@@top',
@@ -29,9 +29,9 @@ export const headerLinksEn = [
           text: '5. 結：招待とCTA',
           href: '/egaki-sho@@@invitation',
         },
-    ],
-  },
-  {
+      ],
+    },
+    {
       text: 'ZINE',
       links: [
         {
@@ -49,10 +49,12 @@ export const headerLinksEn = [
         {
           text: 'another-series - chapter1',
           href: '/zine/another-series@@@chapter-list',
-        },        
-      ]
-  },
-];
+        },  
+      ],
+    },
+  ],
+  //actions: [{ text: 'Download', href: 'https://github.com/arthelokyo/astrowind', target: '_blank' }],
+};
 
 export const footerData = {
   links: [
