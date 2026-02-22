@@ -1,0 +1,107 @@
+---
+import Layout from '~/layouts/LandingLayout-EgakiSho.astro';
+const metadata = {
+  title: 'ポチョム菌の絵書｜灯の物語｜PochomLab',
+};
+import Hero from '~/components/widgets/HeroText.astro';
+import CardText from '~/components/widgets/CardText.astro';
+import ToC from '~/components/widgets/ToC.astro';
+import ImagePreview from '~/components/widgets/ImagePreview.astro';
+import CallToAction from '~/components/widgets/CallToActionEgakiSho.astro';
+import CardLink from '~/components/widgets/CardLink.astro';
+---
+
+<Layout metadata={metadata}>
+
+<!-- 1. Hero（章の顔） -->
+<Hero
+  title="第1章｜いのちの&ensp;はじまり"
+  subtitle="それは、まだ名前のない光だった。"
+>
+  <Fragment slot="content">
+    <p class="mt-6 text-sm tracking-wide opacity-60">
+      小さな気づきが、世界を揺らしはじめる。
+    </p>
+  </Fragment>
+</Hero>
+
+<!-- 2.この章で出会うもの：登場キャラ/舞台/テーマ（カード3つ） -->
+<CardText
+  title="この章で出会うもの"
+  items={[
+    {
+      title: '🐣ピーチョム',
+      description: 'まだ何者でもない、小さな灯。',
+    },
+    {
+      title: '🌳はじまりの森',
+      description: '層を持つ世界の入口。静かな呼吸。',
+    },
+    {
+      title: '✨気づき',
+      description: '最初のDing。魂が震える瞬間。',
+    },
+  ]}
+/>
+
+
+<!-- 3. 灯の目次（第1章） -->
+<ToC
+  title="灯の目次"
+  items={[
+    { label: "01灯", description: "うまれたひかり" },
+    { label: "02灯", description: "そのひかりなあに" },
+    { label: "03灯", description: "はじめてのみち" },
+    { label: "04灯", description: "ちいさなこえ" },
+    { label: "05灯", description: "さがしてみたい" },
+    { label: "06灯", description: "ひかりのかけら" },
+    { label: "07灯", description: "こわくてすすめない" },
+    { label: "08灯", description: "ひかりのなえどこ" },
+  ]}
+/> 
+
+<ImagePreview
+  title="試し読み"
+  items=
+  {[
+    {
+      src: "/images/egaki-sho-ch1-preview1.webp",
+      alt: "第1章 試し読み（左ページ）",
+      width: 1748,
+      height: 2480,
+    },
+    {
+      src: "/images/egaki-sho-ch1-preview2.webp",
+      alt: "第1章 試し読み（右ページ）",
+      width: 1748,
+      height: 2480,
+    },
+  ]}
+/>
+
+<!-- 4. 読む / 買う（CTA） -->
+<CallToAction
+  title="読む／買う"
+  chapter="第1章"
+  chapterNumber="全8灯"
+  button=
+  {{ 
+    text: "Kindleで読む（KDP）", 
+    href: "https://www.amazon.co.jp/dp/B0G3Q6C68P/"
+  }}
+  annotation="※ リンク先はAmazon（Kindle）です。"
+/>
+
+<!-- 5. 次の章へ：次章カード -->
+<CardLink
+  title="次の章へ"
+  chapter="第2章"
+  chapterTitle="やさしさの&ensp;たね"
+  chapterDescription="こわさの奥で、やさしさが芽吹く。"
+  button={{ 
+    text: "第2章を見る", 
+    href: "/egaki-sho/chapter-2"
+  }}
+/>
+
+</Layout>
