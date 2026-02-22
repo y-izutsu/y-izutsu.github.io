@@ -36,7 +36,8 @@ const { textDirection } = I18N;
 const language = isEn ? 'en' : 'ja';
 
 // canonical（今見てるURLを正規として宣言）
-const canonicalUrl = `${origin}${pathname}`;
+const canonicalPath = pathname.replace(/\/$/, '') || '/';
+const canonicalUrl = `${origin}${canonicalPath}`;
 
 // hreflang（/ja <-> /en の対応URLを宣言）
 const jaPath = (isJa || isEn) ? pathname.replace(/^\/(ja|en)(?=\/|$)/, '/ja') : '/ja';
