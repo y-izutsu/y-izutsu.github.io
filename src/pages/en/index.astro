@@ -21,15 +21,19 @@ const metadata = {
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
 
-  <Hero>
+  <Hero 
+    lightUrl="/images/pochomlab-hero-light-en.jpg"
+    darkUrl="/images/pochomlab-hero-dark-en.jpg"
+  >
     <Fragment slot="title">
-      AIで描く、<br />
-      <span class="text-[#FF5B50] dark:text-[#FFB74D]">たましいの灯。ENG</span>
+      <span class="text-[#FF5B50] dark:text-[#FFB74D]">Lights of the Soul</span>
+      <br />
+      AI Drawing
     </Fragment>
 
     <Fragment slot="subtitle">
-      生成AIと絵書制作を軸に、<br />
-      創作・技術・IP戦略を実装し、未来へ接続するラボ。
+      A laboratory that connects creativity, technology,
+      and intellectual property strategy to the future through generative AI and Egaki-sho production.
     </Fragment>
 
   </Hero>

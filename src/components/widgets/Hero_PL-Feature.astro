@@ -1,7 +1,7 @@
 ---
 import Button from '~/components/ui/Button.astro';
 
-import type { Hero as Props } from '~/types';
+//import type { Hero as Props } from '~/types';
 
 const {
   title = await Astro.slots.render('title'),
@@ -10,9 +10,11 @@ const {
 
   content = await Astro.slots.render('content'),
   actions = await Astro.slots.render('actions'),
-
+  lightUrl = await Astro.slots.render('lightUrl'),
+  darkUrl = await Astro.slots.render('darkUrl'),
   id,
   bg = await Astro.slots.render('bg'),
+
 } = Astro.props;
 ---
 
@@ -77,7 +79,7 @@ const {
             <picture>
               <!-- Light -->
               <img
-                src="/images/pochomlab-hero-light-jp.jpg"
+                src={lightUrl}
                 alt="PochomLab Hero Image"
                 class="block dark:hidden mx-auto rounded-md w-full"
                 width="1920"
@@ -85,7 +87,7 @@ const {
               />
               <!-- Dark -->
               <img
-                src="/images/pochomlab-hero-dark-jp.jpg"
+                src={darkUrl}
                 alt="PochomLab Hero Image Dark"
                 class="hidden dark:block mx-auto rounded-md w-full"
                 width="1920"
