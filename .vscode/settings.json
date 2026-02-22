@@ -13,7 +13,10 @@
   },
   "eslint.useFlatConfig": true,
   "cSpell.words": [
+    "astrolib",
+    "astrowind",
     "egaki",
+    "partytown",
     "Pochom",
     "pochomlab",
     "tabler"
