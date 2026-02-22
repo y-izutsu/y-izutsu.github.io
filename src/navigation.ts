@@ -1,60 +1,121 @@
-//import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
-import { getPermalink, getAsset } from './utils/permalinks';
+import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 
 export const headerData = {
   links: [
     {
-      text: '絵書',
+      text: 'Homes',
       links: [
         {
-          text: '0. 序：絵書の鼓動',
-          href: '/egaki-sho@@@top',
+          text: 'SaaS',
+          href: getPermalink('/homes/saas'),
         },
         {
-          text: '1. 絵書とは',
-          href: '/egaki-sho@@@concept',
+          text: 'Startup',
+          href: getPermalink('/homes/startup'),
         },
         {
-          text: '2. 深淵：世界と構造',
-          href: '/egaki-sho@@@abyss'
+          text: 'Mobile App',
+          href: getPermalink('/homes/mobile-app'),
         },
         {
-          text: '3. 軌跡：記録と伴走',
-          href: '/egaki-sho@@@record',
+          text: 'Personal',
+          href: getPermalink('/homes/personal'),
         },
-        {
-          text: '4. 旅路：本編',
-          href: '/egaki-sho@@@chapters',
-        },
-        {
-          text: '5. 結：招待とCTA',
-          href: '/egaki-sho@@@invitation',
-        },
-      ]
+      ],
     },
     {
-      text: 'ZINE',
+      text: 'Pages',
       links: [
         {
-          text: '絵書作ろうよ！',
-          href: '/zine/egaki-sho-create@@@top',
+          text: 'Features (Anchor Link)',
+          href: getPermalink('/#features'),
         },
         {
-          text: '絵書作ろうよ！- キャラクターメイキング編 -',
-          href: '/zine/egaki-sho-create@@@chapter-list',
-        },        
-        {
-          text: 'another-series',
-          href: '/zine/another-series@@@top',
+          text: 'Services',
+          href: getPermalink('/services'),
         },
         {
-          text: 'another-series - chapter1',
-          href: '/zine/another-series@@@chapter-list',
-        },        
-      ]
-    }, 
+          text: 'Pricing',
+          href: getPermalink('/pricing'),
+        },
+        {
+          text: 'About us',
+          href: getPermalink('/about'),
+        },
+        {
+          text: 'Contact',
+          href: getPermalink('/contact'),
+        },
+        {
+          text: 'Terms',
+          href: getPermalink('/terms'),
+        },
+        {
+          text: 'Privacy policy',
+          href: getPermalink('/privacy'),
+        },
+      ],
+    },
+    {
+      text: 'Landing',
+      links: [
+        {
+          text: 'Lead Generation',
+          href: getPermalink('/landing/lead-generation'),
+        },
+        {
+          text: 'Long-form Sales',
+          href: getPermalink('/landing/sales'),
+        },
+        {
+          text: 'Click-Through',
+          href: getPermalink('/landing/click-through'),
+        },
+        {
+          text: 'Product Details (or Services)',
+          href: getPermalink('/landing/product'),
+        },
+        {
+          text: 'Coming Soon or Pre-Launch',
+          href: getPermalink('/landing/pre-launch'),
+        },
+        {
+          text: 'Subscription',
+          href: getPermalink('/landing/subscription'),
+        },
+      ],
+    },
+    {
+      text: 'Blog',
+      links: [
+        {
+          text: 'Blog List',
+          href: getBlogPermalink(),
+        },
+        {
+          text: 'Article',
+          href: getPermalink('get-started-website-with-astro-tailwind-css', 'post'),
+        },
+        {
+          text: 'Article (with MDX)',
+          href: getPermalink('markdown-elements-demo-post', 'post'),
+        },
+        {
+          text: 'Category Page',
+          href: getPermalink('tutorials', 'category'),
+        },
+        {
+          text: 'Tag Page',
+          href: getPermalink('astro', 'tag'),
+        },
+      ],
+    },
+    {
+      text: 'Widgets',
+      href: '#',
+    },
   ],
-  //actions: [{ text: 'Download', href: 'https://github.com/arthelokyo/astrowind', target: '_blank' }],
+  actions: [{ text: 'Download', href: 'https://github.com/arthelokyo/astrowind', target: '_blank' }],
 };
 
 export const footerData = {

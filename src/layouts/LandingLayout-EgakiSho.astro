@@ -1,15 +1,21 @@
 ---
 import PageLayout from '~/layouts/PageLayout.astro';
-import Header from '~/components/widgets/Header.astro';
+import Header from '~/components/widgets/Header-PochomLab.astro';
 
-import { headerData } from '~/navigation';
+//import { headerData } from '~/navigation';
 import type { MetaData } from '~/types';
 
 export interface Props {
   metadata?: MetaData;
 }
-
 const { metadata } = Astro.props;
+
+import { headerLinksJa } from '~/navigation/ja';
+import { headerLinksEn } from '~/navigation/en';
+// lang判定（/en と /en/... を英語、それ以外は日本語）
+const pathname = Astro.url.pathname;
+const lang = (pathname === '/en' || pathname.startsWith('/en/')) ? 'en' : 'ja';
+const localizedLinks = (lang === 'en' ? headerLinksEn : headerLinksJa);
 ---
 
 <PageLayout metadata={metadata}>
@@ -19,7 +25,7 @@ const { metadata } = Astro.props;
   <Fragment slot="header">
     <slot name="header">
       <Header
-        links={headerData?.links[0] ? [headerData.links[0]] : undefined}
+        links={localizedLinks?.length ? [localizedLinks[0]] : undefined}
         actions={[
           {
             text: 'Download',
