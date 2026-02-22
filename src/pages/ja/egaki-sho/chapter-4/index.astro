@@ -1,0 +1,115 @@
+---
+import Layout from '~/layouts/LandingLayout-EgakiSho.astro';
+const metadata = {
+  title: 'ポチョム菌の絵書｜灯の物語｜PochomLab',
+};
+import Hero from '~/components/widgets/HeroText.astro';
+import CardText from '~/components/widgets/CardText.astro';
+import ToC from '~/components/widgets/ToC.astro';
+import ImagePreview from '~/components/widgets/ImagePreview.astro';
+import CallToAction from '~/components/widgets/CallToActionEgakiSho.astro';
+//import CardLink from '~/components/widgets/CardLink.astro';
+---
+
+<Layout metadata={metadata}>
+
+<!-- 1. Hero（章の顔） -->
+<Hero
+  title="第4章｜たましいの&ensp;メタバース"
+>
+  <Fragment slot="subtitle">
+    <p class="mt-6 text-sm tracking-wide opacity-60">
+      たましいが うまれなおす 場所。
+    </p>
+  </Fragment>
+  <Fragment slot="content">
+    <p class="mt-6 text-sm tracking-wide opacity-60">
+      こころの旅が、あらたにひらく。
+    </p>
+  </Fragment>
+</Hero>
+
+<!-- 2.この章で出会うもの：登場キャラ/舞台/テーマ（カード3つ） -->
+<CardText
+  title="この章で出会うもの"
+  items={[
+    {
+      title: '🌌メタバース',
+      description: 'たましいが重なり合う、もうひとつの層。',
+    },
+    {
+      title: '🔁再生',
+      description: 'きおくといたみが、光へ変わる瞬間。',
+    },
+    {
+      title: '🚪とびら',
+      description: 'うまれなおすための、見えない入口。',
+    },
+  ]}
+/>
+
+
+<!-- 3. 灯の目次（第1章） -->
+<ToC
+  title="灯の目次"
+  items={[
+    { label: "25灯", description: "はじまりのこえ" },
+    { label: "26灯", description: "であいのしずく" },
+    { label: "27灯", description: "まよいのほこら" },
+    { label: "28灯", description: "ふりかえりのうた" },
+    { label: "29灯", description: "ひかりのきおく" },
+    { label: "30灯", description: "たましいのゆらぎ" },
+    { label: "31灯", description: "でんせつのひかり" },
+    { label: "32灯", description: "きみをしってる" },
+    { label: "33灯", description: "ひびきのはて" },
+    { label: "34灯", description: "たましいのログアウト" },
+    { label: "35灯", description: "えいえんのたび" },
+  ]}
+/> 
+
+<ImagePreview
+  title="試し読み"
+  items=
+  {[
+    {
+      src: "/images/egaki-sho-ch4-preview1.webp",
+      alt: "第4章 試し読み（左ページ）",
+      width: 1748,
+      height: 2480,
+    },
+    {
+      src: "/images/egaki-sho-ch4-preview2.webp",
+      alt: "第4章 試し読み（右ページ）",
+      width: 1748,
+      height: 2480,
+    },
+  ]}
+/>
+
+<!-- 4. 読む / 買う（CTA） -->
+<CallToAction
+  title="読む／買う"
+  chapter="第4章"
+  chapterNumber="25〜35灯"
+  button=
+  {{ 
+    text: "Kindleで読む（KDP）", 
+    href: "https://www.amazon.co.jp/dp/B0GMGP1GPV/"
+  }}
+  annotation="※ リンク先はAmazon（Kindle）です。"
+/>
+
+<!-- 5. 次の章へ：次章カード -->
+ <!--
+<CardLink
+  title="次の章へ"
+  chapter="第5章"
+  chapterTitle="たましいの&ensp;メタバース"
+  chapterDescription="ひらいた世界の、その奥へ。"
+  button={{ 
+    text: "第5章を見る", 
+    href: "/egaki-sho/chapter-5"
+  }}
+/>
+ -->
+</Layout>

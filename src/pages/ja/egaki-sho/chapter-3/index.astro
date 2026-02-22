@@ -1,0 +1,111 @@
+---
+import Layout from '~/layouts/LandingLayout-EgakiSho.astro';
+const metadata = {
+  title: 'ポチョム菌の絵書｜灯の物語｜PochomLab',
+};
+import Hero from '~/components/widgets/HeroText.astro';
+import CardText from '~/components/widgets/CardText.astro';
+import ToC from '~/components/widgets/ToC.astro';
+import ImagePreview from '~/components/widgets/ImagePreview.astro';
+import CallToAction from '~/components/widgets/CallToActionEgakiSho.astro';
+import CardLink from '~/components/widgets/CardLink.astro';
+---
+
+<Layout metadata={metadata}>
+
+<!-- 1. Hero（章の顔） -->
+<Hero
+  title="第3章｜まよいの&ensp;たびじ"
+>
+  <Fragment slot="subtitle">
+    <p class="mt-6 text-sm tracking-wide opacity-60">
+      まよいの中の、小さな一歩。
+    </p>
+  </Fragment>
+  <Fragment slot="content">
+    <p class="mt-6 text-sm tracking-wide opacity-60">
+      せかいが、ぐるんとひらきはじめる。
+    </p>
+  </Fragment>
+</Hero>
+
+<!-- 2.この章で出会うもの：登場キャラ/舞台/テーマ（カード3つ） -->
+<CardText
+  title="この章で出会うもの"
+  items={[
+    {
+      title: '❄️まよい',
+      description: 'こたえのない道。立ち止まる時間。',
+    },
+    {
+      title: '👣一歩',
+      description: 'ふみだす勇気。小さくても確かな前進。',
+    },
+    {
+      title: '🌊ひらける世界',
+      description: 'えいっと越えた先で、景色が変わる。',
+    },
+  ]}
+/>
+
+
+<!-- 3. 灯の目次（第1章） -->
+<ToC
+  title="灯の目次"
+  items={[
+    { label: "17灯", description: "ひとりじゃないのに" },
+    { label: "18灯", description: "きずのきおく" },
+    { label: "19灯", description: "またあるいていこう" },
+    { label: "20灯", description: "さよならのさきへ" },
+    { label: "21灯", description: "こおったうみ" },
+    { label: "22灯", description: "こおりのおくから" },
+    { label: "23灯", description: "ふかくふかくつながって" },
+    { label: "24灯", description: "やくそくのひかり" },
+  ]}
+/> 
+
+<ImagePreview
+  title="試し読み"
+  items=
+  {[
+    {
+      src: "/images/egaki-sho-ch3-preview1.webp",
+      alt: "第3章 試し読み（左ページ）",
+      width: 1748,
+      height: 2480,
+    },
+    {
+      src: "/images/egaki-sho-ch3-preview2.webp",
+      alt: "第3章 試し読み（右ページ）",
+      width: 1748,
+      height: 2480,
+    },
+  ]}
+/>
+
+<!-- 4. 読む / 買う（CTA） -->
+<CallToAction
+  title="読む／買う"
+  chapter="第3章"
+  chapterNumber="17〜24灯"
+  button=
+  {{ 
+    text: "Kindleで読む（KDP）", 
+    href: "https://www.amazon.co.jp/dp/B0GMGP1GPV/"
+  }}
+  annotation="※ リンク先はAmazon（Kindle）です。"
+/>
+
+<!-- 5. 次の章へ：次章カード -->
+<CardLink
+  title="次の章へ"
+  chapter="第4章"
+  chapterTitle="たましいの&ensp;メタバース"
+  chapterDescription="ひらいた世界の、その奥へ。"
+  button={{ 
+    text: "第4章を見る", 
+    href: "/ja/egaki-sho/chapter-4"
+  }}
+/>
+
+</Layout>

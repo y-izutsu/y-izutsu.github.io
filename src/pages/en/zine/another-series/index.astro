@@ -1,0 +1,49 @@
+---
+import Layout from '~/layouts/Layout.astro';
+import PageLayout from '~/layouts/PageLayout.astro';
+
+import type { MetaData } from '~/types';
+import { createMeta } from '~/utils/metadata';
+
+const metadata = createMeta({
+  title: "another series",
+  description: "another seriesのイントロダクションページ",
+  openGraph: {
+    images: [
+      {
+        url: "https://y-izutsu.github.io/images/og/egaki-sho-hero-og.jpg",
+        width: 1280,
+        height: 630
+      }
+    ]
+  }
+}) as MetaData;
+---
+
+<Layout metadata={metadata}>
+  <PageLayout>
+ENG PAGE    
+  <section id="top" class="py-24">
+    <div class="container">
+      <h1 class="text-4xl font-bold mb-6">another series</h1>
+      <p class="opacity-80">Another（まだ空）</p>
+    </div>
+  </section>
+
+  <section id="chapter-list" class="py-24">
+    <div class="container">
+      <h2 class="text-3xl font-bold mb-6">Chapters</h2>
+      <p class="opacity-80">ここにスクロールインデックスが入る</p>
+    </div>
+  </section>
+
+  <section id="about" class="py-24">
+    <div class="container">
+      <h2 class="text-3xl font-bold mb-6">About</h2>
+      <p class="opacity-80">説明文など</p>
+    </div>
+  </section>
+  </PageLayout>
+
+
+</Layout>
