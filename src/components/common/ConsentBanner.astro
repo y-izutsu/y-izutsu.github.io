@@ -42,7 +42,7 @@ const isProd = import.meta.env.PROD;
 
     <script is:inline>
       (function () {
-        const GA_ID = "{id}";
+        const GA_ID = "${id}";
         const KEY = "pochom_consent";
         const banner = document.getElementById("consent-banner");
         const accept = document.getElementById("consent-accept");
@@ -68,11 +68,7 @@ const isProd = import.meta.env.PROD;
 
           if (typeof window.gtag === "function") {
             window.gtag("consent", "update", { analytics_storage: "granted" });
-
-            // 今後の自動計測を許可（残してOK）
             window.gtag("config", GA_ID, { send_page_view: true });
-
-            // ★これが本命：最初のpage_viewを明示的に送る
             window.gtag("event", "page_view", {
                 page_location: window.location.href,
                 page_title: document.title,
