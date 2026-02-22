@@ -14,17 +14,13 @@ const isProd = import.meta.env.PROD;
     <script async src={`https://www.googletagmanager.com/gtag/js?id=${id}`}></script>
 
     <!-- Consent Mode (Japan minimal) + prevent page_view until consent -->
-    <script is:inline >
+    <script is:inline define:vars={{ id }}>
       (() => {
-        const GA_ID = "{id}";
+        const GA_ID = id;
 
         window.dataLayer = window.dataLayer || [];
-
-        function gtag(...args) {
-          window.dataLayer.push(args);
-        }
-
-        window.gtag = window.gtag || gtag;
+        // eslint-disable-next-line prefer-rest-params
+        window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
 
         // default: denied
         gtag('consent', 'default', {

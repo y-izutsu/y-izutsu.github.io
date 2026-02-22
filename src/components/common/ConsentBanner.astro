@@ -40,9 +40,9 @@ const isProd = import.meta.env.PROD;
       </div>
     </div>
 
-    <script is:inline>
+    <script is:inline define:vars={{ id }}>
       (function () {
-        const GA_ID = "${id}";
+        const GA_ID = id;
         const KEY = "pochom_consent";
         const banner = document.getElementById("consent-banner");
         const accept = document.getElementById("consent-accept");
