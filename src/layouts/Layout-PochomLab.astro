@@ -9,8 +9,9 @@ import CustomStyles from '~/components/CustomStyles.astro';
 import ApplyColorMode from '~/components/common/ApplyColorMode.astro';
 import Metadata from '~/components/common/Metadata.astro';
 import SiteVerification from '~/components/common/SiteVerification.astro';
-import Analytics from '~/components/common/Analytics.astro';
+import Analytics from '~/components/common/Analytics-PochomLab.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
+import ConsentBanner from '~/components/common/ConsentBanner.astro';
 
 // Comment the line below to disable View Transitions
 import { ClientRouter } from 'astro:transitions';
@@ -81,5 +82,6 @@ const isProd = import.meta.env.PROD;
     <slot />
 
     <BasicScripts />
+    <ConsentBanner />
   </body>
 </html>

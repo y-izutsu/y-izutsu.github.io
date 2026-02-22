@@ -1,0 +1,54 @@
+---
+import { ANALYTICS } from 'astrowind:config';
+
+const id = ANALYTICS?.vendors?.googleAnalytics?.id
+  ? String(ANALYTICS.vendors.googleAnalytics.id)
+  : null;
+
+const isProd = import.meta.env.PROD;
+---
+
+{isProd && id ? (
+  <>
+    <!-- Load gtag.js -->
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${id}`}></script>
+
+    <!-- Consent Mode (Japan minimal) + prevent page_view until consent -->
+    <script is:inline >
+      (() => {
+        const GA_ID = "{id}";
+
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag(...args) {
+          window.dataLayer.push(args);
+        }
+
+        window.gtag = window.gtag || gtag;
+
+        // default: denied
+        gtag('consent', 'default', {
+          analytics_storage: 'denied',
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+        });
+
+        // if already consented, update before config
+        try {
+          const saved = localStorage.getItem('pochom_consent');
+          if (saved === 'granted') {
+            gtag('consent', 'update', { analytics_storage: 'granted' });
+          }
+        } catch {
+          // ignore
+        }
+
+        gtag('js', new Date());
+
+        // IMPORTANT: do not send page_view until consent
+        gtag('config', GA_ID, { send_page_view: false });
+      })();
+    </script>
+  </>
+) : null}

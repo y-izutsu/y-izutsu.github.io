@@ -1,0 +1,87 @@
+---
+import { ANALYTICS } from 'astrowind:config';
+
+const id = ANALYTICS?.vendors?.googleAnalytics?.id
+  ? String(ANALYTICS.vendors.googleAnalytics.id)
+  : null;
+
+const isProd = import.meta.env.PROD;
+---
+
+{isProd && id ? (
+  <div
+    id="consent-banner"
+    class="fixed bottom-0 left-0 right-0 z-50 hidden"
+  >
+    <div
+      class="mx-auto max-w-5xl m-3 rounded-xl border border-white/15 bg-black/55 backdrop-blur-md text-white"
+    >
+      <div class="flex flex-col md:flex-row md:items-center gap-3 p-4">
+        <p class="text-sm text-white/90 leading-relaxed">
+          このサイトではアクセス解析（Google Analytics）を利用します。Cookie等を用いて利用状況を計測します。
+        </p>
+
+        <div class="flex gap-2 md:ml-auto">
+          <button
+            id="consent-reject"
+            class="px-3 py-2 rounded-lg bg-white/10 hover:bg-white/15 text-sm"
+            type="button"
+          >
+            拒否
+          </button>
+          <button
+            id="consent-accept"
+            class="px-3 py-2 rounded-lg bg-white text-black hover:bg-white/90 text-sm font-semibold"
+            type="button"
+          >
+            同意
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script is:inline>
+      (function () {
+        const GA_ID = "{id}";
+        const KEY = "pochom_consent";
+        const banner = document.getElementById("consent-banner");
+        const accept = document.getElementById("consent-accept");
+        const reject = document.getElementById("consent-reject");
+
+        function show() { banner.classList.remove("hidden"); }
+        function hide() { banner.classList.add("hidden"); }
+
+        // If already decided, don't show
+        try {
+          const saved = localStorage.getItem(KEY);
+          if (saved === "granted" || saved === "denied") return;
+        } catch  {
+            // ignore
+        }
+
+        show();
+
+        accept.addEventListener("click", function () {
+          try { localStorage.setItem(KEY, "granted"); } catch  {
+            // ignore
+          }
+
+          if (typeof window.gtag === "function") {
+            window.gtag("consent", "update", { "analytics_storage": "granted" });
+
+            // Send first page_view now
+            window.gtag("config", GA_ID, { "send_page_view": true });
+          }
+          hide();
+        });
+
+        reject.addEventListener("click", function () {
+          try { localStorage.setItem(KEY, "denied"); } catch {
+            // ignore
+          }
+          hide();
+        });
+      })();
+    </script>
+  </div>
+) : null}
