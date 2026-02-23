@@ -68,7 +68,11 @@ const isProd = import.meta.env.PROD;
 
           if (typeof window.gtag === "function") {
             window.gtag("consent", "update", { analytics_storage: "granted" });
-            window.gtag("config", GA_ID, { send_page_view: true });
+            window.gtag("config", GA_ID, { 
+              send_page_view: false,
+              page_path: window.location.pathname, 
+            });
+            // 上のconfigで送れないケースもあるかもしれないので、念のためイベントも送る
             window.gtag("event", "page_view", {
                 page_location: window.location.href,
                 page_title: document.title,
