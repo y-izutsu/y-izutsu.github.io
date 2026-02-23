@@ -52,6 +52,10 @@ export const headerDataJa = {
         },  
       ],
     },
+    {
+      text: 'Log',
+      href: '/ja/log',
+    },
   ],
   //actions: [{ text: 'Download', href: 'https://github.com/arthelokyo/astrowind', target: '_blank' }],
 };

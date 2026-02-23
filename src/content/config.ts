@@ -65,6 +65,20 @@ const postCollection = defineCollection({
   }),
 });
 
+// ここを追加（loader無し）
+const logCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    date: z.date(),
+    summary: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+    draft: z.boolean().optional(),
+  }),
+});
+
 export const collections = {
   post: postCollection,
+  'log-ja': logCollection,
+  'log-en': logCollection,
 };
