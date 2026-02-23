@@ -68,7 +68,7 @@ apps:
 analytics:
   vendors:
     googleAnalytics:
-      id: G-8KR9H3DMX8 #G-WD89FTQ757
+      id: G-5G55TKSD16 #G-WD89FTQ757
 
 ui:
   theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
