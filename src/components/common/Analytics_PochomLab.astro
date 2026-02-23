@@ -35,6 +35,11 @@ const isProd = import.meta.env.PROD;
           const saved = localStorage.getItem('pochom_consent');
           if (saved === 'granted') {
             gtag('consent', 'update', { analytics_storage: 'granted' });
+
+            gtag('event', 'page_view', {
+               page_location: window.location.href,
+               page_title: document.title,
+            });
           }
         } catch {
           // ignore
