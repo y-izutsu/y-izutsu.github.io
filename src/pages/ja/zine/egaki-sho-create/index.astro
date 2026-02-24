@@ -1,26 +1,385 @@
 ---
 import PageLayout from '~/layouts/PageLayout_PochomLab_Ja.astro';
+
+const zine_title = 'ZINEとは、文化の設計図である。';
+const zine_items = [
+  {
+    q: '📚なぜ、ZINEなのか',
+    a: [
+      'ZINEは、完成品を飾るための器ではない。',
+      '試行錯誤の構造を、そのまま残すための形式である。',
+      '作品の裏側には、無数の選択と判断が積み重なっている。',
+      'それを省略せず記録するために、ZINEという形を選んだ。',
+    ],
+  },
+  {
+    q: '⚗なぜ、実験過程を公開するのか',
+    a: [
+      '目的は透明性ではない。',
+      '再現可能な“型”を手渡すためである。',
+      '思考・技法・判断基準。創作の背骨を可視化することで、読む人は創る側へと移行する。',
+    ],
+  },
+  {
+    q: '🌎なぜ、英語版があるのか',
+    a: [
+      '文化は、閉じた瞬間に止まる。',
+      '英語版は翻訳ではない。文化を外へ接続するための装置である。',
+      '言語を越えることで、構造は普遍化される。',
+    ],
+  },
+];
+
+/**
+ * ZINE Cards Section (Hero級カード)
+ * - Thumbnail
+ * - 3-line description
+ * - Tags
+ * - Buttons: Booth / KDP
+ *
+ * 画像パスやURLはあとで差し替え
+ */
+
+type ZineCard = {
+  slug: string;
+  title: string;
+  subtitle?: string;
+  thumb: { src: string; alt: string };
+  desc: string[];
+  tags: string[];
+  ctas: { label: string; href: string; variant?: 'primary' | 'secondary' }[];
+  highlight?: string; // 例: "完全実況"
+};
+
+const zines: ZineCard[] = [
+  {
+    slug: 'creation',
+    title: '創作編',
+    subtitle: '創作の“型”を、そのまま残す。',
+    thumb: {
+      src: '/images/egaki-sho-cover-01-ja.webp',
+      alt: '絵書創ろうよ！ZINE 創作編 表紙サムネイル',
+    },
+    desc: [
+      '生成AIで絵書を生み出すための、思考・試行・判断を記録。',
+      'プロンプト設計、画像生成、修正、選び方までを実例で整理。',
+      '「なぜそれを選んだか」まで残すことで、型が再現可能になる。',
+    ],
+    tags: ['Prompt', 'Pipeline', 'Workflow'],
+    ctas: [
+      { label: 'Boothで見る', href: 'https://booth.pm/', variant: 'primary' },
+      { label: 'KDPで見る', href: 'https://www.amazon.co.jp/', variant: 'secondary' },
+    ],
+  },
+  {
+    slug: 'character-making',
+    title: 'キャラクターメイキング編',
+    subtitle: 'キャラが生まれる瞬間を、完全実況。',
+    thumb: {
+      src: '/images/egaki-sho-cover-02-ja.webp',
+      alt: '絵書創ろうよ！ZINE キャラクターメイキング編 表紙サムネイル',
+    },
+    desc: [
+      'LoRA素材づくりから学習、検証、破綻と修正までを一気通貫で記録。',
+      'ControlNet／img2img／調整パラメータの“当たり方”を言語化。',
+      '狙いの再現性を上げるための判断基準を、実例ベースで残す。',
+    ],
+    tags: ['LoRA', 'ControlNet', 'img2img'],
+    highlight: '完全実況',
+    ctas: [
+      { label: 'Boothで見る', href: 'https://booth.pm/', variant: 'primary' },
+      { label: 'KDPで見る', href: 'https://www.amazon.co.jp/', variant: 'secondary' },
+    ],
+  },
+  {
+    slug: 'publishing',
+    title: '出版編',
+    subtitle: '創作を、現実のIPとして成立させる。',
+    thumb: {
+      src: '/images/egaki-sho-cover-03-ja.webp',
+      alt: '絵書創ろうよ！ZINE 出版編 表紙サムネイル',
+    },
+    desc: [
+      'KDP出版・運用の実務と、意思決定のログを整理。',
+      '商標出願のリアルケーススタディを、手順と判断で記録。',
+      '「創作→流通→IP」の接続点を、実装として残す。',
+    ],
+    tags: ['KDP', 'Trademark', 'IP Strategy'],
+    ctas: [
+      { label: 'Boothで見る', href: 'https://booth.pm/', variant: 'primary' },
+      { label: 'KDPで見る', href: 'https://www.amazon.co.jp/', variant: 'secondary' },
+    ],
+  },
+];
+
+const sectionTitle = 'ZINEラインナップ';
+const sectionLead = '創作・キャラメイク・出版。PochomLabが実践した「制作の型」を、巻ごとに手渡す。';
+
+const title = '🌳 307の庭 🌳';
+const lead = 'ZINEから生まれた創作者たちへ。';
+
+const note =
+  'ここは、絵書を創る人たちが集う場所。作品・制作ログ・SNSを静かに並べ、文化の足跡を残していきます。';
+
+const ctas = [
+  {
+    label: '参加する（掲載申請）',
+    href: '/contact?topic=307-garden',
+    variant: 'primary' as const,
+  },
+  {
+    label: '庭を見る（準備中）',
+    href: '/garden',
+    variant: 'secondary' as const,
+    disabled: true,
+  },
+];
+
+const bullets = [
+  '掲載できるもの：作品ページ / 制作ログ / SNS（任意）',
+  '掲載条件：絵書・ZINEをきっかけに制作したことが分かる内容',
+  '掲載方法：フォームから申請 → 掲載（順次）',
+];
+
 ---
 
 <PageLayout>
-  <section id="top" class="py-24">
-    <div class="container">
-      <h1 class="text-4xl font-bold mb-6">絵書作ろうよ！ZINE</h1>
-      <p class="opacity-80">まだ空）</p>
+  <!-- 0. Hero（静かな導入）-->
+  <section id="top" class="scroll-mt-28 relative py-32 text-center overflow-hidden">
+    <img
+      src="/images/egaki-sho-create-hero.webp"
+      alt="絵書のメタバース世界"
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="eager"
+      decoding="async"
+      width="2000"
+      height="1200"
+      fetchpriority="high"
+    />
+    <div class="absolute inset-0 bg-black/40"></div>
+
+    <div class="relative container mx-auto">
+      <h1 class="font-serif text-5xl md:text-6xl font-light leading-tight text-white">
+        絵書を創る、<br>
+        すべてのエショナーへ。
+      </h1>
+
+      <div class="w-12 h-px bg-white/30 mx-auto my-6"></div>
+
+      <p class="mt-6 font-serif text-lg md:text-xl text-white/90">
+        生成AIという新しい筆で、物語を構造化する。<br>
+        PochomLabが実践した制作の型を公開。
+      </p>
+    </div>
+
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2">
+      <a href="#about-zine" class="flex flex-col items-center text-neutral-300/80 dark:text-neutral-200/80">
+        <span class="text-sm font-serif tracking-wide">技法を分かち合い、文化を灯す。</span>
+        <span class="mt-2 animate-bounce text-2xl">↓</span>
+      </a>
     </div>
   </section>
 
-  <section id="chapter-list" class="py-24">
-    <div class="container">
-      <h2 class="text-3xl font-bold mb-6">Chapters</h2>
-      <p class="opacity-80">ここにスクロールインデックスが入る</p>
-    </div>
-  </section>
+<!-- 1. ZINEとは何か（短い哲学）-->
+<section id="about-zine" class="relative py-16 md:py-24 bg-neutral-950 text-neutral-100">
+  {/* 背景の“静かな”アクセント（不要なら削除OK） */}
+  <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-neutral-950 via-neutral-950/90 to-neutral-950" />
 
-  <section id="about" class="py-24">
-    <div class="container">
-      <h2 class="text-3xl font-bold mb-6">About</h2>
-      <p class="opacity-80">説明文など</p>
+  <div class="relative container mx-auto max-w-5xl px-4">
+    <header class="text-center">
+      <h2 class="font-serif text-3xl md:text-4xl tracking-tight">
+        {zine_title}
+      </h2>
+      <div class="mx-auto mt-6 h-px w-20 bg-white/15" />
+    </header>
+
+    <div class="mt-10 md:mt-14 grid gap-6 md:gap-8 md:grid-cols-3">
+      {zine_items.map((it) => (
+        <article class="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-7 backdrop-blur">
+          <h3 class="text-base md:text-lg font-semibold tracking-wide">
+            {it.q}
+          </h3>
+
+          <div class="mt-4 space-y-3 text-sm md:text-[15px] leading-relaxed text-neutral-200">
+            {it.a.map((line) => (
+              <p class="text-neutral-200/95">{line}</p>
+            ))}
+          </div>
+        </article>
+      ))}
     </div>
-  </section>
+
+    {/* 1スクロールで読ませたいなら、この“ミニマル版”だけにして上の3カードを消す */}
+    {/* 
+    <div class="mt-10 md:mt-12 mx-auto max-w-3xl rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8">
+      <p class="text-neutral-200 leading-relaxed">
+        ZINEとは、文化の設計図である。<br />
+        完成品ではなく、試行錯誤の“構造”を記録する媒体。<br />
+        実験を公開するのは、再現可能な“型”を手渡すため。<br />
+        英語版は、文化を外へ接続する装置である。
+      </p>
+    </div>
+    */}
+  </div>
+</section>
+
+<!-- 3. 各ZINEカード（Hero的扱いはここ）-->
+<section id="zine-cards" class="relative py-16 md:py-24 bg-neutral-950 text-neutral-100">
+  <div class="container mx-auto max-w-6xl px-4">
+    <header class="text-center">
+      <h2 class="font-serif text-3xl md:text-4xl tracking-tight">{sectionTitle}</h2>
+      <p class="mt-5 text-neutral-300 text-sm md:text-base leading-relaxed">
+        {sectionLead}
+      </p>
+      <div class="mx-auto mt-7 h-px w-20 bg-white/15" />
+    </header>
+
+    <div class="mt-10 md:mt-14 grid gap-6 md:gap-8 md:grid-cols-3">
+      {zines.map((z) => (
+        <article class="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur overflow-hidden flex flex-col">
+          {/* Thumbnail */}
+          <div class="relative">
+            <img
+              src={z.thumb.src}
+              alt={z.thumb.alt}
+              class="h-48 w-full object-cover opacity-95 group-hover:opacity-100 transition"
+              loading="lazy"
+              decoding="async"
+            />
+
+            {/* subtle top gradient for text readability if you place overlay later */}
+            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
+
+            {z.highlight && (
+              <div class="absolute left-4 top-4">
+                <span class="inline-flex items-center rounded-full border border-white/15 bg-black/40 px-3 py-1 text-xs tracking-wide text-white/90">
+                  {z.highlight}
+                </span>
+              </div>
+            )}
+          </div>
+
+          {/* Body */}
+          <div class="p-6 md:p-7 flex flex-col flex-1">
+            <h3 class="text-lg md:text-xl font-semibold tracking-wide">
+              {z.title}
+            </h3>
+            {z.subtitle && (
+              <p class="mt-2 text-sm text-neutral-300 leading-relaxed">
+                {z.subtitle}
+              </p>
+            )}
+
+            {/* 3-line description */}
+            <div class="mt-5 space-y-3 text-sm md:text-[15px] leading-relaxed text-neutral-200">
+              {z.desc.map((line) => (
+                <p class="text-neutral-200/95">{line}</p>
+              ))}
+            </div>
+
+            {/* Tags */}
+            <div class="mt-6 flex flex-wrap gap-2">
+              {z.tags.map((t) => (
+                <span class="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-neutral-200/90">
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            {/* CTAs */}
+            <div class="mt-auto pt-7 flex flex-wrap gap-3">
+              {z.ctas.map((c) => (
+                <a
+                  href={c.href}
+                  class={
+                    c.variant === 'primary'
+                      ? 'inline-flex items-center justify-center rounded-full bg-white text-neutral-950 px-4 py-2 text-sm font-semibold hover:bg-white/90 transition'
+                      : 'inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 text-white px-4 py-2 text-sm font-semibold hover:bg-white/10 transition'
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {c.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+<section id="garden-307" class="relative py-16 md:py-24 bg-neutral-950 text-neutral-100">
+  {/* ほんのり“庭”の気配：不要なら削除 */}
+  <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-neutral-950 via-neutral-950/95 to-neutral-950" />
+
+  <div class="relative container mx-auto max-w-6xl px-4">
+    <div class="rounded-3xl border border-white/10 bg-white/5 backdrop-blur p-8 md:p-12">
+      <header class="text-center">
+        <p class="text-xs tracking-[0.3em] text-white/60 uppercase">Community</p>
+        <h2 class="mt-3 font-serif text-3xl md:text-4xl tracking-tight">{title}</h2>
+        <p class="mt-5 text-neutral-200 text-base md:text-lg leading-relaxed">{lead}</p>
+        <div class="mx-auto mt-7 h-px w-20 bg-white/15" />
+      </header>
+
+      <div class="mt-10 md:mt-12 grid gap-8 md:grid-cols-2 items-start">
+        <div>
+          <p class="text-neutral-300 leading-relaxed">{note}</p>
+
+          <ul class="mt-6 space-y-3 text-sm md:text-[15px] text-neutral-200/95">
+            {bullets.map((b) => (
+              <li class="flex gap-3">
+                <span class="mt-1 h-1.5 w-1.5 rounded-full bg-white/40 flex-shrink-0" />
+                <span>{b}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="rounded-2xl border border-white/10 bg-black/20 p-6 md:p-7">
+          <h3 class="text-base md:text-lg font-semibold">🌱この場所は、まだ育て途中です。</h3>
+          <p class="mt-3 text-sm md:text-[15px] leading-relaxed text-neutral-300">
+            最初は空でもいい。<br />
+            “場”があることが、文化の発芽になる。
+          </p>
+
+          <div class="mt-7 flex flex-wrap gap-3">
+            {ctas.map((c) => (
+              <a
+                href={c.disabled ? undefined : c.href}
+                class={
+                  c.variant === 'primary'
+                    ? `inline-flex items-center justify-center rounded-full bg-white text-neutral-950 px-4 py-2 text-sm font-semibold transition ${
+                        c.disabled ? 'opacity-40 pointer-events-none' : 'hover:bg-white/90'
+                      }`
+                    : `inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 text-white px-4 py-2 text-sm font-semibold transition ${
+                        c.disabled ? 'opacity-40 pointer-events-none' : 'hover:bg-white/10'
+                      }`
+                }
+                {...(c.disabled ? {} : { target: '_self' })}
+              >
+                {c.label}
+              </a>
+            ))}
+          </div>
+
+          <p class="mt-4 text-xs text-white/45">
+            ※ 参加申請が届き次第、順次掲載していきます。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 </PageLayout>
