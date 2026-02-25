@@ -13,7 +13,7 @@ const zine_items = [
     ],
   },
   {
-    q: '⚗なぜ、実験過程を公開するのか',
+    q: '🧪なぜ、実験過程を公開するのか',
     a: [
       '目的は透明性ではない。',
       '再現可能な“型”を手渡すためである。',
@@ -44,7 +44,7 @@ type ZineCard = {
   slug: string;
   title: string;
   subtitle?: string;
-  thumb: { src: string; alt: string };
+  thumb: { src: string; alt: string , height?: number; width?: number };
   desc: string[];
   tags: string[];
   ctas: { label: string; href: string; variant?: 'primary' | 'secondary' }[];
@@ -54,18 +54,20 @@ type ZineCard = {
 const zines: ZineCard[] = [
   {
     slug: 'creation',
-    title: '創作編',
+    title: '✨創作編',
     subtitle: '創作の“型”を、そのまま残す。',
     thumb: {
-      src: '/images/egaki-sho-cover-01-ja.webp',
+      src: '/images/egaki-sho-cover-01.webp',
       alt: '絵書創ろうよ！ZINE 創作編 表紙サムネイル',
+      height: 1600,
+      width: 900,
     },
     desc: [
       '生成AIで絵書を生み出すための、思考・試行・判断を記録。',
-      'プロンプト設計、画像生成、修正、選び方までを実例で整理。',
+      '制作環境の構築から、AIの役割分担、制作フロー、背景設計・着彩・画像合成までを整理。',
       '「なぜそれを選んだか」まで残すことで、型が再現可能になる。',
     ],
-    tags: ['Prompt', 'Pipeline', 'Workflow'],
+    tags: ['Prompt', 'Pipeline', 'Environment'],
     ctas: [
       { label: 'Boothで見る', href: 'https://booth.pm/', variant: 'primary' },
       { label: 'KDPで見る', href: 'https://www.amazon.co.jp/', variant: 'secondary' },
@@ -73,16 +75,18 @@ const zines: ZineCard[] = [
   },
   {
     slug: 'character-making',
-    title: 'キャラクターメイキング編',
+    title: '🧬キャラクターメイキング編',
     subtitle: 'キャラが生まれる瞬間を、完全実況。',
     thumb: {
-      src: '/images/egaki-sho-cover-02-ja.webp',
+      src: '/images/egaki-sho-cover-02.webp',
       alt: '絵書創ろうよ！ZINE キャラクターメイキング編 表紙サムネイル',
+      height: 1600,
+      width: 900,
     },
     desc: [
+      '長編制作に耐えるキャラクターを、生成AIでどう成立させるか。',
       'LoRA素材づくりから学習、検証、破綻と修正までを一気通貫で記録。',
-      'ControlNet／img2img／調整パラメータの“当たり方”を言語化。',
-      '狙いの再現性を上げるための判断基準を、実例ベースで残す。',
+      'ControlNet・img2img・モデル切替の判断基準を言語化し、再現性を上げるための型を実例で残す。',
     ],
     tags: ['LoRA', 'ControlNet', 'img2img'],
     highlight: '完全実況',
@@ -93,16 +97,18 @@ const zines: ZineCard[] = [
   },
   {
     slug: 'publishing',
-    title: '出版編',
+    title: '📘出版編',
     subtitle: '創作を、現実のIPとして成立させる。',
     thumb: {
-      src: '/images/egaki-sho-cover-03-ja.webp',
+      src: '/images/egaki-sho-cover-03.webp',
       alt: '絵書創ろうよ！ZINE 出版編 表紙サムネイル',
+      height: 1600,
+      width: 900,
     },
     desc: [
-      'KDP出版・運用の実務と、意思決定のログを整理。',
-      '商標出願のリアルケーススタディを、手順と判断で記録。',
-      '「創作→流通→IP」の接続点を、実装として残す。',
+      '電子書籍化（EPUB）から販売登録まで、出版の実務を実体験ベースで整理。',
+      'KDP登録の入力内容、著作権・文化庁手続き、商標出願の判断と作業ログを記録。',
+      '「創作→流通→IP」への接続点を、理論ではなく実装として残す。',
     ],
     tags: ['KDP', 'Trademark', 'IP Strategy'],
     ctas: [
@@ -181,7 +187,7 @@ const bullets = [
   </section>
 
 <!-- 1. ZINEとは何か（短い哲学）-->
-<section id="about-zine" class="relative py-16 md:py-24 bg-neutral-950 text-neutral-100">
+<section id="about-zine" class="scroll-mt-16 relative py-16 md:py-24 bg-neutral-950 text-neutral-100">
   {/* 背景の“静かな”アクセント（不要なら削除OK） */}
   <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-neutral-950 via-neutral-950/90 to-neutral-950" />
 
@@ -245,6 +251,8 @@ const bullets = [
               class="h-48 w-full object-cover opacity-95 group-hover:opacity-100 transition"
               loading="lazy"
               decoding="async"
+              width={z.thumb.width}
+              height={z.thumb.height}
             />
 
             {/* subtle top gradient for text readability if you place overlay later */}
@@ -310,15 +318,7 @@ const bullets = [
   </div>
 </section>
 
-
-
-
-
-
-
-
-
-
+<!-- 4. 307の庭へ自然接続-->
 <section id="garden-307" class="relative py-16 md:py-24 bg-neutral-950 text-neutral-100">
   {/* ほんのり“庭”の気配：不要なら削除 */}
   <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-neutral-950 via-neutral-950/95 to-neutral-950" />
@@ -346,7 +346,7 @@ const bullets = [
           </ul>
         </div>
 
-        <div class="rounded-2xl border border-white/10 bg-black/20 p-6 md:p-7">
+        <div class="rounded-2xl border border-white/10 bg-black/10 p-6 md:p-7">
           <h3 class="text-base md:text-lg font-semibold">🌱この場所は、まだ育て途中です。</h3>
           <p class="mt-3 text-sm md:text-[15px] leading-relaxed text-neutral-300">
             最初は空でもいい。<br />
