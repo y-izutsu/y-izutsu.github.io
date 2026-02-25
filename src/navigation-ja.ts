@@ -54,12 +54,29 @@ export const headerDataJa = {
     },
     {
       text: '307の庭',
-      href: '/ja/garden-307',
+      href: '/garden-307',
     },
     {
       text: 'Log',
-      href: '/ja/log',
+      href: '/log',
     },
+    {
+      text: 'はじめに',
+      links: [
+        {
+          text: 'このサイトについて',
+          href: '/about@@@about-site',
+        },
+        {
+          text: '自己紹介',
+          href: '/about@@@profile',
+        },        
+        {
+          text: 'お問い合わせ',
+          href: '/about@@@contact',
+        }, 
+      ],
+    },    
   ],
   //actions: [{ text: 'Download', href: 'https://github.com/arthelokyo/astrowind', target: '_blank' }],
 };
