@@ -39,8 +39,8 @@ export const headerDataEn = {
           href: '/zine/egaki-sho-create@@@top',
         },
         {
-          text: '絵書作ろうよ！- キャラクターメイキング編 -',
-          href: '/zine/egaki-sho-create@@@chapter-list',
+          text: '絵書作ろうよ！ZINEラインナップ ',
+          href: '/zine/egaki-sho-create@@@zine-cards',
         },        
         {
           text: 'another-series',
@@ -52,6 +52,10 @@ export const headerDataEn = {
         },  
       ],
     },
+    {
+      text: 'Garden 307',
+      href: '/en/garden-307',
+    },    
     {
       text: 'Log',
       href: '/en/log',
