@@ -63,47 +63,32 @@ export const headerDataEn = {
 export const footerData = {
   links: [
     {
-      title: 'Product',
+      title: '活動基盤',
       links: [
-        { text: 'Features', href: '#' },
-        { text: 'Security', href: '#' },
-        { text: 'Team', href: '#' },
-        { text: 'Enterprise', href: '#' },
-        { text: 'Customer stories', href: '#' },
-        { text: 'Pricing', href: '#' },
-        { text: 'Resources', href: '#' },
+        { text: 'GitHub', href: 'https://github.com/pochomlab' },
+        { text: 'J-PlatPat', href: 'https://www.j-platpat.inpit.go.jp/' },
+        { text: '文化庁', href: 'https://www.bunka.go.jp/' },
       ],
     },
     {
-      title: 'Platform',
+      title: '頒布',
       links: [
-        { text: 'Developer API', href: '#' },
-        { text: 'Partners', href: '#' },
-        { text: 'Atom', href: '#' },
-        { text: 'Electron', href: '#' },
-        { text: 'AstroWind Desktop', href: '#' },
+        { text: 'Booth', href: 'https://pochomlab.booth.pm/' },
+        { text: 'Kindle (KDP)', href: 'https://www.amazon.co.jp/' },
       ],
     },
     {
-      title: 'Support',
+      title: '作品',
       links: [
-        { text: 'Docs', href: '#' },
-        { text: 'Community Forum', href: '#' },
-        { text: 'Professional Services', href: '#' },
-        { text: 'Skills', href: '#' },
-        { text: 'Status', href: '#' },
+        { text: '絵書', href: '/egaki-sho' },
+        { text: '絵書創ろうよ！ZINE', href: '/zine' },
       ],
     },
     {
-      title: 'Company',
+      title: 'Lab',
       links: [
-        { text: 'About', href: '#' },
-        { text: 'Blog', href: '#' },
-        { text: 'Careers', href: '#' },
-        { text: 'Press', href: '#' },
-        { text: 'Inclusion', href: '#' },
-        { text: 'Social Impact', href: '#' },
-        { text: 'Shop', href: '#' },
+        { text: 'About', href: '/about' },
+        { text: 'Contact', href: '/contact' },
       ],
     },
   ],
@@ -112,13 +97,10 @@ export const footerData = {
     { text: 'Privacy Policy', href: getPermalink('/privacy') },
   ],
   socialLinks: [
-    { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
-    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
-    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
+    { ariaLabel: 'GitHub', icon: 'tabler:brand-github', href: 'https://github.com/pochomlab' },
     { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
-    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/arthelokyo/astrowind' },
   ],
   footNote: `
-    Made by <a class="text-blue-600 underline dark:text-muted" href="https://github.com/arthelokyo"> Arthelokyo</a> · All rights reserved.
+    © ${new Date().getFullYear()} PochomLab · たましいの灯。
   `,
 };
