@@ -14,8 +14,9 @@ const entries = (await getCollection('garden307', ({ data }) => !data.draft))
   <h1 class="font-serif text-3xl md:text-4xl text-neutral-900 dark:text-neutral-50">
     🌳 307の庭 🌳
   </h1>
-  <p class="mt-4 text-neutral-600 dark:text-neutral-300">
-    ゆくゆくカード形式で、絵書作者（エショナー）を追加していきます。
+  <p class="mt-4 text-neutral-600 dark:text-neutral-300 leading-relaxed">
+    ここは、絵書作者（エショナー）の灯が芽吹く庭。
+    カードから、それぞれの活動ページへ直接アクセスできます。
   </p>
 
   {entries.length > 0 ? (
@@ -37,6 +38,17 @@ const entries = (await getCollection('garden307', ({ data }) => !data.draft))
       準備中。カードは順次追加されます。
     </div>
   )}
+
+  <div class="mt-16 text-sm text-neutral-500 dark:text-neutral-400">
+  <p>
+    🌱 307の庭に芽を植えたい方は、
+    <a href="/ja/about#contact-garden-307"
+       class="underline underline-offset-4 decoration-neutral-300 dark:decoration-neutral-600 hover:decoration-neutral-900 dark:hover:decoration-white">
+      掲載希望について
+    </a>
+    をご確認ください。
+  </p>
+</div>
 </section>
 
 </PageLayout>
