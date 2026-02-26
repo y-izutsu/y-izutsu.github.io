@@ -1,0 +1,57 @@
+---
+import PageLayout from '~/layouts/PageLayout_PochomLab_Ja.astro';
+import { getCollection } from 'astro:content';
+
+const all = await getCollection('events');
+const items = all
+  .filter((e) => e.data.status !== 'draft')
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+<PageLayout>
+
+<section class="py-16">
+  <div class="container mx-auto max-w-6xl">
+    <h1 class="text-3xl md:text-4xl font-semibold">Events</h1>
+
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {items.map((e) => (
+        <a
+          href={`/ja/events/${e.slug}`}
+          class="group rounded-2xl border border-neutral-200/60 dark:border-neutral-800 bg-white/80 dark:bg-neutral-900/60 hover:shadow-md transition overflow-hidden"
+        >
+          {e.data.cover && (
+            <img
+              src={e.data.cover}
+              alt={e.data.title}
+              class="h-44 w-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+          )}
+
+          <div class="p-5">
+            <div class="text-sm text-neutral-500 dark:text-neutral-400">
+              {e.data.date.toLocaleDateString('ja-JP')}
+              {e.data.location ? ` · ${e.data.location}` : ''}
+            </div>
+            <div class="mt-2 font-medium text-neutral-900 dark:text-neutral-100 group-hover:underline">
+              {e.data.title}
+            </div>
+
+            {e.data.tags?.length ? (
+              <div class="mt-3 flex flex-wrap gap-2">
+                {e.data.tags.slice(0, 4).map((t) => (
+                  <span class="text-xs rounded-full px-2 py-1 bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            ) : null}
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+</PageLayout>
