@@ -7,6 +7,6 @@ role: "エショナー"
 links:
   site: "https://y-izutsu.github.io/"
   x: "https://y-izutsu.github.io/"
-order: 10
+order: 990
 draft: false
 ---
