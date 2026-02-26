@@ -73,7 +73,7 @@ const logCollection = defineCollection({
     date: z.date(),
     summary: z.string().optional(),
     tags: z.array(z.string()).optional(),
-    draft: z.boolean().optional(),
+    draft: z.boolean().default(true),
   }),
 });
 
@@ -90,7 +90,34 @@ const garden307 = defineCollection({
       x: z.string().url().optional(),
     }).optional(),
     order: z.number().optional(),      // 並び順（任意）
-    draft: z.boolean().optional(),     // 下書き（任意）
+    draft: z.boolean().default(true),     // 下書き（任意）
+  }),
+});
+
+const events = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    date: z.date(),                  // 開催日（開始日）
+    endDate: z.date().optional(),     // 複数日なら
+    timezone: z.string().optional(),  // "Asia/Tokyo" など
+    location: z.string().optional(),  // 会場名＋都市
+    venue: z.string().optional(),     // ブース/ホール等
+    type: z.enum(['zine', 'online', 'release', 'talk', 'other']).default('other'),
+    cover: z.string().optional(),     // /images/... へのパス
+    tags: z.array(z.string()).default([]),
+
+    // 外部リンク（任意）
+    links: z.array(
+      z.object({
+        label: z.string(),
+        url: z.string().url(),
+      })
+    ).default([]),
+
+    // 何を頒布/告知するか（任意）
+    lineup: z.array(z.string()).default([]),
+    draft: z.boolean().default(true),
   }),
 });
 
@@ -99,4 +126,5 @@ export const collections = {
   'log-ja': logCollection,
   'log-en': logCollection,
   'garden307': garden307,
+  'events': events,
 };

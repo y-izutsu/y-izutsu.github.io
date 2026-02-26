@@ -57,6 +57,10 @@ export const headerDataJa = {
       href: '/garden-307',
     },
     {
+      text: 'イベント',
+      href: '/events',
+    },
+    {
       text: 'Log',
       href: '/log',
     },
