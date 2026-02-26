@@ -77,8 +77,26 @@ const logCollection = defineCollection({
   }),
 });
 
+const garden307 = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),                 // 表示名（エショナー名）
+    description: z.string().optional(),// 一言紹介
+    comment: z.string().optional(),   // ← 追加
+    avatar: z.string().optional(),     // /images/... など
+    role: z.string().optional(),       // 絵書作者 / 参加者など（任意）
+    links: z.object({
+      site: z.string().url().optional(),
+      x: z.string().url().optional(),
+    }).optional(),
+    order: z.number().optional(),      // 並び順（任意）
+    draft: z.boolean().optional(),     // 下書き（任意）
+  }),
+});
+
 export const collections = {
   post: postCollection,
   'log-ja': logCollection,
   'log-en': logCollection,
+  'garden307': garden307,
 };
