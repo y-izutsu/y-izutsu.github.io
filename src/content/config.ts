@@ -73,7 +73,7 @@ const logCollection = defineCollection({
     date: z.date(),
     summary: z.string().optional(),
     tags: z.array(z.string()).optional(),
-    draft: z.boolean().optional(),
+    draft: z.boolean().default(true),
   }),
 });
 
@@ -90,7 +90,7 @@ const garden307 = defineCollection({
       x: z.string().url().optional(),
     }).optional(),
     order: z.number().optional(),      // 並び順（任意）
-    draft: z.boolean().optional(),     // 下書き（任意）
+    draft: z.boolean().default(true),     // 下書き（任意）
   }),
 });
 
@@ -104,7 +104,6 @@ const events = defineCollection({
     location: z.string().optional(),  // 会場名＋都市
     venue: z.string().optional(),     // ブース/ホール等
     type: z.enum(['zine', 'online', 'release', 'talk', 'other']).default('other'),
-    status: z.enum(['upcoming', 'past', 'draft']).default('draft'),
     cover: z.string().optional(),     // /images/... へのパス
     tags: z.array(z.string()).default([]),
 
@@ -118,6 +117,7 @@ const events = defineCollection({
 
     // 何を頒布/告知するか（任意）
     lineup: z.array(z.string()).default([]),
+    draft: z.boolean().default(true),
   }),
 });
 

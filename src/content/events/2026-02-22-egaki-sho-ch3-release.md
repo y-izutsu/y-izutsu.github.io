@@ -2,7 +2,6 @@
 title: "絵書 第3章 KDPリリース"
 date: 2026-02-22
 type: release
-status: past
 location: "Online"
 tags:
   - "KDP"
@@ -14,6 +13,7 @@ links:
 lineup:
   - "絵書 第3章"
 cover: "/images/events/2026-02-26-230627.webp"
+draft: false
 ---
 
 **“まよって　まよって　それでも　えいっと　ふみだしたら──”**
