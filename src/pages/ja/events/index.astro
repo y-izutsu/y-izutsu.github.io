@@ -41,6 +41,7 @@ const DEFAULT_EVENT_COVER: Record<string, string> = {
                   href={`/ja/events/${e.slug}`}
                   class="group rounded-2xl border border-neutral-200/60 dark:border-neutral-800 bg-white/80 dark:bg-neutral-900/60 hover:shadow-md transition overflow-hidden"
                 >
+                  <span id={`${e.slug}`} class="block scroll-mt-24" />
                   <img
                     src={e.data.cover ?? DEFAULT_EVENT_COVER[e.data.type]}
                     alt={e.data.title}
@@ -97,6 +98,7 @@ const DEFAULT_EVENT_COVER: Record<string, string> = {
                   href={`/ja/events/${e.slug}`}
                   class="group rounded-2xl border border-neutral-200/60 dark:border-neutral-800 bg-white/80 dark:bg-neutral-900/60 hover:shadow-md transition overflow-hidden"
                 >
+                  <span id={`${e.slug}`} class="block scroll-mt-24" />
                   <img
                     src={e.data.cover ?? DEFAULT_EVENT_COVER[e.data.type]}
                     alt={e.data.title}
