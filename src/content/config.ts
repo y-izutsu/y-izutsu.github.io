@@ -99,7 +99,8 @@ const events = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
-    date: z.date(),                  // 開催日（開始日）
+    date: z.date(),                   // 登録日
+    startDate: z.date(),              // 開催日（開始日）
     endDate: z.date().optional(),     // 複数日なら
     timezone: z.string().optional(),  // "Asia/Tokyo" など
     location: z.string().optional(),  // 会場名＋都市

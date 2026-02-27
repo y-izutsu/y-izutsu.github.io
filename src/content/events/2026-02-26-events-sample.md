@@ -2,6 +2,7 @@
 title: "イベントサンプル / Event sample"
 type: other # Values: zine | online | release | talk | other
 date: 2026-02-26
+startDate: 2026-02-26
 #endDate: 2026-02-27
 timezone: "Asia/Tokyo"
 location: "online"

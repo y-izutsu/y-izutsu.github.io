@@ -1,8 +1,15 @@
 ---
 title: "絵書 第3章 KDPリリース"
-date: 2026-02-22
 type: release
+date: 2026-02-22
+startDate: 2026-02-22
+#endDate: 2026-02-27
+#timezone: "Asia/Tokyo"
 location: "Online"
+#venue: "ブース"
+cover: "/images/events/2026-02-26-230627.webp"
+lineup:
+  - "絵書 第3章"
 tags:
   - "KDP"
   - "Release"
@@ -10,9 +17,6 @@ tags:
 links:
   - label: "KDP（第3章）"
     url: "https://www.amazon.co.jp/dp/B0GMGP1GPV/"
-lineup:
-  - "絵書 第3章"
-cover: "/images/events/2026-02-26-230627.webp"
 draft: false
 ---
 
