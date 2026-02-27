@@ -73,7 +73,7 @@ const logCollection = defineCollection({
     date: z.date(),
     summary: z.string().optional(),
     tags: z.array(z.string()).optional(),
-    draft: z.boolean().default(true),
+    draft: z.boolean().default(false),
   }),
 });
 
@@ -90,7 +90,8 @@ const garden307 = defineCollection({
       x: z.string().url().optional(),
     }).optional(),
     order: z.number().optional(),      // 並び順（任意）
-    draft: z.boolean().default(true),     // 下書き（任意）
+    date: z.date(),                   // ★追加（RSS用） 
+    draft: z.boolean().default(false),     // 下書き（任意）
   }),
 });
 
@@ -117,7 +118,7 @@ const events = defineCollection({
 
     // 何を頒布/告知するか（任意）
     lineup: z.array(z.string()).default([]),
-    draft: z.boolean().default(true),
+    draft: z.boolean().default(false),
   }),
 });
 
