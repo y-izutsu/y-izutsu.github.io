@@ -8,5 +8,6 @@ links:
   site: "https://y-izutsu.github.io/"
   x: "https://y-izutsu.github.io/"
 order: 990
+date: 2026-02-26
 draft: false
 ---
