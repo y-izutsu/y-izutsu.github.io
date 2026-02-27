@@ -55,13 +55,17 @@ export const headerDataEn = {
     {
       text: 'Garden 307',
       href: '/garden-307',
+    },
+    {
+      text: 'Events',
+      href: '/events',
     },    
     {
       text: 'Log',
       href: '/log',
     },
     {
-      text: 'はじめに',
+      text: 'About',
       links: [
         {
           text: 'このサイトについて',
