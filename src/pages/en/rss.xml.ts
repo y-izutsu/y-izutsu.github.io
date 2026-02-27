@@ -27,32 +27,31 @@ export async function GET(context: { site: URL }) {
   const [events, garden, logsJa] = await Promise.all([
     getCollection('events', (e) => !e.data.draft),
     getCollection('garden307', (g) => !g.data.draft),
-    getCollection('log-ja', (p) => !p.data.draft),
+    getCollection('log-en', (p) => !p.data.draft),
   ]);
 
   const eventItems: Item[] = events.map((e) => ({
     title: e.data.title,
-    // descriptionは最低限：場所/会場があれば入れる
     description: [e.data.location, e.data.venue].filter(Boolean).join(' / ') || undefined,
-    link: `/ja/events#${e.slug}`,          // ★一覧＋アンカー
-    pubDate: e.data.date,                         // ★開催日
+    link: `/en/events#${e.slug}`,
+    pubDate: e.data.date,
     categories: ['Event'],
   }));
 
   const gardenItems: Item[] = garden.map((g) => ({
     title: g.data.title,
     description: g.data.description ?? g.data.comment,
-    link: `/ja/garden-307#${g.slug}`,       // ★一覧＋アンカー
-    pubDate: g.data.date,                         // ★登録日
+    link: `/en/garden-307#${g.slug}`,
+    pubDate: g.data.date,
     categories: ['Garden'],
   }));
 
   const logItems: Item[] = logsJa.map((p) => ({
     title: p.data.title,
     description: p.data.summary,
-    link: `/ja/log/${p.slug}`,                   // ★詳細ページ
+    link: `/en/log/${p.slug}`,
     pubDate: p.data.date,
-    categories: ['Log', 'ja'],
+    categories: ['Log', 'en'],
   }));
 
   const items = [...eventItems, ...gardenItems, ...logItems]
@@ -60,8 +59,8 @@ export async function GET(context: { site: URL }) {
     .slice(0, 50);
 
   return rss({
-    title: 'PochomLab RSS (JA)',
-    description: 'Events / 307の庭 / Log の更新情報（日本語）',
+    title: 'PochomLab RSS (EN)',
+    description: 'Events / Garden-307 / Log updates (English)',
     site,
     items: items.map((i) => ({
       title: i.title,
