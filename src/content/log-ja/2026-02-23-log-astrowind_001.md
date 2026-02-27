@@ -1,5 +1,5 @@
 ---
-title: "AstroWind初期設定実験（pochomlab-astrowind-lab）"
+title: "🚀 AstroWind初期設定"
 date: 2026-02-23
 tags: ["Astro", "AstroWind", "PochomLab", "Log"]
 summary: "AstroWindをPochomLab用に最小構成で初期化し、GitHub Pages公開まで確認。"
