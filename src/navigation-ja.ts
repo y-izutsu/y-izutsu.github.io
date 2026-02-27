@@ -123,7 +123,7 @@ export const footerData = {
   ],
   socialLinks: [
     { ariaLabel: 'GitHub', icon: 'tabler:brand-github', href: 'https://github.com/pochomlab' },
-    { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
+    { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/ja/rss.xml') },
   ],
   footNote: `
     © ${new Date().getFullYear()} PochomLab · たましいの灯。
