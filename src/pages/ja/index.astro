@@ -2,21 +2,81 @@
 import Layout from '~/layouts/PageLayout_PochomLab_Ja.astro';
 
 import Hero from '~/components/widgets/Hero_PochomLab.astro';
-import Note from '~/components/widgets/Note.astro';
+//import Note from '~/components/widgets/Note.astro';
 
 const metadata = {
   title: 'PochomLab - 生成AIと絵書制作を軸に、創作・技術・IP戦略を実装し、未来へ接続するラボ',
   ignoreTitleTemplate: true,
 };
+
+const entries = [
+  {
+    title: '📙 絵書',
+    desc: 'AIと一緒に描いた、たましいの灯の記録。',
+    href: '/ja/egaki-sho',
+    badge: 'WORK',
+  },
+  {
+    title: '📚️ ZINE（絵書創ろうよ！ZINE）',
+    desc: '創作・技術・出版の“実装ログ”をまとめる。',
+    href: '/ja/zine/egaki-sho-create',
+    badge: 'ZINE',
+  },
+  {
+    title: '🌳 307の庭',
+    desc: '灯を持ち寄る場所。参加者の記録と作品の庭。',
+    href: '/ja/garden-307',
+    badge: 'COMMUNITY',
+  },
+  {
+    title: '🎫 イベント',
+    desc: '出展・頒布・リリースの予定と記録。',
+    href: '/ja/events',
+    badge: 'EVENTS',
+  },
+  {
+    title: '📃 Log',
+    desc: '制作・実装・判断のログブック。',
+    href: '/ja/log',
+    badge: 'LOG',
+  },
+  {
+    title: '🔰 はじめに',
+    desc: 'PochomLabの目的と歩き方。',
+    href: '/ja/about',
+    badge: 'START',
+  },
+];
+
+const latestLogs = [
+  {
+    title: 'Logページ パイロット版を作成',
+    date: '2026-02-23',
+    tags: ['Astro', 'AstroWind', 'PochomLab', 'Log'],
+    summary: '作業メモを置ける最小のログ基盤を追加。後で整形する。',
+    href: '/log/2026-02-23-log-page-pilot',
+  },
+  {
+    title: 'イベント画像のデフォルトセットを作成',
+    date: '2026-02-26',
+    tags: ['Events', 'Design', 'Images'],
+    summary: 'ZINE/ONLINE/RELEASE/TALK/OTHERの横長画像を、共通ベースで作る方針をFix。',
+    href: '/log/2026-02-26-event-images-default',
+  },
+  {
+    title: '307の庭：掲載テンプレートのブラッシュアップ',
+    date: '2026-02-25',
+    tags: ['307の庭', 'Layout', 'AstroWind'],
+    summary: '本文テンプレートとリンク導線を本番用に整理。アンダーバー命名の注意点も記録。',
+    href: '/log/2026-02-25-garden-307-template',
+  },
+];
 ---
 
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
 
-  <Hero 
-    lightUrl="/images/pochomlab-hero-light-jp.jpg"
-    darkUrl="/images/pochomlab-hero-dark-jp.jpg"
-  >
+  <Hero lightUrl="/images/pochomlab-hero-light-jp.jpg" darkUrl="/images/pochomlab-hero-dark-jp.jpg">
     <Fragment slot="title">
       AIで描く、<br />
       <span class="text-[#FF5B50] dark:text-[#FFB74D]">たましいの灯。</span>
@@ -26,14 +86,119 @@ const metadata = {
       生成AIと絵書制作を軸に、<br />
       創作・技術・IP戦略を実装し、未来へ接続するラボ。
     </Fragment>
-
   </Hero>
 
   <!-- Note Widget ******************* -->
+  <!--
+  <Note title="速報:" description="Guinness World Records 申請が承認されました" />
+ -->
 
-  <Note title="Philosophy:" description="Simplicity, Best Practices and High Performance" />
+  <!-- Feature Entry (6 cards) -->
+  <section class="py-16 md:py-20 border-t border-neutral-200/70 dark:border-neutral-800/70">
+    <div class="container mx-auto max-w-5xl px-4">
+      <div class="mb-10 text-center">
+        <h2 class="font-serif text-2xl md:text-3xl text-neutral-900 dark:text-neutral-50">PochomLabの入口</h2>
+        <p class="mt-3 text-neutral-600 dark:text-neutral-300">まずはここから。灯の記録、制作ログ、そして庭へ。</p>
+      </div>
 
-  <!-- Features Widget *************** -->
+      <div class="grid gap-6 md:grid-cols-2">
+        {
+          entries.map((e) => (
+            <a
+              href={e.href}
+              class="group rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm transition
+                   hover:-translate-y-0.5 hover:shadow-md
+                   dark:border-neutral-800 dark:bg-neutral-900/40"
+            >
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <h3 class="font-serif text-xl text-neutral-900 dark:text-neutral-50">{e.title}</h3>
+                  <p class="mt-2 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">{e.desc}</p>
+                </div>
 
+                <span
+                  class="shrink-0 rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-xs tracking-widest text-neutral-700
+                       dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-200"
+                >
+                  {e.badge}
+                </span>
+              </div>
 
+              <div class="mt-4 text-sm text-neutral-500 group-hover:text-neutral-900 dark:text-neutral-400 dark:group-hover:text-neutral-100">
+                開く →
+              </div>
+            </a>
+          ))
+        }
+      </div>
+
+      <!-- small CTA -->
+      <div
+        class="mt-12 rounded-2xl border border-neutral-200 bg-neutral-50 p-6 text-center
+                  dark:border-neutral-800 dark:bg-neutral-900/30"
+      >
+        <p class="text-neutral-700 dark:text-neutral-200">
+          制作の裏側を追うなら 📚️
+          <a href="/ja/zine/egaki-sho-create" class="underline underline-offset-4"> ZINE </a>
+          （絵書創ろうよ！ZINE）へ。 作品から入るなら📙
+          <a href="/ja/egaki-sho" class="underline underline-offset-4"> 絵書 </a>へ。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-14 border-t border-neutral-200/70 dark:border-neutral-800/70">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-8 flex items-end justify-between gap-4">
+        <div>
+          <h2 class="font-serif text-xl md:text-2xl text-neutral-900 dark:text-neutral-50">最新Log</h2>
+          <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-300">制作・実装・判断の記録から、直近の3件。</p>
+        </div>
+
+        <a
+          href="/log"
+          class="text-sm text-neutral-600 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-neutral-50"
+        >
+          すべて見る →
+        </a>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-3">
+        {
+          latestLogs.map((p) => (
+            <a
+              href={p.href}
+              class="group rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm transition
+                    hover:-translate-y-0.5 hover:shadow-md
+                    dark:border-neutral-800 dark:bg-neutral-900/40"
+            >
+              <div class="flex items-start justify-between gap-4">
+                <time class="text-xs text-neutral-500 dark:text-neutral-400">{p.date}</time>
+                <span
+                  class="rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-xs text-neutral-700
+                            dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-200"
+                >
+                  LOG
+                </span>
+              </div>
+
+              <h3 class="mt-3 font-serif text-lg text-neutral-900 dark:text-neutral-50">{p.title}</h3>
+
+              <p class="mt-2 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">{p.summary}</p>
+
+              <div class="mt-4 flex flex-wrap gap-2">
+                {p.tags.map((t) => (
+                  <span class="text-xs text-neutral-500 dark:text-neutral-400">#{t}</span>
+                ))}
+              </div>
+
+              <div class="mt-4 text-sm text-neutral-500 group-hover:text-neutral-900 dark:text-neutral-400 dark:group-hover:text-neutral-100">
+                読む →
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
 </Layout>
