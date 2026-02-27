@@ -14,11 +14,12 @@ draft: false
 title: "イベントサンプル / Event sample"
 type: other # Values: zine | online | release | talk | other
 date: 2026-02-26
+startDate: 2026-02-26
 #endDate: 2026-02-27
 timezone: "Asia/Tokyo"
 location: "online"
 venue: "ブースA-12"
-#cover:
+#cover: "/images/events/2026-02-26-230627.webp"
 lineup:
   - "ラインナップ1"
   - "ラインナップ2" 
@@ -58,8 +59,13 @@ draft: false # Values: true | false
 
 ## ■ date  (必須)
 
-- イベントの日付を入力します。
-- date と endDate により Upcoming / Past が自動で切り替わります。
+- イベントカードを登録した日付を入力します。
+- 最新情報、RSS はこちらの日付で処理されます。
+
+## ■ starDate  (必須)
+
+- イベントの開催日を入力します。
+- startDate と endDate により Upcoming / Past が自動で切り替わります。
 
 ## ■ endDate (省略可)
 

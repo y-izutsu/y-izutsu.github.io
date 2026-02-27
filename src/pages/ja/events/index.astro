@@ -5,15 +5,15 @@ import { formatEventDate, isUpcoming, EVENT_TYPE_LABEL } from '~/utils/events';
 
 const all = (await getCollection('events'))
   .filter((e) => !e.data.draft)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+  .sort((a, b) => b.data.startDate.getTime() - a.data.startDate.getTime());
 
 const upcoming = all
-  .filter((e) => isUpcoming(e.data.date, e.data.endDate))
-  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+  .filter((e) => isUpcoming(e.data.startDate, e.data.endDate))
+  .sort((a, b) => a.data.startDate.getTime() - b.data.startDate.getTime());
 
 const past = all
-  .filter((e) => !isUpcoming(e.data.date, e.data.endDate))
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+  .filter((e) => !isUpcoming(e.data.startDate, e.data.endDate))
+  .sort((a, b) => b.data.startDate.getTime() - a.data.startDate.getTime());
 
 //const Card = (e) => e; // 型の都合でプレースホルダー（Astroは下でそのまま使う）
 const DEFAULT_EVENT_COVER: Record<string, string> = {
@@ -56,7 +56,7 @@ const DEFAULT_EVENT_COVER: Record<string, string> = {
                         {EVENT_TYPE_LABEL[e.data.type] ?? 'EVENT'}
                       </span>
                       <span class="text-neutral-500 dark:text-neutral-400">
-                        {formatEventDate(e.data.date, e.data.endDate)}
+                        {formatEventDate(e.data.startDate, e.data.endDate)}
                       </span>
                     </div>
 

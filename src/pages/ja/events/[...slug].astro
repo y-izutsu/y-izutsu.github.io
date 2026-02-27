@@ -29,7 +29,7 @@ const { Content } = await render(entry);
         </span>
 
         <span>
-          {formatEventDate(entry.data.date, entry.data.endDate)}
+          {formatEventDate(entry.data.startDate, entry.data.endDate)}
           {entry.data.timezone ? (
             <span class="ml-2 text-xs text-neutral-500 dark:text-neutral-400">
               ({entry.data.timezone})
