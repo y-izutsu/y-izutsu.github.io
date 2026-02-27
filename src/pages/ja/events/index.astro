@@ -16,6 +16,13 @@ const past = all
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 //const Card = (e) => e; // 型の都合でプレースホルダー（Astroは下でそのまま使う）
+const DEFAULT_EVENT_COVER: Record<string, string> = {
+  zine: '/images/events/default-zine.webp',
+  online: '/images/events/default-online.webp',
+  release: '/images/events/default-release.webp',
+  talk: '/images/events/default-talk.webp',
+  other: '/images/events/default-other.webp',
+};
 ---
 <PageLayout>
 
@@ -35,15 +42,13 @@ const past = all
               href={`/ja/events/${e.slug}`}
               class="group rounded-2xl border border-neutral-200/60 dark:border-neutral-800 bg-white/80 dark:bg-neutral-900/60 hover:shadow-md transition overflow-hidden"
             >
-              {e.data.cover && (
-                <img
-                  src={e.data.cover}
-                  alt={e.data.title}
-                  class="h-44 w-full object-cover"
-                  loading="lazy"
-                  decoding="async"
-                />
-              )}
+              <img
+                src={e.data.cover ?? DEFAULT_EVENT_COVER[e.data.type]}
+                alt={e.data.title}
+                class="h-44 w-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
 
               <div class="p-5">
                 <div class="flex items-center gap-2 text-xs">
@@ -90,15 +95,14 @@ const past = all
               href={`/ja/events/${e.slug}`}
               class="group rounded-2xl border border-neutral-200/60 dark:border-neutral-800 bg-white/80 dark:bg-neutral-900/60 hover:shadow-md transition overflow-hidden"
             >
-              {e.data.cover && (
-                <img
-                  src={e.data.cover}
-                  alt={e.data.title}
-                  class="h-44 w-full object-cover"
-                  loading="lazy"
-                  decoding="async"
-                />
-              )}
+              
+              <img
+                src={e.data.cover ?? DEFAULT_EVENT_COVER[e.data.type]}
+                alt={e.data.title}
+                class="h-44 w-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
 
               <div class="p-5">
                 <div class="flex items-center gap-2 text-xs">
