@@ -60,4 +60,23 @@ import '@fontsource-variable/inter';
       color: snow;
     }
   }
+
+  /* --- PochomLab: inline code visibility fix --- */
+  .prose :not(pre) > code {
+    padding: 0.15em 0.35em;
+    border-radius: 0.35rem;
+    font-weight: 600;
+    background: rgba(0, 0, 0, 0.06);
+  }
+
+  .dark .prose :not(pre) > code {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  /* Remove typography plugin's backtick-like decoration if present */
+  .prose :not(pre) > code::before,
+  .prose :not(pre) > code::after {
+    content: "";
+  }
+
 </style>
