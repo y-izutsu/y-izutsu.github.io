@@ -1,19 +1,19 @@
 ---
-title: "🚀 AstroWind初期設定"
+title: "🚀AstroWind [1] 初期設定"
 date: 2026-02-23
 tags: ["Astro", "AstroWind", "PochomLab", "Log"]
 summary: "AstroWindをPochomLab用に最小構成で初期化し、GitHub Pages公開まで確認。"
 draft: false
 ---
 
-## 目的
+## ■ 目的
 
 AstroWindをPochomLab用の実験環境として初期化し、
 GitHub Pagesで公開確認まで行う。
 
 ---
 
-## 実施内容
+## ■ 実施内容
 
 - 空リポジトリにAstroWindテンプレートをコミット
 - config.yaml をPochomLab仕様に最小変更
@@ -23,16 +23,16 @@ GitHub Pagesで公開確認まで行う。
 
 ---
 
-## Repository
+## ■ Repository
 
 https://github.com/pochomlab/pochomlab-astrowind-lab
 
-## Pull Request
+## ■ Pull Request
 https://github.com/pochomlab/pochomlab-astrowind-lab/pull/1
 
 ---
 
-## config.yaml
+## ■ config.yaml
 ```yaml
 site:
   name: PochomLab AstroWind Lab
@@ -108,7 +108,7 @@ ui:
   theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
 ```
 
-## Deploy.yml
+## ■ Deploy.yml
 ```yaml
 name: Deploy to GitHub Pages
 
