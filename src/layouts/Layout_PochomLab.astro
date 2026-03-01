@@ -51,6 +51,7 @@ const enUrl = `${origin}${enPath}`;
 const xDefaultUrl = `${origin}/ja`;
 
 const isProd = import.meta.env.PROD;
+const isEvent = Astro.url.pathname.includes('/events/');
 ---
 
 <!doctype html>
@@ -78,7 +79,11 @@ const isProd = import.meta.env.PROD;
     {isProd ? null : <ClientRouter fallback="swap" />}    
   </head>
 
-  <body class="antialiased text-default bg-page tracking-tight">
+  <body
+    class={`antialiased text-default bg-page tracking-tight ${
+      isEvent ? 'event-page' : ''
+    }`}
+  >
     <slot />
 
     <BasicScripts />
