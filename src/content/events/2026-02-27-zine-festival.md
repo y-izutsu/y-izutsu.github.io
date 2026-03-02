@@ -5,7 +5,7 @@ date: 2026-02-27
 startDate: 2026-08-29
 #endDate: 2026-04-12
 timezone: "Asia/Tokyo"
-location: "東京"
+location: "茨城"
 venue: "ブースA-12"
 cover: "/images/events/rectangle_large_type_2_22470b7e9116f2cd82c1d2b2cc284d75.webp"
 lineup:

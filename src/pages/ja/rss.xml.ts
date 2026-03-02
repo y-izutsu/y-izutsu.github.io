@@ -31,21 +31,26 @@ export async function GET(context: { site: URL }) {
   ]);
 
   const eventItems: Item[] = events.map((e) => ({
-    title: e.data.title,
-    // descriptionは最低限：場所/会場があれば入れる
-    description: [e.data.location, e.data.venue].filter(Boolean).join(' / ') || undefined,
-    link: `/ja/events#${e.slug}`,          // ★一覧＋アンカー
-    pubDate: e.data.date,                         // ★開催日
+    title: 'イベントのお知らせ',
+    description: [e.data.location, e.data.venue, e.data.title]
+      .filter(Boolean)
+      .join(' / ') || undefined,
+    link: `/ja/events#${e.slug}`,
+    pubDate: e.data.date,
     categories: ['Event'],
   }));
 
-  const gardenItems: Item[] = garden.map((g) => ({
-    title: g.data.title,
-    description: g.data.description ?? g.data.comment,
-    link: `/ja/garden-307#${g.slug}`,       // ★一覧＋アンカー
-    pubDate: g.data.date,                         // ★登録日
-    categories: ['Garden'],
-  }));
+  const gardenItems: Item[] = garden.map((g) => {
+    const displayName = g.data.name ?? g.data.name_en;
+
+    return {
+      title: '新たな芽が追加されました',
+      description: `名前: ${displayName}`,
+      link: `/ja/garden-307#${g.slug}`,
+      pubDate: g.data.date,
+      categories: ['Garden'],
+    };
+  });
 
   const logItems: Item[] = logsJa.map((p) => ({
     title: p.data.title,

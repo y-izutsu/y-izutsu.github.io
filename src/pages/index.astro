@@ -101,7 +101,7 @@ const eventItems: FeedItem[] = events.map((e) => ({
 }));
 
 const gardenItems: FeedItem[] = garden.map((g) => ({
-  title: "🙂" + g.data.title,
+  title: "🙂" + g.data.name,
   description: g.data.description ?? g.data.comment,
   link: `/ja/garden-307#${g.slug}`,
   pubDate: g.data.date,
