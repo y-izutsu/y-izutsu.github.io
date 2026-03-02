@@ -25,7 +25,8 @@ const entries = (await getCollection('garden307', ({ data }) => !data.draft)).so
                 <GardenCard
                   href={e.data.links?.site ?? e.data.links?.x ?? '#'}
                   external={true}
-                  title={e.data.title}
+                  name={e.data.name}
+                  name_en={e.data.name_en}
                   description={e.data.description}
                   comment={e.data.comment}
                   avatar={e.data.avatar}

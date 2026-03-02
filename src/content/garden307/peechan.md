@@ -1,5 +1,6 @@
 ---
-title: "ぴーちゃん"
+name: "ぴーちゃん"
+name_en: "P-chan"
 description: "PochomLab / 絵書『ポチョム菌の絵書』"
 comment: "魂のCreaseを残す制作をしています。\n生成AIと歩いた灯の記録。"
 avatar: "/images/about-profile-icon.webp"

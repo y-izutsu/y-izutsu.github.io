@@ -1,5 +1,6 @@
 ---
-title: "カード・サンプル"
+name: ""
+name_en: "Card Sample"
 description: "ここに、説明文を記載します。"
 comment: "コメントを記載します\n改行することが出来ます。‍\n2～3行程度でお願いします。"
 avatar: "/images/profile/profile-sample-male.webp"

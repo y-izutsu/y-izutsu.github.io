@@ -1,18 +1,40 @@
 ---
 export type GardenCardProps = {
   href: string;
-  title: string;
+  name?: string;
+  name_en?: string;
   description?: string;
   comment?: string;
   avatar?: string;
   role?: string;
-  external?: boolean; // 外に飛ばすなら true
-  id?: string; // 任意のID（例: イベントページの見出しリンク用）
+  external?: boolean;
+  id?: string;
 };
 
-const { href, title, description, comment, avatar, role, external = false, id } = Astro.props as GardenCardProps;
+const {
+  href,
+  name,
+  name_en,
+  description,
+  comment,
+  avatar,
+  role,
+  external = false,
+  id,
+} = Astro.props as GardenCardProps;
 
-const linkAttrs = external ? { target: '_blank', rel: 'noopener noreferrer' } : {};
+// 日本語があれば優先、なければ英語を繰り上げ
+const displayName = (name && name.trim()) ? name : (name_en ?? '');
+
+// 英語名が存在し、日本語と違う場合のみ表示
+const displayNameEn =
+  (name_en && name_en.trim() && displayName !== name_en)
+    ? name_en
+    : '';
+
+const linkAttrs = external
+  ? { target: '_blank', rel: 'noopener noreferrer' }
+  : {};
 ---
 
 <a
@@ -26,7 +48,7 @@ const linkAttrs = external ? { target: '_blank', rel: 'noopener noreferrer' } : 
         avatar ? (
           <img
             src={avatar}
-            alt={title}
+            alt={displayName}
             class="h-12 w-12 rounded-xl object-cover border border-neutral-200/60 dark:border-neutral-800"
             loading="lazy"
             decoding="async"
@@ -37,22 +59,33 @@ const linkAttrs = external ? { target: '_blank', rel: 'noopener noreferrer' } : 
       }
 
       <div class="min-w-0">
-        <div class="flex items-center gap-2">
-          <div class="truncate text-lg font-semibold text-neutral-900 dark:text-neutral-50">
-            {title}
+
+        {/* 名前ブロック（高さ固定で段落ズレ防止） */}
+        <div class="min-h-[3.2rem]">
+          <div class="flex items-center gap-2">
+            <div class="truncate text-lg font-semibold text-neutral-900 dark:text-neutral-50">
+              {displayName}
+            </div>
+
+            {
+              role ? (
+                <span class="shrink-0 rounded-full border border-neutral-200/60 px-2 py-0.5 text-xs text-neutral-600 dark:border-neutral-800 dark:text-neutral-300">
+                  {role}
+                </span>
+              ) : null
+            }
           </div>
-          {
-            role ? (
-              <span class="shrink-0 rounded-full border border-neutral-200/60 px-2 py-0.5 text-xs text-neutral-600 dark:border-neutral-800 dark:text-neutral-300">
-                {role}
-              </span>
-            ) : null
-          }
+
+          <div class="mt-0.5 text-xs text-neutral-500 dark:text-neutral-400">
+            {displayNameEn}
+          </div>
         </div>
 
         {
           description ? (
-            <div class="mt-1 line-clamp-2 text-sm text-neutral-600 dark:text-neutral-300">{description}</div>
+            <div class="mt-1 line-clamp-2 text-sm text-neutral-600 dark:text-neutral-300">
+              {description}
+            </div>
           ) : null
         }
 

@@ -80,8 +80,8 @@ const logCollection = defineCollection({
 const garden307 = defineCollection({
   type: 'content',
   schema: z.object({
-    title: z.string(),                 // 表示名（エショナー名）
-    title_en: z.string().optional(),   // 表示名（英語）
+    name: z.string(),                 // 表示名（エショナー名）
+    name_en: z.string().optional(),   // 表示名（エショナー名）    
     description: z.string().optional(),// 一言紹介
     comment: z.string().optional(),   // ← 追加
     avatar: z.string().optional(),     // /images/... など

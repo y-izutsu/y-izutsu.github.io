@@ -41,7 +41,7 @@ export async function GET(context: { site: URL }) {
   }));
 
   const gardenItems: Item[] = garden.map((g) => {
-    const displayName = g.data.title_en ?? g.data.title;
+    const displayName = g.data.name_en ?? g.data.name;
 
     return {
       title: 'New sprout added',

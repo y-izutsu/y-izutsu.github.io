@@ -41,7 +41,7 @@ export async function GET(context: { site: URL }) {
   }));
 
   const gardenItems: Item[] = garden.map((g) => {
-    const displayName = g.data.title ?? g.data.title_en;
+    const displayName = g.data.name ?? g.data.name_en;
 
     return {
       title: '新たな芽が追加されました',
