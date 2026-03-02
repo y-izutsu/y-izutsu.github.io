@@ -31,20 +31,26 @@ export async function GET(context: { site: URL }) {
   ]);
 
   const eventItems: Item[] = events.map((e) => ({
-    title: e.data.title,
-    description: [e.data.location, e.data.venue].filter(Boolean).join(' / ') || undefined,
+    title: 'Event announcement',
+    description: [e.data.location, e.data.venue, e.data.title]
+      .filter(Boolean)
+      .join(' / ') || undefined,
     link: `/en/events#${e.slug}`,
     pubDate: e.data.date,
     categories: ['Event'],
   }));
 
-  const gardenItems: Item[] = garden.map((g) => ({
-    title: g.data.title,
-    description: g.data.description ?? g.data.comment,
-    link: `/en/garden-307#${g.slug}`,
-    pubDate: g.data.date,
-    categories: ['Garden'],
-  }));
+  const gardenItems: Item[] = garden.map((g) => {
+    const displayName = g.data.title_en ?? g.data.title;
+
+    return {
+      title: 'New sprout added',
+      description: `Name: ${displayName}`,
+      link: `/en/garden-307#${g.slug}`,
+      pubDate: g.data.date,
+      categories: ['Garden'],
+    };
+  });
 
   const logItems: Item[] = logsJa.map((p) => ({
     title: p.data.title,
