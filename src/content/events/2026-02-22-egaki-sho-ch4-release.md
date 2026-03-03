@@ -14,9 +14,9 @@ tags:
   - "KDP"
   - "Release"
   - "Egaki-sho"
-# links:
-#   - label: "KDP（第4章）"
-#     url: "https://www.amazon.co.jp/dp/B0GMGP1GPV/"
+links:
+  - label: "KDP（第4章）"
+    url: "https://www.amazon.co.jp/dp/B0GQQ22G87/"
 draft: false
 ---
 
