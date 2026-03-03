@@ -1,0 +1,207 @@
+---
+import PageLayout from '~/layouts/PageLayout_PochomLab_Ja.astro';
+import HeroText from '~/components/widgets/HeroText_PochomLab.astro';
+
+const metadata = {
+  title: 'Buy',
+  description: 'PochomLabの出版物一覧',
+};
+
+// ====== 商品データ（ここを増やしていく） ======
+const EGAKI_SHO = [
+  {
+    title: 'ポチョム菌の絵書 第1章',
+    cover: '/images/buy/buy-cover-egaki-sho-ch1.webp',
+    kdpUrl: 'https://www.amazon.co.jp/dp/B0G3Q6C68P/',
+  },
+  {
+    title: 'ポチョム菌の絵書 第2章',
+    cover: '/images/buy/buy-cover-egaki-sho-ch2.webp',
+    kdpUrl: 'https://www.amazon.co.jp/dp/B0GFZ9WCJY/',
+  },
+  {
+    title: 'ポチョム菌の絵書 第3章',
+    cover: '/images/buy/buy-cover-egaki-sho-ch3.webp',
+    kdpUrl: 'https://www.amazon.co.jp/dp/B0GMGP1GPV/',
+  },
+  {
+    title: 'ポチョム菌の絵書 第4章',
+    cover: '/images/buy/buy-cover-egaki-sho-ch4.webp',
+    kdpUrl: 'https://www.amazon.co.jp/dp/B0GQQ22G87/',
+  },
+];
+
+const ZINE = [
+  {
+    title: '絵書創ろうよ！ZINE（創作編）',
+    cover: '/images/buy/buy-cover-egaki-create-ch1-en.webp',
+    boothUrl: 'https://booth.pm/ja/',
+    kdpUrl: 'https://www.amazon.com/',
+  },
+  {
+    title: '絵書創ろうよ！ZINE（キャラクターメイキング編）',
+    cover: '/images/buy/buy-cover-egaki-create-ch2-en.webp',
+    boothUrl: 'https://booth.pm/ja/',
+    kdpUrl: 'https://www.amazon.com/',
+  },
+  {
+    title: '絵書創ろうよ！ZINE（出版編）',
+    cover: '/images/buy/buy-cover-egaki-create-ch3-en.webp',
+    boothUrl: 'https://booth.pm/ja/',
+    kdpUrl: 'https://www.amazon.com/',
+  },
+];
+
+// ToC（将来セクションが増えたらここに追加）
+const SECTIONS = [
+  { id: 'egaki-sho', label: '絵書' },
+  { id: 'zine', label: 'ZINE' },
+];
+---
+
+<PageLayout metadata={metadata}>
+  <!-- Hero -->
+  <HeroText title="Buy" subtitle="PochomLabの出版物一覧" />
+
+  <section class="bg-neutral-100 dark:bg-slate-950">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
+      <!-- ToC（セクションが増えたら表示） -->
+      {
+        SECTIONS.length >= 2 && (
+          <nav class="mb-8">
+            <div class="text-sm text-slate-600 dark:text-slate-300 mb-2">Jump to</div>
+            <ul class="flex flex-wrap gap-2">
+              {SECTIONS.map((s) => (
+                <li>
+                  <a
+                    href={`#${s.id}`}
+                    class="inline-flex items-center rounded-full border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 px-3 py-1 text-sm text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-900 transition"
+                  >
+                    {s.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )
+      }
+
+      <!-- ===== 絵書 ===== -->
+      <div id="egaki-sho" class="scroll-mt-24">
+        <div class="mb-4 sm:mb-6">
+          <h2 class="text-xl sm:text-2xl font-semibold text-slate-900 dark:text-white">絵書</h2>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
+          {
+            EGAKI_SHO.map((item) => (
+              <article
+                class="group rounded-xl bg-white dark:bg-slate-900 border border-slate-200/70 dark:border-slate-800/70 overflow-hidden
+                     transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg"
+              >
+                <a href={item.kdpUrl} target="_blank" rel="noopener noreferrer" class="block">
+                  <div class="aspect-[3/4] bg-slate-100 dark:bg-slate-800 overflow-hidden">
+                    <img
+                      src={item.cover}
+                      alt={item.title}
+                      loading="lazy"
+                      width="1748"
+                      height="2560"
+                      class="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]"
+                    />
+                  </div>
+                </a>
+
+                <div class="p-3 sm:p-4 flex flex-col min-h-[112px]">
+                  <h3
+                    class="text-sm sm:text-[15px] font-medium text-slate-900 dark:text-white
+                           leading-snug overflow-hidden
+                           line-clamp-2 h-[2.6em]"
+                  >
+                    {item.title}
+                  </h3>
+
+                  <div class="mt-auto pt-3">
+                    <a
+                      href={item.kdpUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex w-full items-center justify-center gap-2 rounded-full px-3 py-2 text-sm font-medium
+                           bg-teal-600 text-white hover:bg-teal-700 transition"
+                      aria-label={`${item.title} をKDPで開く`}
+                    >
+                      Kindleで読む(KDP)
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- ===== ZINE ===== -->
+      <div id="zine" class="scroll-mt-24 mt-12 sm:mt-14">
+        <div class="mb-4 sm:mb-6">
+          <h2 class="text-xl sm:text-2xl font-semibold text-slate-900 dark:text-white">ZINE</h2>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
+          {
+            ZINE.map((item) => (
+              <article
+                class="group rounded-xl bg-white dark:bg-slate-900 border border-slate-200/70 dark:border-slate-800/70 overflow-hidden
+                     transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg"
+              >
+                <div class="aspect-[3/4] bg-slate-100 dark:bg-slate-800 overflow-hidden">
+                  <img
+                    src={item.cover}
+                    alt={item.title}
+                    loading="lazy"
+                    width="1748"
+                    height="2560"
+                    class="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02]"
+                  />
+                </div>
+
+                <div class="p-3 sm:p-4 flex flex-col min-h-[120px]">
+                  <h3
+                    class="text-sm sm:text-[15px] font-medium text-slate-900 dark:text-white
+                           leading-snug overflow-hidden
+                           line-clamp-2 h-[2.6em]"
+                  >
+                    {item.title}
+                  </h3>
+
+                  <div class="mt-auto pt-3 grid grid-cols-1 gap-2">
+                    <a
+                      href={item.boothUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center justify-center gap-2 rounded-full px-3 py-2 text-sm font-medium
+                           bg-indigo-600 text-white hover:bg-indigo-700 transition"
+                      aria-label={`${item.title} をBoothで開く`}
+                    >
+                      Boothで見る
+                    </a>
+
+                    <a
+                      href={item.kdpUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center justify-center gap-2 rounded-full px-3 py-2 text-sm font-medium
+                           bg-teal-600 text-white hover:bg-teal-700 transition"
+                      aria-label={`${item.title} をKDPで開く`}
+                    >
+                      KDPで見る
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>
