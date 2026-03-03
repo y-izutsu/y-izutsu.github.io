@@ -111,8 +111,8 @@ export const footerData = {
     },
   ],
   secondaryLinks: [
-    { text: 'Terms', href: getPermalink('/terms') },
-    { text: 'Privacy Policy', href: getPermalink('/privacy') },
+    { text: '利用規約', href: getPermalink('/terms_ja') },
+    { text: 'プライバシーポリシー', href: getPermalink('/privacy_ja') },
   ],
   socialLinks: [
     { ariaLabel: 'GitHub', icon: 'tabler:brand-github', href: 'https://github.com/pochomlab' },
