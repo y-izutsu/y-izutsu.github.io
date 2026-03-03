@@ -7,7 +7,7 @@ startDate: 2026-08-29
 timezone: "Asia/Tokyo"
 location: "茨城"
 venue: "ブースA-12"
-cover: "/images/events/rectangle_large_type_2_22470b7e9116f2cd82c1d2b2cc284d75.webp"
+#cover: "/images/events/rectangle_large_type_2_22470b7e9116f2cd82c1d2b2cc284d75.webp"
 lineup:
   - "絵書 第1章〜第4章"
   - "絵書創ろうよ！ZINE（創作編/キャラ編/出版編）"
