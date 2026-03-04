@@ -36,12 +36,8 @@ export const headerDataJa = {
       links: [
         {
           text: '絵書作ろうよ！ZINE',
-          href: '/zine/egaki-sho-create@@@top',
-        },
-        {
-          text: '絵書作ろうよ！ZINE ラインナップ ',
-          href: '/zine/egaki-sho-create@@@zine-cards',
-        },        
+          href: '/zine/egaki-sho-create',
+        },     
       ],
     },
     {
