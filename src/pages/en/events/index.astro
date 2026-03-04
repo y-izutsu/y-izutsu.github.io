@@ -5,17 +5,16 @@ import { formatEventDate, isUpcoming, EVENT_TYPE_LABEL } from '~/utils/events';
 
 const all = (await getCollection('events'))
   .filter((e) => !e.data.draft)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+  .sort((a, b) => b.data.startDate.getTime() - a.data.startDate.getTime());
 
 const upcoming = all
-  .filter((e) => isUpcoming(e.data.date, e.data.endDate))
-  .sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+  .filter((e) => isUpcoming(e.data.startDate, e.data.endDate))
+  .sort((a, b) => a.data.startDate.getTime() - b.data.startDate.getTime());
 
 const past = all
-  .filter((e) => !isUpcoming(e.data.date, e.data.endDate))
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+  .filter((e) => !isUpcoming(e.data.startDate, e.data.endDate))
+  .sort((a, b) => b.data.startDate.getTime() - a.data.startDate.getTime());
 
-//const Card = (e) => e; // 型の都合でプレースホルダー（Astroは下でそのまま使う）
 const DEFAULT_EVENT_COVER: Record<string, string> = {
   zine: '/images/events/default-zine.webp',
   online: '/images/events/default-online.webp',
@@ -29,7 +28,9 @@ const DEFAULT_EVENT_COVER: Record<string, string> = {
   <section class="py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <h1 class="text-3xl md:text-4xl font-semibold">🎫 Events</h1>
-      <p class="mt-3 text-neutral-600 dark:text-neutral-300">リリース、頒布、参加イベントの記録。(EN)</p>
+      <p class="mt-3 text-neutral-600 dark:text-neutral-300">
+        A page that brings together records of releases, distributions, and event participation.
+      </p>
 
       {
         upcoming.length ? (
@@ -56,7 +57,7 @@ const DEFAULT_EVENT_COVER: Record<string, string> = {
                         {EVENT_TYPE_LABEL[e.data.type] ?? 'EVENT'}
                       </span>
                       <span class="text-neutral-500 dark:text-neutral-400">
-                        {formatEventDate(e.data.date, e.data.endDate)}
+                        {formatEventDate(e.data.startDate, e.data.endDate)}
                       </span>
                     </div>
 
@@ -144,6 +145,27 @@ const DEFAULT_EVENT_COVER: Record<string, string> = {
           </div>
         ) : null
       }
+    </div>
+  </section>
+
+  <section class="py-16 bg-neutral-50 dark:bg-neutral-950 text-center">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <h2 class="text-2xl sm:text-3xl font-serif font-light">Explore Other Works</h2>
+
+      <p class="mt-4 text-sm sm:text-base text-black/70 dark:text-white/70">
+        View the full list of PochomLab works, including those exhibited at events.
+      </p>
+
+      <div class="mt-8">
+        <a
+          href="/en/buy"
+          class="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold
+        bg-cyan-600 text-white hover:bg-cyan-500
+        dark:bg-cyan-500 dark:hover:bg-cyan-400"
+        >
+          View All Works
+        </a>
+      </div>
     </div>
   </section>
 </PageLayout>
