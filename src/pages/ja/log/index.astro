@@ -6,18 +6,15 @@ const all = await getCollection('log-ja', ({ data }) => !data.draft);
 const logs = all.filter((e) => !e.data.draft).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<PageLayout
-  metadata={{
-    title: 'Log',
-    description: 'PochomLab 作業メモ（パイロット版）',
-  }}
->
+<PageLayout>
   <section class="py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <header class="mb-10">
         <h1 class="text-3xl md:text-4xl font-semibold tracking-tight">📃 Log</h1>
         <p class="mt-4 text-neutral-600 dark:text-neutral-300">
-          いまは作業メモ置き場。正式リリース時に整形する前提のパイロット版。
+          創作と技術の過程を記録していくログです。
+          <br />
+          PochomLabの試行や活動の軌跡を、ここに残しています。
         </p>
       </header>
 
