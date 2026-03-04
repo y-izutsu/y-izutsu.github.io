@@ -12,10 +12,12 @@ const entries = (await getCollection('garden307', ({ data }) => !data.draft)).so
 <PageLayout>
   <section class="py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h1 class="font-serif text-3xl md:text-4xl text-neutral-900 dark:text-neutral-50">🌳 307の庭</h1>
+      <h1 class="font-serif text-3xl md:text-4xl text-neutral-900 dark:text-neutral-50">🌳 Garden 307</h1>
 
       <p class="mt-4 text-neutral-600 dark:text-neutral-300 leading-relaxed">
-        ここは、絵書作者（エショナー）の灯が芽吹く庭。 カードから、それぞれの活動ページへ直接アクセスできます。En
+        A garden where the lights of Egaki-sho creators (E-sho-ners) begin to grow.
+        <br>
+        Each card links directly to the creator’s activity page.
       </p>
 
       {
@@ -37,23 +39,22 @@ const entries = (await getCollection('garden307', ({ data }) => !data.draft)).so
           </div>
         ) : (
           <div class="mt-12 rounded-2xl border border-dashed border-neutral-300 p-10 text-neutral-600 dark:border-neutral-700 dark:text-neutral-300">
-            準備中。カードは順次追加されます。
+            Currently being prepared. Creator cards will be added gradually.
           </div>
         )
       }
 
       <div class="mt-16 text-sm text-neutral-500 dark:text-neutral-400">
         <p>
-          🌱 307の庭に芽を植えたい方は、
+          🌱 If you would like to plant a seed in Garden 307,
+          please check
           <a
             href="/en/about#contact-garden-307"
             class="underline underline-offset-4 decoration-neutral-300 dark:decoration-neutral-600 hover:decoration-neutral-900 dark:hover:decoration-white"
           >
-            掲載希望について
-          </a>
-          をご確認ください。
+            Submission Guidelines
+          </a>.
         </p>
       </div>
-    </div>
   </section>
 </PageLayout>

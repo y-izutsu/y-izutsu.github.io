@@ -1,10 +1,10 @@
 ---
 name: "カード・サンプル"
 name_en: "Card Sample"
+role: "絵書作者"
 description: "ここに、説明文を記載します。"
 comment: "コメントを記載します\n改行することが出来ます。‍\n2～3行程度でお願いします。"
 avatar: "/images/profile/profile-sample-female.webp"
-role: "絵書作者"
 links:
   site: "https://www.google.com/"
   x: "https://x.com/"
