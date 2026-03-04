@@ -11,22 +11,22 @@ const metadata = {
 const EGAKI_SHO = [
   {
     title: 'ポチョム菌の絵書 第1章',
-    cover: '/images/buy/buy-cover-egaki-sho-ch1.webp',
+    cover: '/images/all-works/all-works-cover-egaki-sho-ch1.webp',
     kdpUrl: 'https://www.amazon.co.jp/dp/B0G3Q6C68P/',
   },
   {
     title: 'ポチョム菌の絵書 第2章',
-    cover: '/images/buy/buy-cover-egaki-sho-ch2.webp',
+    cover: '/images/all-works/all-works-cover-egaki-sho-ch2.webp',
     kdpUrl: 'https://www.amazon.co.jp/dp/B0GFZ9WCJY/',
   },
   {
     title: 'ポチョム菌の絵書 第3章',
-    cover: '/images/buy/buy-cover-egaki-sho-ch3.webp',
+    cover: '/images/all-works/all-works-cover-egaki-sho-ch3.webp',
     kdpUrl: 'https://www.amazon.co.jp/dp/B0GMGP1GPV/',
   },
   {
     title: 'ポチョム菌の絵書 第4章',
-    cover: '/images/buy/buy-cover-egaki-sho-ch4.webp',
+    cover: '/images/all-works/all-works-cover-egaki-sho-ch4.webp',
     kdpUrl: 'https://www.amazon.co.jp/dp/B0GQQ22G87/',
   },
 ];
@@ -34,19 +34,19 @@ const EGAKI_SHO = [
 const ZINE = [
   {
     title: '絵書創ろうよ！ZINE（創作編）',
-    cover: '/images/buy/buy-cover-egaki-create-ch1-en.webp',
+    cover: '/images/all-works/all-works-cover-egaki-create-ch1-ja.webp',
     boothUrl: 'https://booth.pm/ja/',
     kdpUrl: 'https://www.amazon.com/',
   },
   {
     title: '絵書創ろうよ！ZINE（キャラクターメイキング編）',
-    cover: '/images/buy/buy-cover-egaki-create-ch2-en.webp',
+    cover: '/images/all-works/all-works-cover-egaki-create-ch2-ja.webp',
     boothUrl: 'https://booth.pm/ja/',
     kdpUrl: 'https://www.amazon.com/',
   },
   {
     title: '絵書創ろうよ！ZINE（出版編）',
-    cover: '/images/buy/buy-cover-egaki-create-ch3-en.webp',
+    cover: '/images/all-works/all-works-cover-egaki-create-ch3-ja.webp',
     boothUrl: 'https://booth.pm/ja/',
     kdpUrl: 'https://www.amazon.com/',
   },
@@ -61,7 +61,7 @@ const SECTIONS = [
 
 <PageLayout metadata={metadata}>
   <!-- Hero -->
-  <HeroText title="Buy" subtitle="PochomLabの出版物一覧" />
+  <HeroText title="作品一覧" subtitle="PochomLabで公開・販売している作品" />
 
   <section class="bg-neutral-100 dark:bg-slate-950">
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
@@ -175,6 +175,17 @@ const SECTIONS = [
 
                   <div class="mt-auto pt-3 grid grid-cols-1 gap-2">
                     <a
+                      href="#"
+                      style="pointer-events:none"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center justify-center gap-2 rounded-full px-3 py-2 text-sm font-medium
+                           bg-indigo-600 text-white hover:bg-indigo-700 transition"
+                      aria-label={`${item.title} をBoothで開く`}
+                    >
+                      Boothで見る(準備中)
+                    </a>
+                    {/* <a
                       href={item.boothUrl}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -183,9 +194,19 @@ const SECTIONS = [
                       aria-label={`${item.title} をBoothで開く`}
                     >
                       Boothで見る
-                    </a>
-
+                    </a> */}
                     <a
+                      href="#"
+                      style="pointer-events:none"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center justify-center gap-2 rounded-full px-3 py-2 text-sm font-medium
+                           bg-teal-600 text-white hover:bg-teal-700 transition"
+                      aria-label={`${item.title} をKDPで開く`}
+                    >
+                      KDPで見る(準備中)
+                    </a>
+                    {/* <a
                       href={item.kdpUrl}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -194,7 +215,7 @@ const SECTIONS = [
                       aria-label={`${item.title} をKDPで開く`}
                     >
                       KDPで見る
-                    </a>
+                    </a> */}
                   </div>
                 </div>
               </article>
@@ -205,3 +226,29 @@ const SECTIONS = [
     </div>
   </section>
 </PageLayout>
+
+<!-- 外部リンクアイコン（主張しすぎないサイズ） -->
+<!-- eslint-disable-next-line astro/no-conflict-set-directives -->
+<script is:inline> // 何もしない（将来のための置き場。不要なら消してOK） </script>
+
+<!-- Astroコンポーネント内SVG -->
+<!-- NOTE: ここはJSX的に呼べるようにコンポーネント風に書いています -->
+<!-- Astroはこの形でOK -->
+<!-- prettier-ignore -->
+{
+  function ExternalIcon() {
+    return (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="opacity-80" aria-hidden="true">
+        <path d="M14 5h5v5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M10 14L19 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path
+          d="M19 14v5a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h5"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    );
+  }
+}

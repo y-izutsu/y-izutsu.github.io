@@ -93,7 +93,7 @@ export const footerData = {
     {
       title: 'Works',
       links: [
-        { text: 'All Works', href: '/en/buy' },             
+        { text: 'All Works', href: '/en/all-works' },             
         { text: 'Egaki-sho', href: '/en/egaki-sho' },
         { text: 'Let’s Create Egaki-sho! ZINE', href: '/en/zine/egaki-sho-create' },
       ],
@@ -101,8 +101,8 @@ export const footerData = {
     {
       title: 'Lab',
       links: [
-        { text: 'About This Site', href: '/about' },
-        { text: 'Contact', href: '/contact' },
+        { text: 'About This Site', href: '/en/about#about-site' },
+        { text: 'Contact', href: '/en/about#contact' },
       ],
     },
   ],
