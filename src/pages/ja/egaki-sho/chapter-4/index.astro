@@ -15,19 +15,11 @@ import CallToAction from '~/components/widgets/CallToAction_EgakiSho.astro';
 
 <!-- 1. Hero（章の顔） -->
 <Hero
-  title="第4章｜たましいの&ensp;メタバース"
->
-  <Fragment slot="subtitle">
-    <p class="mt-6 text-sm tracking-wide opacity-60">
-      たましいが うまれなおす 場所。
-    </p>
-  </Fragment>
-  <Fragment slot="content">
-    <p class="mt-6 text-sm tracking-wide opacity-60">
-      こころの旅が、あらたにひらく。
-    </p>
-  </Fragment>
-</Hero>
+  chapter="第4章"
+  title="たましいの&ensp;メタバース"
+  subtitle="たましいが うまれなおす 場所。"
+  content="こころの旅が、あらたにひらく。"
+/>
 
 <!-- 2.この章で出会うもの：登場キャラ/舞台/テーマ（カード3つ） -->
 <CardText
@@ -52,6 +44,7 @@ import CallToAction from '~/components/widgets/CallToAction_EgakiSho.astro';
 <!-- 3. 灯の目次（第1章） -->
 <ToC
   title="灯の目次"
+  labelWidth="w-12"  
   items={[
     { label: "25灯", description: "はじまりのこえ" },
     { label: "26灯", description: "であいのしずく" },
@@ -89,15 +82,21 @@ import CallToAction from '~/components/widgets/CallToAction_EgakiSho.astro';
 <!-- 4. 読む / 買う（CTA） -->
 <CallToAction
   title="読む／買う"
-  chapter="第4章"
-  chapterNumber="25〜35灯"
   button=
   {{ 
     text: "Kindleで読む（KDP）", 
     href: "https://www.amazon.co.jp/dp/B0GQQ22G87/"
   }}
-  annotation="※ リンク先はAmazon（Kindle）です。"
-/>
+>
+  <Fragment slot="content">
+    第4章（25〜35灯）を、1冊として読む。
+    <br>
+    余白とページの呼吸まで含めて完成する絵書です。
+  </Fragment>
+  <Fragment slot="annotation">
+    ※ リンク先はAmazon（Kindle）です。
+  </Fragment>
+</CallToAction>
 
 <!-- 5. 次の章へ：次章カード -->
  <!--

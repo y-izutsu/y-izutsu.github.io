@@ -1,7 +1,7 @@
 ---
 import Layout from '~/layouts/LandingLayout_EgakiSho_En.astro';
 const metadata = {
-  title: 'ポチョム菌の絵書｜灯の物語｜PochomLab',
+  title: 'Egaki-sho of the Pochomkin — A Story of Lights | PochomLab',
 };
 import Hero from '~/components/widgets/HeroText_PochomLab.astro';
 import CardText from '~/components/widgets/CardText_PochomLab.astro';
@@ -15,31 +15,27 @@ import CardLink from '~/components/widgets/CardLink_PochomLab.astro';
 
 <!-- 1. Hero（章の顔） -->
 <Hero
-  title="第1章｜いのちの&ensp;はじまり"
-  subtitle="それは、まだ名前のない光だった。"
->
-  <Fragment slot="content">
-    <p class="mt-6 text-sm tracking-wide opacity-60">
-      小さな気づきが、世界を揺らしはじめる。
-    </p>
-  </Fragment>
-</Hero>
+  chapter="Chapter 1"
+  title="The Beginning of Life"
+  subtitle="It was a light that had not yet been named."
+  content="A small awakening begins to move the world."
+/>
 
 <!-- 2.この章で出会うもの：登場キャラ/舞台/テーマ（カード3つ） -->
 <CardText
-  title="この章で出会うもの"
+  title="What you will encounter in this chapter"
   items={[
     {
-      title: '🐣ピーチョム',
-      description: 'まだ何者でもない、小さな灯。',
+      title: '🐣 Pichom',
+      description: 'A small light, not yet anyone.',
     },
     {
-      title: '🌳はじまりの森',
-      description: '層を持つ世界の入口。静かな呼吸。',
+      title: '🌳 Forest of Beginnings',
+      description: 'The entrance to a layered world. A quiet breath.',
     },
     {
-      title: '✨気づき',
-      description: '最初のDing。魂が震える瞬間。',
+      title: '✨ Awakening',
+      description: 'The first Ding. The moment the soul trembles.',
     },
   ]}
 />
@@ -47,32 +43,33 @@ import CardLink from '~/components/widgets/CardLink_PochomLab.astro';
 
 <!-- 3. 灯の目次（第1章） -->
 <ToC
-  title="灯の目次"
+  title="Lights of Chapter 1"
+  labelWidth="w-24"
   items={[
-    { label: "01灯", description: "うまれたひかり" },
-    { label: "02灯", description: "そのひかりなあに" },
-    { label: "03灯", description: "はじめてのみち" },
-    { label: "04灯", description: "ちいさなこえ" },
-    { label: "05灯", description: "さがしてみたい" },
-    { label: "06灯", description: "ひかりのかけら" },
-    { label: "07灯", description: "こわくてすすめない" },
-    { label: "08灯", description: "ひかりのなえどこ" },
+    { label: "Light 01", description: "うまれたひかり" },
+    { label: "Light 02", description: "そのひかりなあに" },
+    { label: "Light 03", description: "はじめてのみち" },
+    { label: "Light 04", description: "ちいさなこえ" },
+    { label: "Light 05", description: "さがしてみたい" },
+    { label: "Light 06", description: "ひかりのかけら" },
+    { label: "Light 07", description: "こわくてすすめない" },
+    { label: "Light 08", description: "ひかりのなえどこ" },
   ]}
 /> 
 
 <ImagePreview
-  title="試し読み"
+  title="Preview"
   items=
   {[
     {
       src: "/images/egaki-sho-ch1-preview1.webp",
-      alt: "第1章 試し読み（左ページ）",
+      alt: "Chapter 1 preview — left page.",
       width: 1748,
       height: 2480,
     },
     {
       src: "/images/egaki-sho-ch1-preview2.webp",
-      alt: "第1章 試し読み（右ページ）",
+      alt: "Chapter 1 preview — right page.",
       width: 1748,
       height: 2480,
     },
@@ -81,25 +78,35 @@ import CardLink from '~/components/widgets/CardLink_PochomLab.astro';
 
 <!-- 4. 読む / 買う（CTA） -->
 <CallToAction
-  title="読む／買う"
-  chapter="第1章"
-  chapterNumber="全8灯"
-  button=
-  {{ 
-    text: "Kindleで読む（KDP）", 
+  title="Read / Buy"
+  button={{
+    text: "Read on Kindle (KDP)",
     href: "https://www.amazon.co.jp/dp/B0G3Q6C68P/"
   }}
-  annotation="※ リンク先はAmazon（Kindle）です。"
-/>
+>
+  <Fragment slot="content">
+    Read Chapter 1 (8 Lights) as one complete volume.
+    <br>
+    Egaki-sho comes to life through the rhythm of space and the breathing of its pages.
+  </Fragment>
+  <Fragment slot="annotation">
+    <i>
+      This link leads to the Japanese Kindle edition on Amazon.
+      <br>
+      English edition coming soon.
+    </i>
+  </Fragment>
+ 
+</CallToAction>
 
 <!-- 5. 次の章へ：次章カード -->
 <CardLink
-  title="次の章へ"
-  chapter="第2章"
-  chapterTitle="やさしさの&ensp;たね"
-  chapterDescription="こわさの奥で、やさしさが芽吹く。"
+  title="Next Chapter"
+  chapter="Chapter 2"
+  chapterTitle="Seeds of Kindness"
+  chapterDescription="Beyond fear, kindness begins to grow."
   button={{ 
-    text: "第2章を見る", 
+    text: "View Chapter 2", 
     href: "/en/egaki-sho/chapter-2"
   }}
 />
