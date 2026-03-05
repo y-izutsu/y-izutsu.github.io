@@ -36,12 +36,8 @@ export const headerDataJa = {
       links: [
         {
           text: '絵書作ろうよ！ZINE',
-          href: '/zine/egaki-sho-create@@@top',
-        },
-        {
-          text: '絵書作ろうよ！ZINE ラインナップ ',
-          href: '/zine/egaki-sho-create@@@zine-cards',
-        },        
+          href: '/zine/egaki-sho-create',
+        },     
       ],
     },
     {
@@ -97,7 +93,7 @@ export const footerData = {
     {
       title: '作品',
       links: [
-        { text: '作品一覧', href: '/ja/buy' },        
+        { text: '作品一覧', href: '/ja/all-works' },        
         { text: '絵書', href: '/ja/egaki-sho' },
         { text: '絵書創ろうよ！ZINE', href: '/ja/zine/egaki-sho-create' },
       ],
@@ -105,7 +101,7 @@ export const footerData = {
     {
       title: 'Lab',
       links: [
-        { text: 'このサイトについて', href: '/ja/about' },
+        { text: 'このサイトについて', href: '/ja/about#about-site' },
         { text: 'お問い合わせ', href: '/ja/about#contact' },
       ],
     },

@@ -1,24 +1,42 @@
 ---
 import { ANALYTICS } from 'astrowind:config';
 
+export interface Props {
+  locale?: 'ja' | 'en';
+}
+
+const { locale = 'ja' } = Astro.props;
+
 const id = ANALYTICS?.vendors?.googleAnalytics?.id
   ? String(ANALYTICS.vendors.googleAnalytics.id)
   : null;
 
 const isProd = import.meta.env.PROD;
+
+const t = {
+  ja: {
+    message:
+      'このサイトではアクセス解析（Google Analytics）を利用します。Cookie等を用いて利用状況を計測します。',
+    reject: '拒否',
+    accept: '同意',
+  },
+  en: {
+    message:
+      'We use analytics (Google Analytics) to measure site usage using cookies and similar technologies.',
+    reject: 'Reject',
+    accept: 'Accept',
+  },
+} as const;
+
+const copy = locale === 'en' ? t.en : t.ja;
 ---
 
 {isProd && id ? (
-  <div
-    id="consent-banner"
-    class="fixed bottom-0 left-0 right-0 z-50 hidden"
-  >
-    <div
-      class="mx-auto max-w-5xl m-3 rounded-xl border border-white/15 bg-black/55 backdrop-blur-md text-white"
-    >
+  <div id="consent-banner" class="fixed bottom-0 left-0 right-0 z-50 hidden">
+    <div class="mx-auto max-w-5xl m-3 rounded-xl border border-white/15 bg-black/55 backdrop-blur-md text-white">
       <div class="flex flex-col md:flex-row md:items-center gap-3 p-4">
         <p class="text-sm text-white/90 leading-relaxed">
-          このサイトではアクセス解析（Google Analytics）を利用します。Cookie等を用いて利用状況を計測します。
+          {copy.message}
         </p>
 
         <div class="flex gap-2 md:ml-auto">
@@ -27,14 +45,14 @@ const isProd = import.meta.env.PROD;
             class="px-3 py-2 rounded-lg bg-white/10 hover:bg-white/15 text-sm"
             type="button"
           >
-            拒否
+            {copy.reject}
           </button>
           <button
             id="consent-accept"
             class="px-3 py-2 rounded-lg bg-white text-black hover:bg-white/90 text-sm font-semibold"
             type="button"
           >
-            同意
+            {copy.accept}
           </button>
         </div>
       </div>
@@ -55,36 +73,37 @@ const isProd = import.meta.env.PROD;
         try {
           const saved = localStorage.getItem(KEY);
           if (saved === "granted" || saved === "denied") return;
-        } catch  {
-            // ignore
+        } catch {
+          // ignore
         }
 
         show();
 
         accept.addEventListener("click", function () {
-          try { localStorage.setItem(KEY, "granted"); } catch  {
-            // ignore
-          }
+          try { localStorage.setItem(KEY, "granted"); } catch { /* empty */ }
 
           if (typeof window.gtag === "function") {
             window.gtag("consent", "update", { analytics_storage: "granted" });
-            window.gtag("config", GA_ID, { 
+            window.gtag("config", GA_ID, {
               send_page_view: false,
-              page_path: window.location.pathname, 
+              page_path: window.location.pathname,
             });
-            // 上のconfigで送れないケースもあるかもしれないので、念のためイベントも送る
             window.gtag("event", "page_view", {
-                page_location: window.location.href,
-                page_title: document.title,
+              page_location: window.location.href,
+              page_title: document.title,
             });
           }
+
           hide();
         });
 
         reject.addEventListener("click", function () {
-          try { localStorage.setItem(KEY, "denied"); } catch {
-            // ignore
+          try { localStorage.setItem(KEY, "denied"); } catch { /* empty */ }
+
+          if (typeof window.gtag === "function") {
+            window.gtag("consent", "update", { analytics_storage: "denied" });
           }
+
           hide();
         });
       })();

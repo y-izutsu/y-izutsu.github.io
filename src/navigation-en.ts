@@ -6,27 +6,27 @@ export const headerDataEn = {
       text: 'Egaki-sho',
       links: [
         {
-          text: '0. 序：絵書の鼓動',
+          text: '0. Prologue — The Pulse of Egaki-sho',
           href: '/egaki-sho@@@top',
         },
         {
-          text: '1. 絵書とは',
+          text: '1. What is Egaki-sho?',
           href: '/egaki-sho@@@concept',
         },
         {
-          text: '2. 深淵：世界と構造',
+          text: '2. Abyss — World & Structure',
           href: '/egaki-sho@@@abyss'
         },
         {
-          text: '3. 軌跡：記録と伴走',
+          text: '3. Traces — Records & Companionship',
           href: '/egaki-sho@@@record',
         },
         {
-          text: '4. 旅路：本編',
+          text: '4. Journey — The Main Story',
           href: '/egaki-sho@@@chapters',
         },
         {
-          text: '5. 結：招待とCTA',
+          text: '5. Epilogue — Invitation',
           href: '/egaki-sho@@@invitation',
         },
       ],
@@ -35,21 +35,9 @@ export const headerDataEn = {
       text: 'ZINE',
       links: [
         {
-          text: '絵書作ろうよ！',
-          href: '/zine/egaki-sho-create@@@top',
-        },
-        {
-          text: '絵書作ろうよ！ZINEラインナップ ',
-          href: '/zine/egaki-sho-create@@@zine-cards',
-        },        
-        {
-          text: 'another-series',
-          href: '/zine/another-series@@@top',
-        },
-        {
-          text: 'another-series - chapter1',
-          href: '/zine/another-series@@@chapter-list',
-        },  
+          text: 'Let’s Create Egaki-sho! ZINE',
+          href: '/zine/egaki-sho-create',
+        }      
       ],
     },
     {
@@ -65,18 +53,18 @@ export const headerDataEn = {
       href: '/log',
     },
     {
-      text: 'About',
+      text: 'Introduction',
       links: [
         {
-          text: 'このサイトについて',
+          text: 'About This Site',
           href: '/about@@@about-site',
         },
         {
-          text: '自己紹介',
+          text: 'Profile',
           href: '/about@@@profile',
         },        
         {
-          text: 'お問い合わせ',
+          text: 'Contact',
           href: '/about@@@contact',
         }, 
       ],
@@ -88,32 +76,33 @@ export const headerDataEn = {
 export const footerData = {
   links: [
     {
-      title: '活動基盤',
+      title: 'Foundation of Activities',
       links: [
         { text: 'GitHub', href: 'https://github.com/pochomlab' },
         { text: 'J-PlatPat', href: 'https://www.j-platpat.inpit.go.jp/' },
-        { text: '文化庁', href: 'https://www.bunka.go.jp/' },
+        { text: 'Agency for Cultural Affairs (Japan)', href: 'https://www.bunka.go.jp/' },
       ],
     },
     {
-      title: '頒布',
+      title: 'Distribution',
       links: [
         { text: 'Booth', href: 'https://pochomlab.booth.pm/' },
         { text: 'Kindle (KDP)', href: 'https://www.amazon.co.jp/' },
       ],
     },
     {
-      title: '作品',
+      title: 'Works',
       links: [
-        { text: '絵書', href: '/egaki-sho' },
-        { text: '絵書創ろうよ！ZINE', href: '/zine' },
+        { text: 'All Works', href: '/en/all-works' },             
+        { text: 'Egaki-sho', href: '/en/egaki-sho' },
+        { text: 'Let’s Create Egaki-sho! ZINE', href: '/en/zine/egaki-sho-create' },
       ],
     },
     {
       title: 'Lab',
       links: [
-        { text: 'About', href: '/about' },
-        { text: 'Contact', href: '/contact' },
+        { text: 'About This Site', href: '/en/about#about-site' },
+        { text: 'Contact', href: '/en/about#contact' },
       ],
     },
   ],
@@ -126,6 +115,6 @@ export const footerData = {
     { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
   ],
   footNote: `
-    © ${new Date().getFullYear()} PochomLab · たましいの灯。
+    © ${new Date().getFullYear()} PochomLab · Lights of the Soul
   `,
 };

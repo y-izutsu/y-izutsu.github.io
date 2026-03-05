@@ -1,0 +1,11 @@
+---
+import Note from '~/components/widgets/Note.astro';
+
+const ANNOUNCE = {
+  enabled: false,
+  title: 'Announcement',
+  description: '🏆 Guinness World Records application has been approved',
+};
+---
+
+{ANNOUNCE.enabled && <Note title={ANNOUNCE.title} description={ANNOUNCE.description} />}

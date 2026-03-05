@@ -1,8 +1,10 @@
 ---
 import Layout from '~/layouts/LandingLayout_EgakiSho_En.astro';
+
 const metadata = {
-  title: 'ポチョム菌の絵書｜灯の物語｜PochomLab',
+  title: 'Egaki-sho of the Pochomkin — A Story of Lights | PochomLab',
 };
+
 import Hero from '~/components/widgets/HeroText_PochomLab.astro';
 import CardText from '~/components/widgets/CardText_PochomLab.astro';
 import ToC from '~/components/widgets/ToC_PochomLab.astro';
@@ -12,100 +14,98 @@ import CardLink from '~/components/widgets/CardLink_PochomLab.astro';
 ---
 
 <Layout metadata={metadata}>
+  <!-- 1. Hero -->
+  <Hero
+    chapter="Chapter 2"
+    title="Seeds of Kindness"
+    subtitle="A small seed that fell into the heart."
+    content="Invisible feelings begin to reach for someone."
+  />
 
-<!-- 1. Hero（章の顔） -->
-<Hero
-  title="第2章｜やさしさの&ensp;たね"
->
-  <Fragment slot="subtitle">
-    <p class="mt-6 text-sm tracking-wide opacity-60">
-      こころに落ちた、小さな種。
-    </p>
-  </Fragment>
-  <Fragment slot="content">
-    <p class="mt-6 text-sm tracking-wide opacity-60">
-      見えない気持ちが、誰かへ伸びはじめる。
-    </p>
-  </Fragment>
-</Hero>
+  <!-- 2. What you will encounter in this chapter -->
+  <CardText
+    title="What you will encounter in this chapter"
+    items={[
+      {
+        title: '🌙 Fear',
+        description: 'A light of unease, not yet formed into words.',
+      },
+      {
+        title: '🤝 A Friend',
+        description: 'Someone who stands beside you. The moment distance closes.',
+      },
+      {
+        title: '🌱 Kindness',
+        description: 'A seed that touched the heart. A quiet strength that begins to grow.',
+      },
+    ]}
+  />
 
-<!-- 2.この章で出会うもの：登場キャラ/舞台/テーマ（カード3つ） -->
-<CardText
-  title="この章で出会うもの"
-  items={[
-    {
-      title: '🌙こわさ',
-      description: 'まだ言葉にならない、不安の灯。',
-    },
-    {
-      title: '🤝ともだち',
-      description: '隣に立つ存在。距離が縮まる瞬間。',
-    },
-    {
-      title: '🌱やさしさ',
-      description: '心に触れた種。静かに芽吹く力。',
-    },
-  ]}
-/>
+  <!-- 3. Lights (keep titles in Japanese for now) -->
+  <ToC
+    title="Lights of Chapter 2"
+    labelWidth="w-12"     
+    items={[
+      { label: 'Light 09', description: 'まだよるがこわい' },
+      { label: 'Light 10', description: 'ともだちっているのかな' },
+      { label: 'Light 11', description: 'だいじょうぶのひかり' },
+      { label: 'Light 12', description: 'やさしくできたよ' },
+      { label: 'Light 13', description: 'おこってるの' },
+      { label: 'Light 14', description: 'にげこんだ もり' },
+      { label: 'Light 15', description: 'さわれないきもち' },
+      { label: 'Light 16', description: 'いかだにのって' },
+    ]}
+  />
 
+  <ImagePreview
+    title="Preview"
+    items={[
+      {
+        src: '/images/egaki-sho-ch2-preview1.webp',
+        alt: 'Chapter 2 preview — left page',
+        width: 1748,
+        height: 2480,
+      },
+      {
+        src: '/images/egaki-sho-ch2-preview2.webp',
+        alt: 'Chapter 2 preview — right page',
+        width: 1748,
+        height: 2480,
+      },
+    ]}
+  />
 
-<!-- 3. 灯の目次（第1章） -->
-<ToC
-  title="灯の目次"
-  items={[
-    { label: "09灯", description: "まだよるがこわい" },
-    { label: "10灯", description: "ともだちっているのかな" },
-    { label: "11灯", description: "だいじょうぶのひかり" },
-    { label: "12灯", description: "やさしくできたよ" },
-    { label: "13灯", description: "おこってるの" },
-    { label: "14灯", description: "にげこんだ もり" },
-    { label: "15灯", description: "さわれないきもち" },
-    { label: "16灯", description: "いかだにのって" },
-  ]}
-/> 
+  <!-- 4. Read / Buy (CTA) -->
+  <CallToAction
+    title="Read / Buy"
+    button={{
+      text: 'Read on Kindle (KDP)',
+      href: 'https://www.amazon.co.jp/dp/B0GFZ9WCJY/',
+    }}
+  >
+    <Fragment slot="content">
+      Read Chapter 2 (Lights 09–16) as one complete volume.
+      <br />
+      Egaki-sho comes to life through the rhythm of space and the breathing of its pages.
+    </Fragment>
+    <Fragment slot="annotation">
+      <i>
+        This link leads to the Japanese Kindle edition on Amazon.
+        <br />
+        English edition coming soon.
+      </i>
+    </Fragment>
+  </CallToAction>
 
-<ImagePreview
-  title="試し読み"
-  items=
-  {[
-    {
-      src: "/images/egaki-sho-ch2-preview1.webp",
-      alt: "第2章 試し読み（左ページ）",
-      width: 1748,
-      height: 2480,
-    },
-    {
-      src: "/images/egaki-sho-ch2-preview2.webp",
-      alt: "第2章 試し読み（右ページ）",
-      width: 1748,
-      height: 2480,
-    },
-  ]}
-/>
-
-<!-- 4. 読む / 買う（CTA） -->
-<CallToAction
-  title="読む／買う"
-  chapter="第2章"
-  chapterNumber="9〜16灯"
-  button=
-  {{ 
-    text: "Kindleで読む（KDP）", 
-    href: "https://www.amazon.co.jp/dp/B0GFZ9WCJY/"
-  }}
-  annotation="※ リンク先はAmazon（Kindle）です。"
-/>
-
-<!-- 5. 次の章へ：次章カード -->
-<CardLink
-  title="次の章へ"
-  chapter="第3章"
-  chapterTitle="まよいの&ensp;たびじ"
-  chapterDescription="やさしさは、やがて一歩になる。"
-  button={{ 
-    text: "第3章を見る", 
-    href: "/en/egaki-sho/chapter-3"
-  }}
-/>
-
+  <!-- 5. Next chapter -->
+  <CardLink
+    title="Next Chapter"
+    chapter="Chapter 3"
+    chapterTitle="A Wandering Journey"
+    chapterDescription="Kindness eventually becomes a step forward."
+    button={{
+      text: 'View Chapter 3',
+      href: '/en/egaki-sho/chapter-3',
+    }}
+  />
 </Layout>

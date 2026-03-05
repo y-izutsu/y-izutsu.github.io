@@ -1,23 +1,20 @@
 ---
-import PageLayout from '~/layouts/PageLayout_PochomLab_Ja.astro'; // 使ってるレイアウトに合わせて変更OK
+import PageLayout from '~/layouts/PageLayout_PochomLab_En.astro'; // 使ってるレイアウトに合わせて変更OK
 import { getCollection } from 'astro:content';
 
-const all = await getCollection('log-ja', ({ data }) => !data.draft);
+const all = await getCollection('log-en', ({ data }) => !data.draft);
 const logs = all.filter((e) => !e.data.draft).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<PageLayout
-  metadata={{
-    title: 'Log',
-    description: 'PochomLab 作業メモ（パイロット版EN）',
-  }}
->
+<PageLayout>
   <section class="py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <header class="mb-10">
         <h1 class="text-3xl md:text-4xl font-semibold tracking-tight">📃 Log</h1>
         <p class="mt-4 text-neutral-600 dark:text-neutral-300">
-          いまは作業メモ置き場。正式リリース時に整形する前提のパイロット版。
+          A log documenting the process of creation and technology.
+          <br />
+          The experiments and activities of PochomLab are recorded here as part of its ongoing journey.
         </p>
       </header>
 

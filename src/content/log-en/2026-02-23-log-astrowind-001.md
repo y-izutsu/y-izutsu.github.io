@@ -1,25 +1,24 @@
 ---
-title: "EN AstroWind初期設定実験（pochomlab-astrowind-lab）"
+title: "🚀 AstroWind [1] Initial Setup"
 date: 2026-02-23
 tags: ["Astro", "AstroWind", "PochomLab", "Log"]
-summary: "AstroWindをPochomLab用に最小構成で初期化し、GitHub Pages公開まで確認。"
+summary: "Initialized AstroWind with a minimal configuration for PochomLab and verified deployment on GitHub Pages."
 draft: false
 ---
 
-## 目的
-
-AstroWindをPochomLab用の実験環境として初期化し、
-GitHub Pagesで公開確認まで行う。
+## ■ Purpose
+Initialize AstroWind as an experimental environment for PochomLab  
+and confirm that it can be deployed and displayed on GitHub Pages.
 
 ---
 
-## 実施内容
+## ■ Actions Taken
 
-- 空リポジトリにAstroWindテンプレートをコミット
-- config.yaml をPochomLab仕様に最小変更
-- deploy.yml を追加
-- Pages → Source を GitHub Actions に設定
-- GitHub Pages表示確認
+- Committed the AstroWind template to an empty repository
+- Applied minimal changes to `config.yaml` for the PochomLab configuration
+- Added `deploy.yml`
+- Set **Pages → Source** to **GitHub Actions**
+- Verified that the site is displayed on GitHub Pages
 
 ---
 

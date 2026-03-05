@@ -87,6 +87,6 @@ const isEvent = Astro.url.pathname.includes('/events/');
     <slot />
 
     <BasicScripts />
-    <ConsentBanner />
+    <ConsentBanner locale={language} />
   </body>
 </html>
