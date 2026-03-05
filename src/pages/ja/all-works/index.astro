@@ -1,54 +1,66 @@
 ---
 import PageLayout from '~/layouts/PageLayout_PochomLab_Ja.astro';
 import HeroText from '~/components/widgets/HeroText_PochomLab.astro';
+import StoreButton from '~/components/ui/StoreButton.astro';
 
 const metadata = {
-  title: 'Buy',
+  title: '作品一覧',
   description: 'PochomLabの出版物一覧',
 };
 
 // ====== 商品データ（ここを増やしていく） ======
 const EGAKI_SHO = [
   {
+    store: 'kdp',
     title: 'ポチョム菌の絵書 第1章',
     cover: '/images/all-works/all-works-cover-egaki-sho-ch1.webp',
-    kdpUrl: 'https://www.amazon.co.jp/dp/B0G3Q6C68P/',
+    url: 'https://www.amazon.co.jp/dp/B0G3Q6C68P/',
+    disable: false,
   },
   {
+    store: 'kdp',
     title: 'ポチョム菌の絵書 第2章',
     cover: '/images/all-works/all-works-cover-egaki-sho-ch2.webp',
-    kdpUrl: 'https://www.amazon.co.jp/dp/B0GFZ9WCJY/',
+    url: 'https://www.amazon.co.jp/dp/B0GFZ9WCJY/',
+    disable: false,
   },
   {
+    store: 'kdp',
     title: 'ポチョム菌の絵書 第3章',
     cover: '/images/all-works/all-works-cover-egaki-sho-ch3.webp',
-    kdpUrl: 'https://www.amazon.co.jp/dp/B0GMGP1GPV/',
+    url: 'https://www.amazon.co.jp/dp/B0GMGP1GPV/',
+    disable: false,
   },
   {
+    store: 'kdp',
     title: 'ポチョム菌の絵書 第4章',
     cover: '/images/all-works/all-works-cover-egaki-sho-ch4.webp',
-    kdpUrl: 'https://www.amazon.co.jp/dp/B0GQQ22G87/',
+    url: 'https://www.amazon.co.jp/dp/B0GQQ22G87/',
+    disable: false,
   },
 ];
 
 const ZINE = [
   {
+    store: 'booth',
     title: '絵書創ろうよ！ZINE（創作編）',
     cover: '/images/all-works/all-works-cover-egaki-create-ch1-ja.webp',
-    boothUrl: 'https://booth.pm/ja/',
-    kdpUrl: 'https://www.amazon.com/',
+    url: 'https://booth.pm/ja/',
+    disable: false,
   },
   {
+    store: 'booth',
     title: '絵書創ろうよ！ZINE（キャラクターメイキング編）',
     cover: '/images/all-works/all-works-cover-egaki-create-ch2-ja.webp',
-    boothUrl: 'https://booth.pm/ja/',
-    kdpUrl: 'https://www.amazon.com/',
+    url: 'https://booth.pm/ja/',
+    disable: false,
   },
   {
+    store: 'booth',
     title: '絵書創ろうよ！ZINE（出版編）',
     cover: '/images/all-works/all-works-cover-egaki-create-ch3-ja.webp',
-    boothUrl: 'https://booth.pm/ja/',
-    kdpUrl: 'https://www.amazon.com/',
+    url: 'https://booth.pm/ja/',
+    disable: false,
   },
 ];
 
@@ -99,7 +111,7 @@ const SECTIONS = [
                 class="group rounded-xl bg-white dark:bg-slate-900 border border-slate-200/70 dark:border-slate-800/70 overflow-hidden
                      transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg"
               >
-                <a href={item.kdpUrl} target="_blank" rel="noopener noreferrer" class="block">
+                <a href={item.url} target="_blank" rel="noopener noreferrer" class="block">
                   <div class="aspect-[3/4] bg-slate-100 dark:bg-slate-800 overflow-hidden">
                     <img
                       src={item.cover}
@@ -122,22 +134,27 @@ const SECTIONS = [
                   </h3>
 
                   <div class="mt-auto pt-3">
-                    <a
-                      href={item.kdpUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="inline-flex w-full items-center justify-center gap-2 rounded-full px-3 py-2 text-sm font-medium
-                           bg-teal-600 text-white hover:bg-teal-700 transition"
-                      aria-label={`${item.title} をKDPで開く`}
-                    >
-                      Kindleで読む(KDP)
-                    </a>
+                    <StoreButton
+                      store={item.store}
+                      url={item.url}
+                      aria={`${item.title}をKDPで開く`}
+                      label="Kindleで読む (KDP)"
+                      fullWidth={true}
+                      disabled={item.disable}
+                    />
                   </div>
                 </div>
               </article>
             ))
           }
         </div>
+        <!-- <div class="mt-4 sm:mt-6 text-center">
+          <p>
+            This link leads to the Japanese Kindle edition on Amazon.
+            <br />
+            English edition coming soon.
+          </p>
+        </div> -->
       </div>
 
       <!-- ===== ZINE ===== -->
@@ -173,82 +190,27 @@ const SECTIONS = [
                     {item.title}
                   </h3>
 
-                  <div class="mt-auto pt-3 grid grid-cols-1 gap-2">
-                    <a
-                      href="#"
-                      style="pointer-events:none"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="inline-flex items-center justify-center gap-2 rounded-full px-3 py-2 text-sm font-medium
-                           bg-indigo-600 text-white hover:bg-indigo-700 transition"
-                      aria-label={`${item.title} をBoothで開く`}
-                    >
-                      Boothで見る(準備中)
-                    </a>
-                    {/* <a
-                      href={item.boothUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="inline-flex items-center justify-center gap-2 rounded-full px-3 py-2 text-sm font-medium
-                           bg-indigo-600 text-white hover:bg-indigo-700 transition"
-                      aria-label={`${item.title} をBoothで開く`}
-                    >
-                      Boothで見る
-                    </a> */}
-                    <a
-                      href="#"
-                      style="pointer-events:none"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="inline-flex items-center justify-center gap-2 rounded-full px-3 py-2 text-sm font-medium
-                           bg-teal-600 text-white hover:bg-teal-700 transition"
-                      aria-label={`${item.title} をKDPで開く`}
-                    >
-                      KDPで見る(準備中)
-                    </a>
-                    {/* <a
-                      href={item.kdpUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="inline-flex items-center justify-center gap-2 rounded-full px-3 py-2 text-sm font-medium
-                           bg-teal-600 text-white hover:bg-teal-700 transition"
-                      aria-label={`${item.title} をKDPで開く`}
-                    >
-                      KDPで見る
-                    </a> */}
+                  <div class="mt-auto pt-3">
+                    <StoreButton
+                      store={item.store}
+                      url={item.url}
+                      aria={`${item.title}をBoothで開く`}
+                      label="Boothで見る(準備中)"
+                      fullWidth={true}
+                      disabled={item.disable}
+                    />
                   </div>
                 </div>
               </article>
             ))
           }
         </div>
+        <div class="mt-4 sm:mt-6 text-center">
+          <p>
+            英語版はAmazon Kindleで入手可能です。
+          </p>
+        </div>
       </div>
     </div>
   </section>
 </PageLayout>
-
-<!-- 外部リンクアイコン（主張しすぎないサイズ） -->
-<!-- eslint-disable-next-line astro/no-conflict-set-directives -->
-<script is:inline> // 何もしない（将来のための置き場。不要なら消してOK） </script>
-
-<!-- Astroコンポーネント内SVG -->
-<!-- NOTE: ここはJSX的に呼べるようにコンポーネント風に書いています -->
-<!-- Astroはこの形でOK -->
-<!-- prettier-ignore -->
-{
-  function ExternalIcon() {
-    return (
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="opacity-80" aria-hidden="true">
-        <path d="M14 5h5v5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-        <path d="M10 14L19 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-        <path
-          d="M19 14v5a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h5"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
-    );
-  }
-}
