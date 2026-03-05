@@ -1,4 +1,6 @@
 ---
+import StoreButton from '~/components/ui/StoreButton.astro';
+
 const data = {
   sectionTitle: 'ZINE Lineup',
   sectionLead:
@@ -10,7 +12,7 @@ const data = {
       subtitle: 'Preserving the creative method as it is.',
       thumb: {
         src: '/images/egaki-sho-cover-01.webp',
-        alt: 'Let’s Create Egaki-sho! ZINE – Creation Edition Cover',
+        alt: 'Let’s Create Egaki-sho! ZINE — Creation Edition Cover',
         height: 1600,
         width: 900,
       },
@@ -20,10 +22,13 @@ const data = {
         'By recording why each choice was made, the method becomes reproducible.',
       ],
       tags: ['Prompt', 'Pipeline', 'Environment'],
-      ctas: [
-        { label: 'View on Booth', href: 'https://booth.pm/', variant: 'primary' },
-        { label: 'View on KDP', href: 'https://www.amazon.co.jp/', variant: 'secondary' },
-      ],
+      cta: {
+        store: 'kdp',
+        aria: 'View on KDP',
+        label: 'Coming soon',
+        url: 'https://www.amazon.co.jp/',
+        disable: true,
+      },
     },
     {
       slug: 'character-making',
@@ -31,7 +36,7 @@ const data = {
       subtitle: 'A complete live record of how characters are born.',
       thumb: {
         src: '/images/egaki-sho-cover-02.webp',
-        alt: 'Let’s Create Egaki-sho! ZINE – Character Making Edition Cover',
+        alt: 'Let’s Create Egaki-sho! ZINE — Character Making Edition Cover',
         height: 1600,
         width: 900,
       },
@@ -42,10 +47,13 @@ const data = {
       ],
       tags: ['LoRA', 'ControlNet', 'img2img'],
       highlight: 'Live Record',
-      ctas: [
-        { label: 'View on Booth', href: 'https://booth.pm/', variant: 'primary' },
-        { label: 'View on KDP', href: 'https://www.amazon.co.jp/', variant: 'secondary' },
-      ],
+      cta: {
+        store: 'kdp',
+        aria: 'View on KDP',
+        label: 'Coming soon',
+        url: 'https://www.amazon.co.jp/',
+        disable: true,
+      },
     },
     {
       slug: 'publishing',
@@ -53,7 +61,7 @@ const data = {
       subtitle: 'Turning creation into a real-world IP.',
       thumb: {
         src: '/images/egaki-sho-cover-03.webp',
-        alt: 'Let’s Create Egaki-sho! ZINE – Publishing Edition Cover',
+        alt: 'Let’s Create Egaki-sho! ZINE — Publishing Edition Cover',
         height: 1600,
         width: 900,
       },
@@ -63,13 +71,19 @@ const data = {
         'The connection from creation to distribution to IP is documented as implementation, not theory.',
       ],
       tags: ['KDP', 'Trademark', 'IP Strategy'],
-      ctas: [
-        { label: 'View on Booth', href: 'https://booth.pm/', variant: 'primary' },
-        { label: 'View on KDP', href: 'https://www.amazon.co.jp/', variant: 'secondary' },
-      ],
+      cta: {
+        store: 'kdp',
+        aria: 'View on KDP',
+        label: 'Coming soon',
+        url: 'https://www.amazon.co.jp/',
+        disable: true,
+      },
     },
   ],
 };
+
+// label: 'View on KDP',
+// url: 'https://www.amazon.co.jp/',
 ---
 
 <section id="zine-cards" class="scroll-mt-20 relative py-16 md:py-24 bg-slate-950 text-neutral-100">
@@ -125,20 +139,14 @@ const data = {
               </div>
 
               <div class="mt-auto pt-7 flex flex-wrap gap-3">
-                {z.ctas.map((c) => (
-                  <a
-                    href={c.href}
-                    class={
-                      c.variant === 'primary'
-                        ? 'inline-flex items-center justify-center rounded-full bg-white text-neutral-950 px-4 py-2 text-sm font-semibold hover:bg-white/90 transition'
-                        : 'inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 text-white px-4 py-2 text-sm font-semibold hover:bg-white/10 transition'
-                    }
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {c.label}
-                  </a>
-                ))}
+                <StoreButton
+                  store={z.cta.store}
+                  url={z.cta.url}
+                  aria={z.cta.aria}
+                  label={z.cta.label}
+                  fullWidth={true}
+                  disabled={z.cta.disable}
+                />
               </div>
             </div>
           </article>
@@ -146,4 +154,9 @@ const data = {
       }
     </div>
   </div>
+  <!-- <div class="mt-2 sm:mt-4 text-center">
+    <p>
+      Japanese edition available on Booth.
+    </p>
+  </div> -->
 </section>
