@@ -1,91 +1,116 @@
 ---
-title: "イベント登録サンプルを作成"
+title: "🎫 Event Registration Sample"
 date: 2026-02-27
 tags: ["Log", "Events", "AstroWind", "PochomLab"]
-summary: "イベント投稿用フロントマターの仕様と記述ルールを整理。type分類・表示挙動を明文化し、イベントページへの導線を整備。"
+summary: "Organized the frontmatter specification and writing rules for event posts. Clarified type classifications and display behavior, and prepared navigation to the Events page."
 draft: false
 ---
 
-- マークダウン形式で記述することが出来ます
-- 省略する際は項目ラベルごと削除または(#)でコメントアウトします
+- You can write the content using Markdown format.
+- When omitting fields, either remove the entire item label or comment it out using (#).
 
 ```yaml
 ---
-title: "イベントサンプル / Event sample"
+title: "Event sample"
 type: other # Values: zine | online | release | talk | other
 date: 2026-02-26
+startDate: 2026-02-26
 #endDate: 2026-02-27
 timezone: "Asia/Tokyo"
 location: "online"
-venue: "ブースA-12"
-#cover:
+venue: "Booth A-12"
+#cover: "/images/events/2026-02-26-230627.webp"
 lineup:
-  - "ラインナップ1"
-  - "ラインナップ2" 
+  - "Lineup 1"
+  - "Lineup 2"
 tags:
   - "KDP"
   - "Release"
   - "Egaki-sho"
 links:
-  - label: "KDP（第3章）"
+  - label: "KDP (Chapter 3)"
     url: "https://www.amazon.co.jp/dp/B0GMGP1GPV/"
 draft: false # Values: true | false
 ---
-本文…
+Body text...
 ```
 
-## ■ title (必須)
+## ■ title (Required)
 
-- イベントのタイトルを記載します。
+- Enter the title of the event.
 
-## ■ type (必須)
+## ■ type (Required)
 
-- イベントのタイプを以下から選択します。
-- カバー画像を省略した場合、このタイプに応じてデフォルト画像が選択されます。
+- Select the event type from the list below.
+- If the cover image is omitted, a default image corresponding to this type will be used.
 
-|type|説明|補足|
+| type | Description | Notes |
 |-|-|-| 
-|zine|ZINEフェス、文学フリマ、即売会、展示参加|👉 オフライン寄りの「創作物の頒布・出展」|
-|online|Booth販売開始、KDP発売、Web公開、サイトリリース|👉 オンライン上の公開・販売開始|
-|release|書籍リリース、新章公開、新キャラ発表、商標登録完了報告|👉 「何かが正式に世に出た瞬間」|
-|talk|トークイベント、スペース、インタビュー、登壇|👉 言葉を届ける系|
-|other|記念日、コラボ、未分類イベント、特別企画|👉 バッファ|
+| zine    | ZINE festivals, literary fairs, exhibitions, creator markets| 👉 Offline-oriented distribution or exhibition of creative works |
+| online  | Booth sales launch, KDP release, web publication, site launch  | 👉 Online publication or sales start |
+| release | Book releases, new chapter announcements, new character reveals, trademark registration reports | 👉 The moment something is officially released |
+| talk | Talk events, Spaces, interviews, presentations | 👉 Communication-focused events |
+| other | Anniversaries, collaborations, uncategorized events, special projects | 👉 Buffer category |
 
-### release と online の違い
+### Difference between release and online
 
-- online = 開催・公開の「場所」がオンライン。
-- release = 作品公開という「アクション」に焦点。
+- online = The location of the event or publication is online.
+- release = Focuses on the action of releasing a work.
 
-## ■ date  (必須)
+## ■ date (Required)
 
-- イベントの日付を入力します。
-- date と endDate により Upcoming / Past が自動で切り替わります。
+- Enter the date when the event card is registered.
+- Latest updates and RSS feeds are processed based on this date.
 
-## ■ endDate (省略可)
+## ■ startDate (Required)
 
-- 開催期間が複数日の場合に入力します。
+- Enter the event date.
+- The event status **(Upcoming / Past)** is automatically determined using `startDate` and `endDate`.
 
-## ■ timezone / location / venue(省略可)
+## ■ endDate (Optional)
 
-- イベントカードおよび詳細ページに表示されます。
+- Enter this when the event spans multiple days.
 
-## ■ cover (省略可)
+## ■ timezone / location / venue (Optional)
 
-- カードおよび詳細ページに表示される画像（16:9推奨）のリンクを記述します。
-- 省略した場合、カード画像は type に応じたデフォルト画像が選択されます。
-- 詳細ページでは画像表示は省略されます。
+- Displayed on the event card and the detail page.
 
-## ■ lineup / tags (省略可)
+## ■ cover (Optional)
 
-- イベントカードおよび詳細ページに表示されます。
-- 複数入力できます。
+- Provide the link to the image (16:9 recommended) displayed on the card and detail page.
+- If omitted, a default image corresponding to the type will be used for the card.
+- The detail page will not display a fallback image.
 
-## ■ links (省略可)
+## ■ lineup / tags (Optional)
 
-- 外部サイトへのリンクが詳細ページに表示されます。
+- Displayed on the event card and detail page.
+- Multiple entries are allowed.
 
-## ■ draft (必須)
+## ■ links (Optional)
 
-- true（ドラフト中）の場合、イベントページにカードは表示されません。
-- false の場合、公開されます。
+- Links to external sites will be displayed on the detail page.
 
+## ■ draft (Required)
+
+- If set to true (draft), the event card will not appear on the event page.
+- If false, the event will be published.
+
+## ■ How to link to the English section
+
+If you include an English introduction within the article, write it as follows.
+
+## 1. Create a heading for the English section
+
+```Markdown
+## English
+```
+
+## 2. Add a link at the beginning of the article
+
+```Markdown
+[English below ↓](#english)
+```
+
+This will allow readers to scroll to the English section within the page.
+
+*The heading must be written exactly as ## English.*
