@@ -1,10 +1,14 @@
 ---
 import Layout from '~/layouts/PageLayout_PochomLab_En.astro';
-
 import Hero from '~/components/widgets/Hero_PochomLab.astro';
 
+import Entry from './_sections/Entry.astro';
+import LatestUpdates from './_sections/LatestUpdates.astro';
+import Announce from './_sections/Announce.astro';
+
 const metadata = {
-  title: 'PochomLab - 生成AIと絵書制作を軸に、創作・技術・IP戦略を実装し、未来へ接続するラボ',
+  title:
+    'PochomLab — A lab exploring creative production, technology, and IP strategy through generative AI and Egaki-sho creation',
   ignoreTitleTemplate: true,
 };
 ---
@@ -12,22 +16,24 @@ const metadata = {
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
 
-  <Hero 
-    lightUrl="/images/pochomlab-hero-light-en.jpg"
-    darkUrl="/images/pochomlab-hero-dark-en.jpg"
-  >
+  <Hero lightUrl="/images/pochomlab-hero-light-en.jpg" darkUrl="/images/pochomlab-hero-dark-en.jpg">
     <Fragment slot="title">
-      <span class="text-[#FF5B50] dark:text-[#FFB74D]">Lights of the Soul</span>
-      <br />
       AI Drawing
+      <br />
+      <span class="text-[#FF5B50] dark:text-[#FFB74D]">Lights of the Soul</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      A laboratory that connects creativity, technology,
-      and intellectual property strategy to the future through generative AI and Egaki-sho production.
+      A lab exploring creativity, technology, and IP strategy through generative AI and Egaki-sho creation.
     </Fragment>
-
   </Hero>
 
- 
+  <!-- Announce -->
+  <Announce />
+
+  <!-- Feature Entry (6 cards) -->
+  <Entry />
+
+  <!-- Latest Log Entries -->
+  <LatestUpdates />
 </Layout>
