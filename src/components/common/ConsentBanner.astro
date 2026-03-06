@@ -85,15 +85,8 @@ const copy = locale === 'en' ? t.en : t.ja;
             // ignore
           }
 
-          if (typeof window.gtag === 'function') {
-            window.gtag('consent', 'update', {
-              analytics_storage: 'granted',
-            });
-
-            window.gtag('config', 'G-5G55TKSD16', {
-              page_location: window.location.href,
-              page_title: document.title,
-            });
+          if (typeof window.__loadGA === 'function') {
+            window.__loadGA();
           }
 
           hide();
