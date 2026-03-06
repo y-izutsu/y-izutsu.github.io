@@ -93,7 +93,7 @@ export const footerData = {
     {
       title: '作品',
       links: [
-        { text: '作品一覧', href: '/ja/all-works' },        
+        { text: '作品一覧', href: '/ja/library' },        
         { text: '絵書', href: '/ja/egaki-sho' },
         { text: '絵書創ろうよ！ZINE', href: '/ja/zine/egaki-sho-create' },
       ],

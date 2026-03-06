@@ -1,40 +1,40 @@
 ---
-import PageLayout from '~/layouts/PageLayout_PochomLab_Ja.astro';
+import PageLayout from '~/layouts/PageLayout_PochomLab_En.astro';
 import HeroText from '~/components/widgets/HeroText_PochomLab.astro';
 import StoreButton from '~/components/ui/StoreButton.astro';
 
 const metadata = {
-  title: '作品一覧',
-  description: 'PochomLabの出版物一覧',
+  title: 'Library',
+  description: 'Publications by PochomLab',
 };
 
 // ====== 商品データ（ここを増やしていく） ======
 const EGAKI_SHO = [
   {
-    store: 'kdp',
-    title: 'ポチョム菌の絵書 第1章',
-    cover: '/images/all-works/all-works-cover-egaki-sho-ch1.webp',
+    store: 'kdp',    
+    title: 'Chapter 1: The Beginning of Life',
+    cover: '/images/library/cover-egaki-sho-ch1.webp',
     url: 'https://www.amazon.co.jp/dp/B0G3Q6C68P/',
     disable: false,
   },
   {
-    store: 'kdp',
-    title: 'ポチョム菌の絵書 第2章',
-    cover: '/images/all-works/all-works-cover-egaki-sho-ch2.webp',
+    store: 'kdp',    
+    title: 'Chapter 2: Seeds of Kindness',
+    cover: '/images/library/cover-egaki-sho-ch2.webp',
     url: 'https://www.amazon.co.jp/dp/B0GFZ9WCJY/',
     disable: false,
   },
   {
-    store: 'kdp',
-    title: 'ポチョム菌の絵書 第3章',
-    cover: '/images/all-works/all-works-cover-egaki-sho-ch3.webp',
+    store: 'kdp',    
+    title: 'Chapter 3: A Wandering Journey',
+    cover: '/images/library/cover-egaki-sho-ch3.webp',
     url: 'https://www.amazon.co.jp/dp/B0GMGP1GPV/',
     disable: false,
   },
   {
-    store: 'kdp',
-    title: 'ポチョム菌の絵書 第4章',
-    cover: '/images/all-works/all-works-cover-egaki-sho-ch4.webp',
+    store: 'kdp',    
+    title: 'Chapter 4: The Soul Metaverse',
+    cover: '/images/library/cover-egaki-sho-ch4.webp',
     url: 'https://www.amazon.co.jp/dp/B0GQQ22G87/',
     disable: false,
   },
@@ -42,38 +42,38 @@ const EGAKI_SHO = [
 
 const ZINE = [
   {
-    store: 'booth',
-    title: '絵書創ろうよ！ZINE（創作編）',
-    cover: '/images/all-works/all-works-cover-egaki-create-ch1-ja.webp',
-    url: 'https://booth.pm/ja/',
-    disable: false,
+    store: 'kdp',    
+    title: 'The Creation Process',
+    cover: '/images/library/cover-egaki-create-ch1-en.webp',
+    url: 'https://www.amazon.com/',
+    disable: true,
   },
   {
-    store: 'booth',
-    title: '絵書創ろうよ！ZINE（キャラクターメイキング編）',
-    cover: '/images/all-works/all-works-cover-egaki-create-ch2-ja.webp',
-    url: 'https://booth.pm/ja/',
-    disable: false,
+    store: 'kdp',    
+    title: 'Character Design',
+    cover: '/images/library/cover-egaki-create-ch2-en.webp',
+    url: 'https://www.amazon.com/',
+    disable: true,
   },
   {
-    store: 'booth',
-    title: '絵書創ろうよ！ZINE（出版編）',
-    cover: '/images/all-works/all-works-cover-egaki-create-ch3-ja.webp',
-    url: 'https://booth.pm/ja/',
-    disable: false,
+    store: 'kdp',    
+    title: 'Publishing Guide',
+    cover: '/images/library/cover-egaki-create-ch3-en.webp',
+    url: 'https://www.amazon.com/',
+    disable: true,
   },
 ];
 
 // ToC（将来セクションが増えたらここに追加）
 const SECTIONS = [
-  { id: 'egaki-sho', label: '絵書' },
-  { id: 'zine', label: 'ZINE' },
+  { id: 'egaki-sho', label: 'Pochomkin Egaki-sho Series' },
+  { id: 'creation-zine', label: 'Egaki-sho: Let’s Create! ZINE Series' },
 ];
 ---
 
 <PageLayout metadata={metadata}>
   <!-- Hero -->
-  <HeroText title="作品一覧" subtitle="PochomLabで公開・販売している作品" />
+  <HeroText title="Library" subtitle="Publications by PochomLab" />
 
   <section class="bg-neutral-100 dark:bg-slate-950">
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
@@ -101,7 +101,7 @@ const SECTIONS = [
       <!-- ===== 絵書 ===== -->
       <div id="egaki-sho" class="scroll-mt-24">
         <div class="mb-4 sm:mb-6">
-          <h2 class="text-xl sm:text-2xl font-semibold text-slate-900 dark:text-white">絵書</h2>
+          <h2 class="text-xl sm:text-2xl font-semibold text-slate-900 dark:text-white">🍄‍🟫Pochomkin Egaki-sho Series</h2>
         </div>
 
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
@@ -137,8 +137,8 @@ const SECTIONS = [
                     <StoreButton
                       store={item.store}
                       url={item.url}
-                      aria={`${item.title}をKDPで開く`}
-                      label="Kindleで読む (KDP)"
+                      aria="View on KDP"
+                      label="View on KDP"
                       fullWidth={true}
                       disabled={item.disable}
                     />
@@ -148,19 +148,19 @@ const SECTIONS = [
             ))
           }
         </div>
-        <!-- <div class="mt-4 sm:mt-6 text-center">
+        <div class="mt-4 sm:mt-6 text-center">
           <p>
             This link leads to the Japanese Kindle edition on Amazon.
             <br />
             English edition coming soon.
           </p>
-        </div> -->
+        </div>
       </div>
 
       <!-- ===== ZINE ===== -->
-      <div id="zine" class="scroll-mt-24 mt-12 sm:mt-14">
+      <div id="creation-zine" class="scroll-mt-24 mt-12 sm:mt-14">
         <div class="mb-4 sm:mb-6">
-          <h2 class="text-xl sm:text-2xl font-semibold text-slate-900 dark:text-white">ZINE</h2>
+          <h2 class="text-xl sm:text-2xl font-semibold text-slate-900 dark:text-white">📚Egaki-sho: Let’s Create! ZINE Series</h2>
         </div>
 
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
@@ -181,21 +181,29 @@ const SECTIONS = [
                   />
                 </div>
 
-                <div class="p-3 sm:p-4 flex flex-col min-h-[120px]">
+                <div class="p-3 sm:p-4 flex flex-col min-h-[112px]">
                   <h3
                     class="text-sm sm:text-[15px] font-medium text-slate-900 dark:text-white
                            leading-snug overflow-hidden
-                           line-clamp-2 h-[2.6em]"
+                           line-clamp-2 h-[1.6em]"
                   >
                     {item.title}
                   </h3>
 
                   <div class="mt-auto pt-3">
+                    {/* <StoreButton
+                      store={item.store}
+                      url={item.url}
+                      aria="View on KDP"
+                      label="View on KDP"
+                      fullWidth={true}
+                      disabled={item.disable}
+                    /> */}
                     <StoreButton
                       store={item.store}
                       url={item.url}
-                      aria={`${item.title}をBoothで開く`}
-                      label="Boothで見る(準備中)"
+                      aria="coming soon"
+                      label="coming soon"
                       fullWidth={true}
                       disabled={item.disable}
                     />
@@ -205,11 +213,11 @@ const SECTIONS = [
             ))
           }
         </div>
-        <div class="mt-4 sm:mt-6 text-center">
+        <!-- <div class="mt-4 sm:mt-6 text-center">
           <p>
-            英語版はAmazon Kindleで入手可能です。
+            Japanese edition available on Booth.
           </p>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
