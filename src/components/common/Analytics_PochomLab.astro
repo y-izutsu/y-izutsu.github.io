@@ -9,48 +9,38 @@ const isProd = import.meta.env.PROD;
 ---
 
 {isProd && id ? (
-  <>
-    <script async src={`https://www.googletagmanager.com/gtag/js?id=${id}`}></script>
+  <script is:inline define:vars={{ id }}>
+    (() => {
+      const GA_ID = id;
+      const KEY = 'pochom_consent';
 
-    <script is:inline define:vars={{ id }}>
-      (() => {
-        const GA_ID = id;
-        const KEY = 'pochom_consent';
+      function loadGA() {
+        if (window.__gaLoaded) return;
+        window.__gaLoaded = true;
+
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+        document.head.appendChild(script);
 
         window.dataLayer = window.dataLayer || [];
-        window.gtag = window.gtag || ((...args) => window.dataLayer.push(args));
-
-        window.gtag('consent', 'default', {
-          analytics_storage: 'denied',
-          ad_storage: 'denied',
-          ad_user_data: 'denied',
-          ad_personalization: 'denied',
-        });
+        window.gtag = window.gtag || function (...args) {
+          window.dataLayer.push(args);
+        };
 
         window.gtag('js', new Date());
+        window.gtag('config', GA_ID);
+      }
 
-        window.gtag('config', GA_ID, {
-          send_page_view: false,
-        });
-
-        try {
-          const saved = localStorage.getItem(KEY);
-
-          if (saved === 'granted') {
-            window.gtag('consent', 'update', {
-              analytics_storage: 'granted',
-            });
-
-            window.gtag('event', 'page_view', {
-              page_location: window.location.href,
-              page_title: document.title,
-              page_path: window.location.pathname + window.location.search,
-            });
-          }
-        } catch {
-          // ignore
+      try {
+        if (localStorage.getItem(KEY) === 'granted') {
+          loadGA();
         }
-      })();
-    </script>
-  </>
+      } catch {
+        // ignore
+      }
+
+      window.__loadGA = loadGA;
+    })();
+  </script>
 ) : null}
