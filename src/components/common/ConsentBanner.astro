@@ -7,8 +7,11 @@ export interface Props {
 
 const { locale = 'ja' } = Astro.props;
 
+const id = ANALYTICS?.vendors?.googleAnalytics?.id
+  ? String(ANALYTICS.vendors.googleAnalytics.id)
+  : null;
+
 const isProd = import.meta.env.PROD;
-const hasAnalytics = !!ANALYTICS?.vendors?.googleAnalytics?.id;
 
 const t = {
   ja: {
@@ -28,25 +31,25 @@ const t = {
 const copy = locale === 'en' ? t.en : t.ja;
 ---
 
-{isProd && hasAnalytics ? (
+{isProd && id ? (
   <div id="consent-banner" class="fixed bottom-0 left-0 right-0 z-50 hidden">
     <div class="mx-auto max-w-5xl m-3 rounded-xl border border-white/15 bg-black/55 backdrop-blur-md text-white">
-      <div class="flex flex-col gap-3 p-4 md:flex-row md:items-center">
-        <p class="text-sm leading-relaxed text-white/90">
+      <div class="flex flex-col md:flex-row md:items-center gap-3 p-4">
+        <p class="text-sm text-white/90 leading-relaxed">
           {copy.message}
         </p>
 
         <div class="flex gap-2 md:ml-auto">
           <button
             id="consent-reject"
-            class="rounded-lg bg-white/10 px-3 py-2 text-sm hover:bg-white/15"
+            class="px-3 py-2 rounded-lg bg-white/10 hover:bg-white/15 text-sm"
             type="button"
           >
             {copy.reject}
           </button>
           <button
             id="consent-accept"
-            class="rounded-lg bg-white px-3 py-2 text-sm font-semibold text-black hover:bg-white/90"
+            class="px-3 py-2 rounded-lg bg-white text-black hover:bg-white/90 text-sm font-semibold"
             type="button"
           >
             {copy.accept}
@@ -55,54 +58,50 @@ const copy = locale === 'en' ? t.en : t.ja;
       </div>
     </div>
 
-    <script is:inline>
-      (() => {
-        const KEY = 'pochom_consent';
-        const banner = document.getElementById('consent-banner');
-        const accept = document.getElementById('consent-accept');
-        const reject = document.getElementById('consent-reject');
+    <script is:inline define:vars={{ id }}>
+      (function () {
+        const GA_ID = id;
+        const KEY = "pochom_consent";
+        const banner = document.getElementById("consent-banner");
+        const accept = document.getElementById("consent-accept");
+        const reject = document.getElementById("consent-reject");
 
-        if (!(banner instanceof HTMLElement)) return;
-        if (!(accept instanceof HTMLButtonElement)) return;
-        if (!(reject instanceof HTMLButtonElement)) return;
+        function show() { banner.classList.remove("hidden"); }
+        function hide() { banner.classList.add("hidden"); }
 
-        const show = () => banner.classList.remove('hidden');
-        const hide = () => banner.classList.add('hidden');
-
+        // If already decided, don't show
         try {
           const saved = localStorage.getItem(KEY);
-          if (saved === 'granted' || saved === 'denied') return;
+          if (saved === "granted" || saved === "denied") return;
         } catch {
           // ignore
         }
 
         show();
 
-        accept.addEventListener('click', () => {
-          try {
-            localStorage.setItem(KEY, 'granted');
-          } catch {
-            // ignore
-          }
+        accept.addEventListener("click", function () {
+          try { localStorage.setItem(KEY, "granted"); } catch { /* empty */ }
 
-          if (typeof window.__loadGA === 'function') {
-            window.__loadGA();
+          if (typeof window.gtag === "function") {
+            window.gtag("consent", "update", { analytics_storage: "granted" });
+            window.gtag("config", GA_ID, {
+              send_page_view: false,
+              page_path: window.location.pathname,
+            });
+            window.gtag("event", "page_view", {
+              page_location: window.location.href,
+              page_title: document.title,
+            });
           }
 
           hide();
         });
 
-        reject.addEventListener('click', () => {
-          try {
-            localStorage.setItem(KEY, 'denied');
-          } catch {
-            // ignore
-          }
+        reject.addEventListener("click", function () {
+          try { localStorage.setItem(KEY, "denied"); } catch { /* empty */ }
 
-          if (typeof window.gtag === 'function') {
-            window.gtag('consent', 'update', {
-              analytics_storage: 'denied',
-            });
+          if (typeof window.gtag === "function") {
+            window.gtag("consent", "update", { analytics_storage: "denied" });
           }
 
           hide();

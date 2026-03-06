@@ -9,38 +9,47 @@ const isProd = import.meta.env.PROD;
 ---
 
 {isProd && id ? (
-  <script is:inline define:vars={{ id }}>
-    (() => {
-      const GA_ID = id;
-      const KEY = 'pochom_consent';
+  <>
+    <!-- Load gtag.js -->
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${id}`}></script>
 
-      function loadGA() {
-        if (window.__gaLoaded) return;
-        window.__gaLoaded = true;
-
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
-        document.head.appendChild(script);
+    <!-- Consent Mode (Japan minimal) + prevent page_view until consent -->
+    <script is:inline define:vars={{ id }}>
+      (() => {
+        const GA_ID = id;
 
         window.dataLayer = window.dataLayer || [];
-        window.gtag = window.gtag || function (...args) {
-          window.dataLayer.push(args);
-        };
+        // eslint-disable-next-line prefer-rest-params
+        window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
 
-        window.gtag('js', new Date());
-        window.gtag('config', GA_ID);
-      }
+        // default: denied
+        gtag('consent', 'default', {
+          analytics_storage: 'denied',
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+        });
 
-      try {
-        if (localStorage.getItem(KEY) === 'granted') {
-          loadGA();
+        // if already consented, update before config
+        try {
+          const saved = localStorage.getItem('pochom_consent');
+          if (saved === 'granted') {
+            gtag('consent', 'update', { analytics_storage: 'granted' });
+
+            gtag('event', 'page_view', {
+               page_location: window.location.href,
+               page_title: document.title,
+            });
+          }
+        } catch {
+          // ignore
         }
-      } catch {
-        // ignore
-      }
 
-      window.__loadGA = loadGA;
-    })();
-  </script>
+        gtag('js', new Date());
+
+        // IMPORTANT: do not send page_view until consent
+        gtag('config', GA_ID, { send_page_view: false });
+      })();
+    </script>
+  </>
 ) : null}
