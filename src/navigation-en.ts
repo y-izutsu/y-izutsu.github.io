@@ -35,7 +35,7 @@ export const headerDataEn = {
       text: 'ZINE',
       links: [
         {
-          text: 'Let’s Create Egaki-sho! ZINE',
+          text: 'Egaki-sho: Let’s Create! ZINE',
           href: '/zine/egaki-sho-create',
         }      
       ],
@@ -93,9 +93,9 @@ export const footerData = {
     {
       title: 'Works',
       links: [
-        { text: 'All Works', href: '/en/all-works' },             
+        { text: 'Library', href: '/en/library' },             
         { text: 'Egaki-sho', href: '/en/egaki-sho' },
-        { text: 'Let’s Create Egaki-sho! ZINE', href: '/en/zine/egaki-sho-create' },
+        { text: 'Egaki-sho: Let’s Create! ZINE', href: '/en/zine/egaki-sho-create' },
       ],
     },
     {
