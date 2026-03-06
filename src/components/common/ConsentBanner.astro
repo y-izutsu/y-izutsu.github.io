@@ -90,10 +90,9 @@ const copy = locale === 'en' ? t.en : t.ja;
               analytics_storage: 'granted',
             });
 
-            window.gtag('event', 'page_view', {
+            window.gtag('config', 'G-5G55TKSD16', {
               page_location: window.location.href,
               page_title: document.title,
-              page_path: window.location.pathname + window.location.search,
             });
           }
 
