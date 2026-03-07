@@ -91,12 +91,12 @@ const copy = locale === 'en' ? t.en : t.ja;
           try { localStorage.setItem(KEY, "granted"); } catch { /* empty */ }
 
           function waitForGtag() {
-            if (typeof window.gtag !== "function") {
+            if (!window.dataLayer || window.dataLayer.length === 0) {
               console.log("gtag 初期化待ち…");
               return requestAnimationFrame(waitForGtag);
             }
 
-            console.log("window.gtag granted 行きます");
+            console.log("サイコザク行きまーす！！");
             window.gtag("consent", "update", { analytics_storage: "granted" });
           }
 
