@@ -1,58 +1,47 @@
 ---
 import { ANALYTICS } from 'astrowind:config';
 
-export interface Props {
-  locale?: 'ja' | 'en';
-}
-
-const { locale = 'ja' } = Astro.props;
-
 const id = ANALYTICS?.vendors?.googleAnalytics?.id
   ? String(ANALYTICS.vendors.googleAnalytics.id)
   : null;
 
 const isProd = import.meta.env.PROD;
-
-const t = {
-  ja: {
-    message:
-      'このサイトではアクセス解析（Google Analytics）を利用します。Cookie等を用いて利用状況を計測します。',
-    reject: '拒否',
-    accept: '同意',
-  },
-  en: {
-    message:
-      'We use analytics (Google Analytics) to measure site usage using cookies and similar technologies.',
-    reject: 'Reject',
-    accept: 'Accept',
-  },
-} as const;
-
-const copy = locale === 'en' ? t.en : t.ja;
+const jaWord = "このサイトではアクセス解析（Google Analytics）を利用します。Cookie等を用いて利用状況を計測します。";
+const enWord = "We use analytics (Google Analytics) to measure site usage using cookies and similar technologies.";
+const rejectButton = "拒否 / Reject";
+const acceptButton = "同意 / Accept";
 ---
 
 {isProd && id ? (
-  <div id="consent-banner" class="fixed bottom-0 left-0 right-0 z-50 hidden">
-    <div class="mx-auto max-w-5xl m-3 rounded-xl border border-white/15 bg-black/55 backdrop-blur-md text-white">
-      <div class="flex flex-col md:flex-row md:items-center gap-3 p-4">
-        <p class="text-sm text-white/90 leading-relaxed">
-          {copy.message}
+  <div
+    id="consent-banner"
+    class="fixed bottom-2 left-1/2 z-50 hidden w-[calc(100%-1rem)] -translate-x-1/2 sm:bottom-3 sm:w-[calc(100%-1.5rem)]"
+  >
+    <div class="mx-auto max-w-5xl rounded-xl border border-white/15 bg-black/55 text-white backdrop-blur-md shadow-lg">
+      <div class="flex flex-col gap-3 p-4 md:flex-row md:items-center">
+        <p class="text-sm leading-relaxed text-white/90 md:flex-1">
+          <span class="block">
+            {jaWord}
+          </span>
+          <span class="mt-1 block text-white/75">
+            {enWord}
+          </span>
         </p>
 
-        <div class="flex gap-2 md:ml-auto">
+        <div class="flex flex-col gap-2 sm:flex-row md:ml-auto">
           <button
             id="consent-reject"
-            class="px-3 py-2 rounded-lg bg-white/10 hover:bg-white/15 text-sm"
+            class="rounded-lg bg-white/10 px-3 py-2 text-sm hover:bg-white/15"
             type="button"
           >
-            {copy.reject}
+            {rejectButton}
           </button>
           <button
             id="consent-accept"
-            class="px-3 py-2 rounded-lg bg-white text-black hover:bg-white/90 text-sm font-semibold"
+            class="rounded-lg bg-white px-3 py-2 text-sm font-semibold text-black hover:bg-white/90"
             type="button"
           >
-            {copy.accept}
+            {acceptButton}
           </button>
         </div>
       </div>
