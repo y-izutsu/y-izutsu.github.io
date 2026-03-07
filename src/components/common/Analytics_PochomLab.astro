@@ -1,54 +1,166 @@
 ---
 import { ANALYTICS } from 'astrowind:config';
 
+export interface Props {
+  locale?: 'ja' | 'en';
+}
+
+const { locale = 'ja' } = Astro.props;
+
 const id = ANALYTICS?.vendors?.googleAnalytics?.id
   ? String(ANALYTICS.vendors.googleAnalytics.id)
   : null;
 
 const isProd = import.meta.env.PROD;
+
+const t = {
+  ja: {
+    message:
+      'このサイトではアクセス解析（Google Analytics）を利用します。Cookie等を用いて利用状況を計測します。',
+    reject: '拒否',
+    accept: '同意',
+  },
+  en: {
+    message:
+      'We use analytics (Google Analytics) to measure site usage using cookies and similar technologies.',
+    reject: 'Reject',
+    accept: 'Accept',
+  },
+} as const;
+
+const copy = locale === 'en' ? t.en : t.ja;
 ---
 
 {isProd && id ? (
   <>
-    <!-- Load gtag.js -->
-    <script async src={`https://www.googletagmanager.com/gtag/js?id=${id}`}></script>
+    <div id="consent-banner" class="fixed bottom-0 left-0 right-0 z-50 hidden">
+      <div class="mx-auto m-3 max-w-5xl rounded-xl border border-white/15 bg-black/55 text-white backdrop-blur-md">
+        <div class="flex flex-col gap-3 p-4 md:flex-row md:items-center">
+          <p class="text-sm leading-relaxed text-white/90">
+            {copy.message}
+          </p>
 
-    <!-- Consent Mode (Japan minimal) + prevent page_view until consent -->
+          <div class="flex gap-2 md:ml-auto">
+            <button
+              id="consent-reject"
+              class="rounded-lg bg-white/10 px-3 py-2 text-sm hover:bg-white/15"
+              type="button"
+            >
+              {copy.reject}
+            </button>
+            <button
+              id="consent-accept"
+              class="rounded-lg bg-white px-3 py-2 text-sm font-semibold text-black hover:bg-white/90"
+              type="button"
+            >
+              {copy.accept}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script is:inline define:vars={{ id }}>
       (() => {
+        const KEY = 'pochom_consent';
         const GA_ID = id;
+        const banner = document.getElementById('consent-banner');
+        const accept = document.getElementById('consent-accept');
+        const reject = document.getElementById('consent-reject');
 
-        window.dataLayer = window.dataLayer || [];
-        // eslint-disable-next-line prefer-rest-params
-        window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+        function showBanner() {
+          banner?.classList.remove('hidden');
+        }
 
-        // default: denied
-        gtag('consent', 'default', {
-          analytics_storage: 'denied',
-          ad_storage: 'denied',
-          ad_user_data: 'denied',
-          ad_personalization: 'denied',
-        });
+        function hideBanner() {
+          banner?.classList.add('hidden');
+        }
 
-        // if already consented, update before config
+        function pagePath() {
+          return window.location.pathname + window.location.search;
+        }
+
+        function sendPageView() {
+          if (typeof window.gtag !== 'function') return;
+
+          window.gtag('event', 'page_view', {
+            page_title: document.title,
+            page_location: window.location.href,
+            page_path: pagePath(),
+          });
+        }
+
+        function bindPageLoad() {
+          if (window.__pochomPageLoadBound) return;
+          window.__pochomPageLoadBound = true;
+
+          document.addEventListener('astro:page-load', () => {
+            sendPageView();
+          });
+        }
+
+        function initGA() {
+          if (window.__pochomGAInit) return;
+          window.__pochomGAInit = true;
+
+          const s = document.createElement('script');
+          s.async = true;
+          s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+          document.head.appendChild(s);
+
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function (...args) {
+            window.dataLayer.push(args);
+          };
+
+          window.gtag('js', new Date());
+
+          // 自動 page_view は止める
+          window.gtag('config', GA_ID, { send_page_view: false });
+
+          // 初回 + 以後の Astro 遷移
+          bindPageLoad();
+          sendPageView();
+        }
+
+        let consent = null;
         try {
-          const saved = localStorage.getItem('pochom_consent');
-          if (saved === 'granted') {
-            gtag('consent', 'update', { analytics_storage: 'granted' });
-
-            gtag('event', 'page_view', {
-               page_location: window.location.href,
-               page_title: document.title,
-            });
-          }
+          consent = localStorage.getItem(KEY);
         } catch {
           // ignore
         }
 
-        gtag('js', new Date());
+        if (consent === 'granted') {
+          initGA();
+          return;
+        }
 
-        // IMPORTANT: do not send page_view until consent
-        gtag('config', GA_ID, { send_page_view: false });
+        if (consent === 'denied') {
+          return;
+        }
+
+        showBanner();
+
+        accept?.addEventListener('click', () => {
+          try {
+            localStorage.setItem(KEY, 'granted');
+          } catch {
+            // ignore
+          }
+
+          hideBanner();
+          initGA();
+        });
+
+        reject?.addEventListener('click', () => {
+          try {
+            localStorage.setItem(KEY, 'denied');
+          } catch {
+            // ignore
+          }
+
+          hideBanner();
+        });
       })();
     </script>
   </>
