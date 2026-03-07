@@ -12,7 +12,7 @@ import SiteVerification from '~/components/common/SiteVerification.astro';
 import Analytics from '~/components/common/Analytics.astro';
 //import Analytics from '~/components/common/Analytics_PochomLab.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
-//import ConsentBanner from '~/components/common/ConsentBanner.astro';
+import ConsentBanner from '~/components/common/ConsentBanner.astro';
 
 // Comment the line below to disable View Transitions
 import { ClientRouter } from 'astro:transitions';
@@ -88,6 +88,6 @@ const isEvent = Astro.url.pathname.includes('/events/');
     <slot />
 
     <BasicScripts />
-    <!-- <ConsentBanner locale={language} /> -->
+    <ConsentBanner locale={language} />
   </body>
 </html>
