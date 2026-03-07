@@ -58,9 +58,9 @@ const copy = locale === 'en' ? t.en : t.ja;
       </div>
     </div>
 
-    <script is:inline>
+    <script is:inline define:vars={{ id }}>
       (function () {
-
+        const GA_ID = id;
         const KEY = "pochom_consent";
         const banner = document.getElementById("consent-banner");
         const accept = document.getElementById("consent-accept");
@@ -84,6 +84,10 @@ const copy = locale === 'en' ? t.en : t.ja;
 
           if (typeof window.gtag === "function") {
             window.gtag("consent", "update", { analytics_storage: "granted" });
+            window.gtag("config", GA_ID, {
+              send_page_view: false,
+              page_path: window.location.pathname,
+            });
             window.gtag("event", "page_view", {
               page_location: window.location.href,
               page_title: document.title,
