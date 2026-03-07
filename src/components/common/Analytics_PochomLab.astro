@@ -10,7 +10,7 @@ const isProd = import.meta.env.PROD;
 
 {isProd && id ? (
   <>
-    <!-- Load gtag.js -->
+    <!-- Google tag (gtag.js) -->
     <script async src={`https://www.googletagmanager.com/gtag/js?id=${id}`}></script>
 
     <!-- Consent Mode (Japan minimal) + prevent page_view until consent -->
@@ -20,35 +20,19 @@ const isProd = import.meta.env.PROD;
 
         window.dataLayer = window.dataLayer || [];
         // eslint-disable-next-line prefer-rest-params
-        window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+        function gtag(){ dataLayer.push(arguments); }
 
-        // default: denied
+        // Consent Mode（初期値：拒否）
         gtag('consent', 'default', {
-          analytics_storage: 'denied',
           ad_storage: 'denied',
+          analytics_storage: 'denied',
           ad_user_data: 'denied',
-          ad_personalization: 'denied',
+          ad_personalization: 'denied'
         });
 
-        // if already consented, update before config
-        try {
-          const saved = localStorage.getItem('pochom_consent');
-          if (saved === 'granted') {
-            gtag('consent', 'update', { analytics_storage: 'granted' });
-
-            gtag('event', 'page_view', {
-               page_location: window.location.href,
-               page_title: document.title,
-            });
-          }
-        } catch {
-          // ignore
-        }
-
         gtag('js', new Date());
-
-        // IMPORTANT: do not send page_view until consent
         gtag('config', GA_ID, { send_page_view: false });
+
       })();
     </script>
   </>

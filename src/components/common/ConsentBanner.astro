@@ -58,9 +58,8 @@ const copy = locale === 'en' ? t.en : t.ja;
       </div>
     </div>
 
-    <script is:inline define:vars={{ id }}>
+    <script is:inline>
       (function () {
-        const GA_ID = id;
         const KEY = "pochom_consent";
         const banner = document.getElementById("consent-banner");
         const accept = document.getElementById("consent-accept");
@@ -69,41 +68,36 @@ const copy = locale === 'en' ? t.en : t.ja;
         function show() { banner.classList.remove("hidden"); }
         function hide() { banner.classList.add("hidden"); }
 
-        // If already decided, don't show
+        // === 1. 保存されているのは "granted" のみ ===
         try {
           const saved = localStorage.getItem(KEY);
-          if (saved === "granted" || saved === "denied") return;
-        } catch {
-          // ignore
-        }
+          if (saved === "granted") {
+            // 同意済み → Consent Mode を復元
+            if (typeof window.gtag === "function") {
+              window.gtag("consent", "update", { analytics_storage: "granted" });
+            }
+            return; // バナーを出さない
+          }
+        } catch { /* empty */ }
 
+        // === 2. 未決定 → バナー表示 ===
         show();
 
+        // === 3. 同意ボタン ===
         accept.addEventListener("click", function () {
           try { localStorage.setItem(KEY, "granted"); } catch { /* empty */ }
 
           if (typeof window.gtag === "function") {
             window.gtag("consent", "update", { analytics_storage: "granted" });
-            window.gtag("config", GA_ID, {
-              send_page_view: false,
-              page_path: window.location.pathname,
-            });
-            window.gtag("event", "page_view", {
-              page_location: window.location.href,
-              page_title: document.title,
-            });
           }
 
+          // page_view は astro:page-load が送るのでここでは送らない
           hide();
         });
 
+        // === 4. 拒否ボタン ===
         reject.addEventListener("click", function () {
-          try { localStorage.setItem(KEY, "denied"); } catch { /* empty */ }
-
-          if (typeof window.gtag === "function") {
-            window.gtag("consent", "update", { analytics_storage: "denied" });
-          }
-
+          // "denied" は保存しない（default が denied）
           hide();
         });
       })();
