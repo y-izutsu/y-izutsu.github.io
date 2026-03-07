@@ -87,16 +87,23 @@ const copy = locale === 'en' ? t.en : t.ja;
         // === 3. 同意ボタン ===
         accept.addEventListener("click", function () {
           console.log('3. 同意ボタン');
+
           try { localStorage.setItem(KEY, "granted"); } catch { /* empty */ }
 
-          if (typeof window.gtag === "function") {
-            console.log('window.gtag granted 行きます');
+          function waitForGtag() {
+            if (typeof window.gtag !== "function") {
+              console.log("gtag 初期化待ち…");
+              return requestAnimationFrame(waitForGtag);
+            }
+
+            console.log("window.gtag granted 行きます");
             window.gtag("consent", "update", { analytics_storage: "granted" });
           }
 
-          // page_view は astro:page-load が送るのでここでは送らない
+          waitForGtag();
           hide();
         });
+
 
         // === 4. 拒否ボタン ===
         reject.addEventListener("click", function () {
