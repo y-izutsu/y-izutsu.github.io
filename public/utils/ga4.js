@@ -1,4 +1,5 @@
 window.addEventListener('load', () => {
+  console.log('■ GA4');  
   const KEY = 'pochom_consent';
   if (localStorage.getItem(KEY) !== 'granted') return; // ★ ここは正しい
 

@@ -60,6 +60,7 @@ const copy = locale === 'en' ? t.en : t.ja;
 
     <script is:inline>
       (function () {
+        console.log('■ ConsentBanner');
         const KEY = "pochom_consent";
         const banner = document.getElementById("consent-banner");
         const accept = document.getElementById("consent-accept");
@@ -98,6 +99,11 @@ const copy = locale === 'en' ? t.en : t.ja;
 
             console.log("サイコザク行きまーす！！");
             window.gtag("consent", "update", { analytics_storage: "granted" });
+            window.gtag('event', 'page_view', {
+              page_location: window.location.href,
+              page_path: window.location.pathname,
+              page_title: document.title,
+            });
           }
 
           waitForGtag();

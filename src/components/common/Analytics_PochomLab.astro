@@ -13,6 +13,7 @@ const isProd = import.meta.env.PROD;
     <!-- Google tag (gtag.js) -->
     <script is:inline define:vars={{ id }}>
       (() => {
+        console.log('■ Analytics_PochomLab -  Google tag');
         const s = document.createElement('script');
         s.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
         s.async = false; // ★ これが重要
@@ -23,6 +24,7 @@ const isProd = import.meta.env.PROD;
     <!-- Consent Mode (Japan minimal) + prevent page_view until consent -->
     <script is:inline define:vars={{ id }}>
       (() => {
+        console.log('■ Analytics_PochomLab -  Consent Mode');
         const GA_ID = id;
 
         window.dataLayer = window.dataLayer || [];
