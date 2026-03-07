@@ -1,4 +1,7 @@
 window.addEventListener('load', () => {
+  const KEY = 'pochom_consent';
+  if (localStorage.getItem(KEY) !== 'granted') return; // ★ ここは正しい
+
   console.log('GA4 page_view 発火準備OK');
 
   // gtag が初期化されるまで待つ
