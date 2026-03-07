@@ -1,9 +1,20 @@
 window.addEventListener('load', () => {
   console.log('GA4 page_view 発火準備OK');
-  window.gtag?.('event', 'page_view', {
-    page_location: window.location.href,
-    page_path: window.location.pathname,
-    page_title: document.title,
-  });
-  console.log('GA4 page_view 送信したよ');
+
+  // gtag が初期化されるまで待つ
+  function sendPageView() {
+    if (typeof window.gtag !== 'function') {
+      return requestAnimationFrame(sendPageView);
+    }
+
+    console.log('GA4 page_view 送信したよ');
+
+    window.gtag('event', 'page_view', {
+      page_location: window.location.href,
+      page_path: window.location.pathname,
+      page_title: document.title,
+    });
+  }
+
+  sendPageView();
 });

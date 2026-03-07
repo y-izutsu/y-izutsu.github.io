@@ -74,6 +74,7 @@ const copy = locale === 'en' ? t.en : t.ja;
           if (saved === "granted") {
             // 同意済み → Consent Mode を復元
             if (typeof window.gtag === "function") {
+              console.log('同意済み → Consent Mode を復元');
               window.gtag("consent", "update", { analytics_storage: "granted" });
             }
             return; // バナーを出さない
@@ -85,9 +86,11 @@ const copy = locale === 'en' ? t.en : t.ja;
 
         // === 3. 同意ボタン ===
         accept.addEventListener("click", function () {
+          console.log('3. 同意ボタン');
           try { localStorage.setItem(KEY, "granted"); } catch { /* empty */ }
 
           if (typeof window.gtag === "function") {
+            console.log('window.gtag granted 行きます');
             window.gtag("consent", "update", { analytics_storage: "granted" });
           }
 
@@ -97,6 +100,7 @@ const copy = locale === 'en' ? t.en : t.ja;
 
         // === 4. 拒否ボタン ===
         reject.addEventListener("click", function () {
+          console.log('4. 拒否ボタン');
           // "denied" は保存しない（default が denied）
           hide();
         });
