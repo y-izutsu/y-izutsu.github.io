@@ -1,8 +1,8 @@
 ---
-title: "🚀AstroWind [2] ヘッダーナビからアンカーへスクロールさせる"
+title: "🚀AstroWind DevLog [2] アンカースクロールナビの実装"
 date: 2026-02-28
-tags: ["Astro", "AstroWind", "PochomLab", "Log"]
-summary: "AstroWindのヘッダーナビにアンカーリンクを通すため、navigation.ts ではプレースホルダを使い、Header.astro 側で本番/ローカルに応じて href を変換するようにした。"
+tags: ["AstroWind", "DevLog", "PochomLab"]
+summary: "AstroWindのヘッダーナビをアンカースクロールに変更。ClientRouterをOFFにしてページ内スクロールを実装。"
 draft: false
 ---
 
@@ -135,3 +135,12 @@ let finalHref = resolveHref(href2);
   - `@@@` を 本番/ローカルで `#` に置換する `resolveHref()` を追加
   - `active` 判定がアンカーでズレないよう `normalizePath()` を追加
   - 通常リンク/ドロップダウンリンクの両方で `resolveHref()` を通すよう統一
+
+---
+
+## ■ AstroWind シリーズ
+
+- [🚀AstroWind [1] 初期設定](/ja/log/2026-astrowind-01-setup)
+- 🚀AstroWind [2] アンカースクロールナビの実装
+- [🚀AstroWind [3] /ja /en 多言語構成（ナビ・Layout・Canonical）](/ja/log/2026-astrowind-03-ja-en-structure)
+- [🚀AstroWind [4] Consent対応 Google Analytics4](/ja/log/2026-astrowind-04-ga4-consent)

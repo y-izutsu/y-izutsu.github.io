@@ -1,8 +1,8 @@
 ---
-title: "🚀 AstroWind [2] Enable Scrolling to Anchors from the Header Navigation"
+title: "🚀 AstroWind [2] Anchor Scroll Navigation"
 date: 2026-02-28
-tags: ["Astro", "AstroWind", "PochomLab", "Log"]
-summary: "To enable anchor links in the AstroWind header navigation, a placeholder was used in navigation.ts, and Header.astro converts the href depending on production or local environments."
+tags: ["AstroWind", "DevLog", "PochomLab"]
+summary: "Modified the AstroWind header navigation to use anchor scrolling. Disabled ClientRouter and implemented in-page navigation."
 draft: false
 ---
 
@@ -139,3 +139,13 @@ Header.astro converts it to:
   - Added `resolveHref()` to replace `@@@` with `#` depending on environment  
   - Added `normalizePath()` so anchor fragments do not affect `active` state detection  
   - Applied `resolveHref()` consistently to both normal links and dropdown links
+
+
+---
+
+## ■ AstroWind Series
+
+- [🚀AstroWind [1] Initial Setup](/en/log/2026-astrowind-01-setup)
+- 🚀AstroWind [2] Anchor Scroll Navigation
+- [🚀AstroWind [3] /ja /en Multilingual Structure (Nav, Layout, Canonical)](/en/log/2026-astrowind-03-ja-en-structure)
+- [🚀AstroWind [4] Google Analytics 4 with Consent Mode](/en/log/2026-astrowind-04-ga4-consent)

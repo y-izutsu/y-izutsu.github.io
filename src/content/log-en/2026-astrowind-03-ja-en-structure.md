@@ -1,8 +1,8 @@
 ---
-title: "🚀 AstroWind [3] /ja /en Separation (Navigation, Layout, Canonical)"
+title: "🚀 AstroWind [3] /ja /en Multilingual Structure (Nav, Layout, Canonical)"
 date: 2026-03-01
-tags: ["Astro", "AstroWind", "PochomLab", "Log"]
-summary: "Separated routing for /ja and /en, added language-specific navigation and layouts, implemented header language switching, and added canonical/hreflang handling in Layout."
+tags: ["AstroWind", "DevLog", "PochomLab"]
+summary: "Separated the AstroWind site into a multilingual structure using /ja and /en. Updated navigation, layout, canonical, and hreflang settings."
 draft: false
 ---
 
@@ -38,4 +38,12 @@ https://github.com/pochomlab/pochomlab-astrowind-lab/pull/3
 - Added a language switch (JA / EN) in `Header.astro`.
 - Added canonical and hreflang handling to `Layout.astro`.
 - Switched `<html lang>` dynamically based on the URL.
-- 
+
+---
+
+## ■ AstroWind Series
+
+- [🚀AstroWind [1] Initial Setup](/en/log/2026-astrowind-01-setup)
+- [🚀AstroWind [2] Anchor Scroll Navigation](/en/log/2026-astrowind-02-anchor-scroll)
+- 🚀AstroWind [3] /ja /en Multilingual Structure (Nav, Layout, Canonical)
+- [🚀AstroWind [4] Google Analytics 4 with Consent Mode](/en/log/2026-astrowind-04-ga4-consent)
