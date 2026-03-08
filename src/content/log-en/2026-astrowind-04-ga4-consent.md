@@ -1,9 +1,18 @@
 ---
-title: "🚀AstroWind DevLog [4] Google Analytics 4 with Consent Mode"
+title: "🚀AstroWind DevLog [04] Google Analytics 4 with Consent Mode"
 date: 2026-03-08
 tags: ["AstroWind", "DevLog", "PochomLab"]
 summary: "Implemented Google Analytics 4 with Consent Mode. Analytics events are sent only after user consent."
 draft: false
+---
+
+## ■ AstroWind Series
+
+- [🚀AstroWind [01] Initial Setup](/en/log/2026-astrowind-01-setup)
+- [🚀AstroWind [02] Anchor Scroll Navigation](/en/log/2026-astrowind-02-anchor-scroll)
+- [🚀AstroWind [03] /ja /en Multilingual Structure (Nav, Layout, Canonical)](/en/log/2026-astrowind-03-ja-en-structure)
+- 🚀AstroWind [04] Google Analytics 4 with Consent Mode
+
 ---
 
 ## ■ Purpose
@@ -131,12 +140,3 @@ is displayed in **both Japanese and English**.
 This ensures that the consent message  
 remains understandable even if the  
 language switcher is hidden.
-
----
-
-## ■ AstroWind Series
-
-- [🚀AstroWind [1] Initial Setup](/en/log/2026-astrowind-01-setup)
-- [🚀AstroWind [2] Anchor Scroll Navigation](/en/log/2026-astrowind-02-anchor-scroll)
-- [🚀AstroWind [3] /ja /en Multilingual Structure (Nav, Layout, Canonical)](/en/log/2026-astrowind-03-ja-en-structure)
-- 🚀AstroWind [4] Google Analytics 4 with Consent Mode

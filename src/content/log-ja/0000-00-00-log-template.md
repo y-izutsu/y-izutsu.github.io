@@ -1,10 +1,18 @@
 ---
 title: "title"
 date: 2025-01-01
-tags: ["Astro", "AstroWind", "PochomLab", "Log"]
+tags: ["Astro", "AstroWind", "PochomLab", "Log", "DevLog", "BuildLog", "LabLog"]
 summary: "summary"
+#series:
+#seriesOrder:
 draft: true
 ---
+
+タグ	意味
+DevLog	コード
+BuildLog	制作
+LabLog	実験
+
 
 ## ■ 概要
 

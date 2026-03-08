@@ -1,9 +1,20 @@
 ---
-title: "🚀AstroWind DevLog [3] /ja /en 多言語構成（ナビ・Layout・Canonical）"
+title: "🚀AstroWind DevLog [03] /ja /en 多言語構成（ナビ・Layout・Canonical）"
 date: 2026-03-01
 tags: ["AstroWind", "DevLog", "PochomLab"]
 summary: "AstroWindサイトを /ja /en の多言語構成に分離。ナビゲーション・Layout・canonical・hreflangを整理。"
+series: astrowind
+seriesOrder: 3
 draft: false
+---
+
+## ■ AstroWind シリーズ
+
+- [🚀AstroWind [01] 初期設定](/ja/log/2026-astrowind-01-setup)
+- [🚀AstroWind [02] アンカースクロールナビの実装](/ja/log/2026-astrowind-02-anchor-scroll)
+- 🚀AstroWind [03] /ja /en 多言語構成（ナビ・Layout・Canonical）
+- [🚀AstroWind [04] Consent対応 Google Analytics4](/ja/log/2026-astrowind-04-ga4-consent)
+
 ---
 
 ## ■ 目的
@@ -37,12 +48,3 @@ https://github.com/pochomlab/pochomlab-astrowind-lab/pull/3
 - `Header.astro` に言語切替（JA/EN）を追加。
 - `Layout.astro` に canonical / hreflang を追加。
 - `<html lang>` をURLベースで切替。
-
----
-
-## ■ AstroWind シリーズ
-
-- [🚀AstroWind [1] 初期設定](/ja/log/2026-astrowind-01-setup)
-- [🚀AstroWind [2] アンカースクロールナビの実装](/ja/log/2026-astrowind-02-anchor-scroll)
-- 🚀AstroWind [3] /ja /en 多言語構成（ナビ・Layout・Canonical）
-- [🚀AstroWind [4] Consent対応 Google Analytics4](/ja/log/2026-astrowind-04-ga4-consent)

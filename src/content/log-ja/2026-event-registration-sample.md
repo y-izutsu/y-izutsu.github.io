@@ -1,8 +1,10 @@
 ---
 title: "🎫イベント登録サンプルを作成"
 date: 2026-02-27
-tags: ["Log", "Events", "AstroWind", "PochomLab"]
+tags: ["Log", "Events", "PochomLab"]
 summary: "イベント投稿用フロントマターの仕様と記述ルールを整理。type分類・表示挙動を明文化し、イベントページへの導線を整備。"
+#series: 
+#seriesOrder:
 draft: false
 ---
 

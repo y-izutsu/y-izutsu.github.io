@@ -1,9 +1,20 @@
 ---
-title: "🚀AstroWind DevLog [4] Consent対応 Google Analytics4"
+title: "🚀AstroWind DevLog [04] Consent対応 Google Analytics4"
 date: 2026-03-08
 tags: ["AstroWind", "DevLog", "PochomLab"]
 summary: "Consent Modeに対応したGoogle Analytics4を実装。ユーザー承諾後のみpage_viewを送信する構成を構築。"
+series: astrowind
+seriesOrder: 4
 draft: false
+---
+
+## ■ AstroWind シリーズ
+
+- [🚀AstroWind [01] 初期設定](/ja/log/2026-astrowind-01-setup)
+- [🚀AstroWind [02] アンカースクロールナビの実装](/ja/log/2026-astrowind-02-anchor-scroll)
+- [🚀AstroWind [03] /ja /en 多言語構成（ナビ・Layout・Canonical）](/ja/log/2026-astrowind-03-ja-en-structure)
+- 🚀AstroWind [04] Consent対応 Google Analytics4
+
 ---
 
 ## ■ 目的
@@ -119,12 +130,3 @@ page_view送信は手動制御に変更した。
 ## ■ メモ
 
 モバイル表示では メニューが画面全体を覆うレイアウトになるため、 コンセントバナーの文言は **日本語 / 英語の両方を表示**する形にした。 これにより 言語切替が隠れた場合でも 内容が理解できるようにしている。
-
----
-
-## ■ AstroWind シリーズ
-
-- [🚀AstroWind [1] 初期設定](/ja/log/2026-astrowind-01-setup)
-- [🚀AstroWind [2] アンカースクロールナビの実装](/ja/log/2026-astrowind-02-anchor-scroll)
-- [🚀AstroWind [3] /ja /en 多言語構成（ナビ・Layout・Canonical）](/ja/log/2026-astrowind-03-ja-en-structure)
-- 🚀AstroWind [4] Consent対応 Google Analytics4

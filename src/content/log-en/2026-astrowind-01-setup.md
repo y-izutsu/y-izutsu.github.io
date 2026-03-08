@@ -1,9 +1,18 @@
 ---
-title: "🚀 AstroWind [1] Initial Setup"
+title: "🚀 AstroWind [01] Initial Setup"
 date: 2026-02-23
 tags: ["AstroWind", "DevLog", "PochomLab"]
 summary: "Set up the initial PochomLab site environment based on AstroWind. Organized the base configuration and development setup."
 draft: false
+---
+
+## ■ AstroWind Series
+
+- 🚀AstroWind [01] Initial Setup
+- [🚀AstroWind [02] Anchor Scroll Navigation](/en/log/2026-astrowind-02-anchor-scroll)
+- [🚀AstroWind [03] /ja /en Multilingual Structure (Nav, Layout, Canonical)](/en/log/2026-astrowind-03-ja-en-structure)
+- [🚀AstroWind [04] Google Analytics 4 with Consent Mode](/en/log/2026-astrowind-04-ga4-consent)
+
 ---
 
 ## ■ Purpose
@@ -163,11 +172,3 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 ```
----
-
-## ■ AstroWind Series
-
-- 🚀AstroWind [1] Initial Setup
-- [🚀AstroWind [2] Anchor Scroll Navigation](/en/log/2026-astrowind-02-anchor-scroll)
-- [🚀AstroWind [3] /ja /en Multilingual Structure (Nav, Layout, Canonical)](/en/log/2026-astrowind-03-ja-en-structure)
-- [🚀AstroWind [4] Google Analytics 4 with Consent Mode](/en/log/2026-astrowind-04-ga4-consent)

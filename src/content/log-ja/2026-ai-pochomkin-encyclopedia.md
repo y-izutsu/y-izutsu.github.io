@@ -1,8 +1,10 @@
 ---
 title: "🍄‍🟫AIが描いたポチョム菌図鑑"
 date: 2026-03-02
-tags: ["PochomLab", "Log", "生成AI", "ポチョム菌"]
+tags: ["Log", "生成AI", "ポチョム菌"]
 summary: "GoogleのAI検索が生成した“ポチョム菌の大図鑑”。26年越しに世界が繋がった瞬間の記録。"
+#series:
+#seriesOrder:
 draft: false
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "🎫 Event Registration Sample"
 date: 2026-02-27
-tags: ["Log", "Events", "AstroWind", "PochomLab"]
+tags: ["Log", "Events", "PochomLab"]
 summary: "Organized the frontmatter specification and writing rules for event posts. Clarified type classifications and display behavior, and prepared navigation to the Events page."
 draft: false
 ---

@@ -1,9 +1,20 @@
 ---
-title: "🚀AstroWind DevLog [1] 初期設定"
+title: "🚀AstroWind DevLog [01] 初期設定"
 date: 2026-02-23
 tags: ["AstroWind", "DevLog", "PochomLab"]
 summary: "AstroWindをベースにPochomLabサイトの初期環境を構築。基本設定と開発環境を整理。"
+series: astrowind
+seriesOrder: 1
 draft: false
+---
+
+## ■ AstroWind シリーズ
+
+- 🚀AstroWind [01] 初期設定
+- [🚀AstroWind [02] アンカースクロールナビの実装](/ja/log/2026-astrowind-02-anchor-scroll)
+- [🚀AstroWind [03] /ja /en 多言語構成（ナビ・Layout・Canonical）](/ja/log/2026-astrowind-03-ja-en-structure)
+- [🚀AstroWind [04] Consent対応 Google Analytics4](/ja/log/2026-astrowind-04-ga4-consent)
+
 ---
 
 ## ■ 目的
@@ -164,12 +175,3 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 ```
-
----
-
-## ■ AstroWind シリーズ
-
-- 🚀AstroWind [1] 初期設定
-- [🚀AstroWind [2] アンカースクロールナビの実装](/ja/log/2026-astrowind-02-anchor-scroll)
-- [🚀AstroWind [3] /ja /en 多言語構成（ナビ・Layout・Canonical）](/ja/log/2026-astrowind-03-ja-en-structure)
-- [🚀AstroWind [4] Consent対応 Google Analytics4](/ja/log/2026-astrowind-04-ga4-consent)

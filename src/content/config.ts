@@ -73,6 +73,8 @@ const logCollection = defineCollection({
     date: z.date(),
     summary: z.string().optional(),
     tags: z.array(z.string()).optional(),
+    series: z.string().optional(),
+    seriesOrder: z.number().optional(),        
     draft: z.boolean().default(false),
   }),
 });
