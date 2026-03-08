@@ -1,38 +1,46 @@
 ---
-title: "🚀AstroWind [1] 初期設定"
+title: "🚀 AstroWind [01] Initial Setup"
 date: 2026-02-23
-tags: ["Astro", "AstroWind", "PochomLab", "Log"]
-summary: "AstroWindをPochomLab用に最小構成で初期化し、GitHub Pages公開まで確認。"
+tags: ["AstroWind", "DevLog", "PochomLab"]
+summary: "Set up the initial PochomLab site environment based on AstroWind. Organized the base configuration and development setup."
 draft: false
 ---
 
-## ■ 目的
+## ■ AstroWind Series
 
-AstroWindをPochomLab用の実験環境として初期化し、
-GitHub Pagesで公開確認まで行う。
-
----
-
-## ■ 実施内容
-
-- 空リポジトリにAstroWindテンプレートをコミット
-- config.yaml をPochomLab仕様に最小変更
-- deploy.yml を追加
-- Pages → Source を GitHub Actions に設定
-- GitHub Pages表示確認
+- 🚀AstroWind [01] Initial Setup
+- [🚀AstroWind [02] Anchor Scroll Navigation](/en/log/2026-astrowind-02-anchor-scroll)
+- [🚀AstroWind [03] /ja /en Multilingual Structure (Nav, Layout, Canonical)](/en/log/2026-astrowind-03-ja-en-structure)
+- [🚀AstroWind [04] Google Analytics 4 with Consent Mode](/en/log/2026-astrowind-04-ga4-consent)
 
 ---
 
-## ■ Repository
+## ■ Purpose
+Initialize AstroWind as an experimental environment for PochomLab  
+and confirm that it can be deployed and displayed on GitHub Pages.
+
+---
+
+## ■ Actions Taken
+
+- Committed the AstroWind template to an empty repository
+- Applied minimal changes to `config.yaml` for the PochomLab configuration
+- Added `deploy.yml`
+- Set **Pages → Source** to **GitHub Actions**
+- Verified that the site is displayed on GitHub Pages
+
+---
+
+## Repository
 
 https://github.com/pochomlab/pochomlab-astrowind-lab
 
-## ■ Pull Request
+## Pull Request
 https://github.com/pochomlab/pochomlab-astrowind-lab/pull/1
 
 ---
 
-## ■ config.yaml
+## config.yaml
 ```yaml
 site:
   name: PochomLab AstroWind Lab
@@ -108,7 +116,7 @@ ui:
   theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
 ```
 
-## ■ Deploy.yml
+## Deploy.yml
 ```yaml
 name: Deploy to GitHub Pages
 
