@@ -54,7 +54,7 @@ const ZINE = [
     cover: '/images/library/cover-egaki-create-ch1-en.webp',
     boothUrl: 'https://booth.pm/ja/',
     boothDisable: true,
-    kdpUrl: 'https://booth.pm/ja/',
+    kdpUrl: 'https://www.amazon.co.jp/',
     kdpDisable: true,   
   },
   {
@@ -62,7 +62,7 @@ const ZINE = [
     cover: '/images/library/cover-egaki-create-ch2-en.webp',
     boothUrl: 'https://booth.pm/ja/',
     boothDisable: true,
-    kdpUrl: 'https://booth.pm/ja/',
+    kdpUrl: 'https://www.amazon.co.jp/',
     kdpDisable: true,   
   },
   {
@@ -70,7 +70,7 @@ const ZINE = [
     cover: '/images/library/cover-egaki-create-ch3-en.webp',
     boothUrl: 'https://booth.pm/ja/',
     boothDisable: true,
-    kdpUrl: 'https://booth.pm/ja/',
+    kdpUrl: 'https://www.amazon.co.jp/',
     kdpDisable: true,   
   },
 ];
@@ -207,7 +207,7 @@ const SECTIONS = [
                       store='booth'
                       url={item.boothUrl}
                       aria={`${item.title}coming soon`}
-                      label="coming soon"
+                      label="Booth - coming soon"
                       fullWidth={true}
                       disabled={item.boothDisable}
                     />
@@ -218,7 +218,7 @@ const SECTIONS = [
                           store='kdp'
                           url={item.kdpUrl}
                           aria={`${item.title}coming soon`}
-                          label="coming soon"
+                          label="KDP - coming soon"
                           fullWidth={true}
                           disabled={item.kdpDisable}
                         />

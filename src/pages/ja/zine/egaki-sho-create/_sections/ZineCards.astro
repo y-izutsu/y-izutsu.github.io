@@ -20,13 +20,20 @@ const data = {
         '「なぜそれを選んだか」まで残すことで、型が再現可能になる。',
       ],
       tags: ['Prompt', 'Pipeline', 'Environment'],
-      cta: {
+      cta1: {
         store: 'booth',
         aria: '絵書創ろうよ！ZINE（創作編）をBoothで開く',
-        label: '準備中',
+        label: 'Booth - 準備中',
         url: 'https://booth.pm/ja/',
         disable: true,
       },
+      cta2: {
+        store: 'kdp',
+        aria: '絵書創ろうよ！ZINE（創作編）をKDPで開く',
+        label: 'KDP - 準備中',
+        url: 'https://www.amazon.co.jp/',
+        disable: true,
+      },      
     },
     {
       title: '🧬キャラクターメイキング編',
@@ -44,13 +51,20 @@ const data = {
       ],
       tags: ['LoRA', 'ControlNet', 'img2img'],
       highlight: '完全実況',
-      cta: {
+      cta1: {
         store: 'booth',
         aria: '絵書創ろうよ！ZINE（キャラクターメイキング編）をBoothで開く',
-        label: '準備中',
+        label: 'Booth - 準備中',
         url: 'https://booth.pm/ja/',
         disable: true,
       },
+      cta2: {
+        store: 'kdp',
+        aria: '絵書創ろうよ！ZINE（キャラクターメイキング編）をBoothで開く',
+        label: 'KDP - 準備中',
+        url: 'https://www.amazon.co.jp/',
+        disable: true,
+      },        
     },
     {
       title: '📘出版編',
@@ -67,13 +81,20 @@ const data = {
         '「創作→流通→IP」への接続点を、理論ではなく実装として残す。',
       ],
       tags: ['KDP', 'Trademark', 'IP Strategy'],
-      cta: {
+      cta1: {
         store: 'booth',
         aria: '絵書創ろうよ！ZINE（出版編）をBoothで開く',
-        label: '準備中',
+        label: 'Booth - 準備中',
         url: 'https://booth.pm/ja/',
         disable: true,
       },
+      cta2: {
+        store: 'kdp',
+        aria: '絵書創ろうよ！ZINE（出版編）をBoothで開く',
+        label: 'KDP - 準備中',
+        url: 'https://www.amazon.co.jp/',
+        disable: true,
+      },        
     },
   ],
 };
@@ -135,13 +156,22 @@ const data = {
 
               <div class="mt-auto pt-7 flex flex-wrap gap-3">
                 <StoreButton
-                  store={z.cta.store}
-                  url={z.cta.url}
-                  aria={z.cta.aria}
-                  label={z.cta.label}
+                  store={z.cta1.store}
+                  url={z.cta1.url}
+                  aria={z.cta1.aria}
+                  label={z.cta1.label}
                   fullWidth={true}
-                  disabled={z.cta.disable}
+                  disabled={z.cta1.disable}
                 />
+                <StoreButton
+                  store={z.cta2.store}
+                  url={z.cta2.url}
+                  aria={z.cta2.aria}
+                  label={z.cta2.label}
+                  fullWidth={true}
+                  disabled={z.cta2.disable}
+                />
+
               </div>
             </div>
           </article>
