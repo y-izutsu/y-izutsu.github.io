@@ -42,25 +42,36 @@ const EGAKI_SHO = [
 
 const ZINE = [
   {
-    store: 'kdp',    
-    title: 'The Creation Process',
+    title: '🌱 3-Book Set',
+    cover: '/images/library/cover-egaki-set-en.webp',
+    boothUrl: 'https://booth.pm/ja/',
+    boothDisable: true,
+    kdpUrl: '',
+    kdpDisable: true,    
+  },  
+  {
+    title: '📗 The Creation Process',
     cover: '/images/library/cover-egaki-create-ch1-en.webp',
-    url: 'https://www.amazon.com/',
-    disable: true,
+    boothUrl: 'https://booth.pm/ja/',
+    boothDisable: true,
+    kdpUrl: 'https://www.amazon.co.jp/',
+    kdpDisable: true,   
   },
   {
-    store: 'kdp',    
-    title: 'Character Design',
+    title: '📙 Character Design',
     cover: '/images/library/cover-egaki-create-ch2-en.webp',
-    url: 'https://www.amazon.com/',
-    disable: true,
+    boothUrl: 'https://booth.pm/ja/',
+    boothDisable: true,
+    kdpUrl: 'https://www.amazon.co.jp/',
+    kdpDisable: true,   
   },
   {
-    store: 'kdp',    
-    title: 'Publishing Guide',
+    title: '📘 Publishing Guide',
     cover: '/images/library/cover-egaki-create-ch3-en.webp',
-    url: 'https://www.amazon.com/',
-    disable: true,
+    boothUrl: 'https://booth.pm/ja/',
+    boothDisable: true,
+    kdpUrl: 'https://www.amazon.co.jp/',
+    kdpDisable: true,   
   },
 ];
 
@@ -190,24 +201,32 @@ const SECTIONS = [
                     {item.title}
                   </h3>
 
-                  <div class="mt-auto pt-3">
-                    {/* <StoreButton
-                      store={item.store}
-                      url={item.url}
-                      aria="View on KDP"
-                      label="View on KDP"
-                      fullWidth={true}
-                      disabled={item.disable}
-                    /> */}
+                  <div class="mt-auto pt-3 grid grid-cols-1 gap-2">
+
                     <StoreButton
-                      store={item.store}
-                      url={item.url}
-                      aria="coming soon"
-                      label="coming soon"
+                      store='booth'
+                      url={item.boothUrl}
+                      aria={`${item.title}coming soon`}
+                      label="Booth - coming soon"
                       fullWidth={true}
-                      disabled={item.disable}
+                      disabled={item.boothDisable}
                     />
+
+                    {
+                      item.kdpUrl && (
+                        <StoreButton
+                          store='kdp'
+                          url={item.kdpUrl}
+                          aria={`${item.title}coming soon`}
+                          label="KDP - coming soon"
+                          fullWidth={true}
+                          disabled={item.kdpDisable}
+                        />
+                      )
+                    }
+
                   </div>
+
                 </div>
               </article>
             ))

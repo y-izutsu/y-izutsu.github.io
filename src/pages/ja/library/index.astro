@@ -42,25 +42,36 @@ const EGAKI_SHO = [
 
 const ZINE = [
   {
-    store: 'booth',
-    title: '創作編',
+    title: '🌱【3冊セット】 生成AI創作・キャラクターメイキング・出版',
+    cover: '/images/library/cover-egaki-set-ja.webp',
+    boothUrl: 'https://booth.pm/ja/',
+    boothDisable: true,
+    kdpUrl: '',
+    kdpDisable: true,    
+  },  
+  {
+    title: '📗 創作編',
     cover: '/images/library/cover-egaki-create-ch1-ja.webp',
-    url: 'https://booth.pm/ja/',
-    disable: true,
+    boothUrl: 'https://booth.pm/ja/',
+    boothDisable: true,
+    kdpUrl: 'https://www.amazon.co.jp/',
+    kdpDisable: true,    
   },
   {
-    store: 'booth',
-    title: 'キャラクターメイキング編',
+    title: '📙 キャラクターメイキング編',
     cover: '/images/library/cover-egaki-create-ch2-ja.webp',
-    url: 'https://booth.pm/ja/',
-    disable: true,
+    boothUrl: 'https://booth.pm/ja/',
+    boothDisable: true,
+    kdpUrl: 'https://www.amazon.co.jp/',
+    kdpDisable: true,      
   },
   {
-    store: 'booth',
-    title: '出版編',
+    title: '📘 出版編',
     cover: '/images/library/cover-egaki-create-ch3-ja.webp',
-    url: 'https://booth.pm/ja/',
-    disable: true,
+    boothUrl: 'https://booth.pm/ja/',
+    boothDisable: true,
+    kdpUrl: 'https://www.amazon.co.jp/',
+    kdpDisable: true,      
   },
 ];
 
@@ -190,15 +201,30 @@ const SECTIONS = [
                     {item.title}
                   </h3>
 
-                  <div class="mt-auto pt-3">
+                  <div class="mt-auto pt-3 grid grid-cols-1 gap-2">
+
                     <StoreButton
-                      store={item.store}
-                      url={item.url}
+                      store='booth'
+                      url={item.boothUrl}
                       aria={`${item.title}をBoothで開く`}
-                      label="Boothで見る(準備中)"
+                      label='Boothで見る(準備中)'
                       fullWidth={true}
-                      disabled={item.disable}
+                      disabled={item.boothDisable}
                     />
+
+                    {
+                      item.kdpUrl && (
+                        <StoreButton
+                          store='kdp'
+                          url={item.kdpUrl}
+                          aria={`${item.title}をKDPで開く`}
+                          label='Kindleで読む (準備中)'
+                          fullWidth={true}
+                          disabled={item.kdpDisable}
+                        />
+                      )
+                    }
+
                   </div>
                 </div>
               </article>

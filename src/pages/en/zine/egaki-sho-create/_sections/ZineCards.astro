@@ -21,13 +21,20 @@ const data = {
         'By recording why each choice was made, the method becomes reproducible.',
       ],
       tags: ['Prompt', 'Pipeline', 'Environment'],
-      cta: {
-        store: 'kdp',
-        aria: 'View on KDP',
-        label: 'Coming soon',
-        url: 'https://www.amazon.co.jp/',
+      cta1: {
+        store: 'booth',
+        aria: 'View on Booth',
+        label: 'Booth - Coming soon',
+        url: 'https://booth.pm/ja/',
         disable: true,
       },
+      cta2: {
+        store: 'kdp',
+        aria: 'View on KDP',
+        label: 'KDP - Coming soon',
+        url: 'https://www.amazon.co.jp/',
+        disable: true,
+      },        
     },
     {
       title: '🧬Character Design',
@@ -45,13 +52,20 @@ const data = {
       ],
       tags: ['LoRA', 'ControlNet', 'img2img'],
       highlight: 'Live Record',
-      cta: {
-        store: 'kdp',
-        aria: 'View on KDP',
-        label: 'Coming soon',
-        url: 'https://www.amazon.co.jp/',
+      cta1: {
+        store: 'booth',
+        aria: 'View on Booth',
+        label: 'Booth - Coming soon',
+        url: 'https://booth.pm/ja/',
         disable: true,
       },
+      cta2: {
+        store: 'kdp',
+        aria: 'View on KDP',
+        label: 'KDP - Coming soon',
+        url: 'https://www.amazon.co.jp/',
+        disable: true,
+      },   
     },
     {
       title: '📘Publishing Guide',
@@ -68,13 +82,20 @@ const data = {
         'The connection from creation to distribution to IP is documented as implementation, not theory.',
       ],
       tags: ['KDP', 'Trademark', 'IP Strategy'],
-      cta: {
-        store: 'kdp',
-        aria: 'View on KDP',
-        label: 'Coming soon',
-        url: 'https://www.amazon.co.jp/',
+      cta1: {
+        store: 'booth',
+        aria: 'View on Booth',
+        label: 'Booth - Coming soon',
+        url: 'https://booth.pm/ja/',
         disable: true,
       },
+      cta2: {
+        store: 'kdp',
+        aria: 'View on KDP',
+        label: 'KDP - Coming soon',
+        url: 'https://www.amazon.co.jp/',
+        disable: true,
+      },  
     },
   ],
 };
@@ -137,13 +158,21 @@ const data = {
 
               <div class="mt-auto pt-7 flex flex-wrap gap-3">
                 <StoreButton
-                  store={z.cta.store}
-                  url={z.cta.url}
-                  aria={z.cta.aria}
-                  label={z.cta.label}
+                  store={z.cta1.store}
+                  url={z.cta1.url}
+                  aria={z.cta1.aria}
+                  label={z.cta1.label}
                   fullWidth={true}
-                  disabled={z.cta.disable}
+                  disabled={z.cta1.disable}
                 />
+                <StoreButton
+                  store={z.cta2.store}
+                  url={z.cta2.url}
+                  aria={z.cta2.aria}
+                  label={z.cta2.label}
+                  fullWidth={true}
+                  disabled={z.cta2.disable}
+                />                
               </div>
             </div>
           </article>
